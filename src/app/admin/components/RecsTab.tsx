@@ -104,6 +104,7 @@ export default function RecsTab({ adminKey }: { adminKey: string }) {
   const [bcDescs, setBcDescs] = useState<Record<string, string>>({});
   const [bcUrls, setBcUrls] = useState<Record<string, string>>({});
   const [bcUploading, setBcUploading] = useState<Record<string, boolean>>({});
+  const [bcUploadError, setBcUploadError] = useState<Record<string, string>>({});
 
   // 出装编辑 (per playstyle)
   const [buildItems, setBuildItems] = useState<Record<string, string[]>>({});
@@ -310,10 +311,19 @@ export default function RecsTab({ adminKey }: { adminKey: string }) {
   // === 图文卡 ===
   const uploadBcImage = async (psId: string, file: File) => {
     setBcUploading(prev => ({ ...prev, [psId]: true }));
-    const fd = new FormData(); fd.append("file", file);
-    const res = await fetch("/api/admin/upload", { method: "POST", headers: { "X-Admin-Key": adminKey }, body: fd });
-    const d = await res.json();
-    if (d.url) setBcUrls(prev => ({ ...prev, [psId]: d.url }));
+    setBcUploadError(prev => { const next = { ...prev }; delete next[psId]; return next; });
+    try {
+      const fd = new FormData(); fd.append("file", file);
+      const res = await fetch("/api/admin/upload", { method: "POST", headers: { "X-Admin-Key": adminKey }, body: fd });
+      const d = await res.json();
+      if (d.url) {
+        setBcUrls(prev => ({ ...prev, [psId]: d.url }));
+      } else {
+        setBcUploadError(prev => ({ ...prev, [psId]: d.error || "图片上传失败" }));
+      }
+    } catch {
+      setBcUploadError(prev => ({ ...prev, [psId]: "网络错误，请重试" }));
+    }
     setBcUploading(prev => ({ ...prev, [psId]: false }));
   };
 
@@ -343,13 +353,15 @@ export default function RecsTab({ adminKey }: { adminKey: string }) {
       items: buildItems[psId] || Array(6).fill(""),
       alts: buildAlts[psId] || Array(6).fill(""),
     });
-    const body = {
+    const existingIdx = heroData.cards.findIndex(c => c.playstyle_id === psId);
+    const existingId = existingIdx >= 0 ? heroData.cards[existingIdx].id : undefined;
+    const body: Record<string, unknown> = {
       hero_id: modalHero.id, playstyle_id: psId,
       image_url: bcUrls[psId] || "",
       title: bcTitles[psId] || "",
       description: descObj,
     };
-    const existingIdx = heroData.cards.findIndex(c => c.playstyle_id === psId);
+    if (existingId) body.id = existingId;
     const updatedCard: BuildCard = {
       id: heroData.cards[existingIdx]?.id || "temp-bc-" + psId,
       hero_id: modalHero.id, playstyle_id: psId,
@@ -551,16 +563,20 @@ export default function RecsTab({ adminKey }: { adminKey: string }) {
                                     <h4 className="text-[11px] font-semibold text-sage-500 mb-2">🃏 图文推荐卡</h4>
                                     <div className="flex gap-3">
                                       <div className="flex-shrink-0 w-24 h-24 rounded-xl border-2 border-dashed border-sage-200 bg-sage-50/50 flex items-center justify-center overflow-hidden relative group">
-                                        {bcUrls[ps.id] || bc?.image_url ? (
+                                        {bcUploading[ps.id] ? (
+                                          <span className="text-[11px] text-sage-400">上传中...</span>
+                                        ) : bcUrls[ps.id] || bc?.image_url ? (
                                           <img src={bcUrls[ps.id] || bc?.image_url} alt="" className="w-full h-full object-cover" />
                                         ) : (
                                           <span className="text-[24px] text-sage-300">🃏</span>
                                         )}
-                                        <label className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors flex items-center justify-center cursor-pointer">
-                                          <span className="text-white text-[11px] opacity-0 group-hover:opacity-100 transition-opacity font-medium">更换</span>
-                                          <input type="file" accept="image/*" className="hidden"
-                                            onChange={e => { const f = e.target.files?.[0]; if (f) uploadBcImage(ps.id, f); }} />
-                                        </label>
+                                        {!bcUploading[ps.id] && (
+                                          <label className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors flex items-center justify-center cursor-pointer">
+                                            <span className="text-white text-[11px] opacity-0 group-hover:opacity-100 transition-opacity font-medium">更换</span>
+                                            <input type="file" accept="image/*" className="hidden"
+                                              onChange={e => { const f = e.target.files?.[0]; if (f) uploadBcImage(ps.id, f); }} />
+                                          </label>
+                                        )}
                                         {bc && (
                                           <button
                                             onClick={(e) => { e.stopPropagation(); deleteBuildCard(bc.id, ps.id); }}
@@ -577,6 +593,9 @@ export default function RecsTab({ adminKey }: { adminKey: string }) {
                                           onChange={e => setBcTitles(prev => ({ ...prev, [ps.id]: e.target.value }))}
                                           className="w-full px-3 py-1.5 rounded-lg border border-sage-200 bg-white/80 text-[12px] text-sage-700 focus:outline-none focus:border-gold-400"
                                         />
+                                        {bcUploadError[ps.id] && (
+                                          <p className="text-[10px] text-rose-500">{bcUploadError[ps.id]}</p>
+                                        )}
                                       </div>
                                     </div>
                                   </section>

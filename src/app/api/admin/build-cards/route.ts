@@ -38,7 +38,22 @@ export async function POST(req: NextRequest) {
   if (!validateAdmin(req)) return adminError();
   const supabase = createAdminClient();
   const body = await req.json();
-  const { data, error } = await supabase.from("hero_build_cards").upsert(body).select().single();
+
+  const { data: existing } = await supabase
+    .from("hero_build_cards")
+    .select("id")
+    .eq("hero_id", body.hero_id)
+    .eq("playstyle_id", body.playstyle_id)
+    .maybeSingle();
+
+  let result;
+  if (existing) {
+    result = await supabase.from("hero_build_cards").update(body).eq("id", existing.id).select().single();
+  } else {
+    result = await supabase.from("hero_build_cards").insert(body).select().single();
+  }
+
+  const { data, error } = result;
   if (error) return Response.json({ error: error.message }, { status: 500 });
   return Response.json(data);
 }
