@@ -1,0 +1,168 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .perspective-500 {
+    perspective: 500px;
+  }
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+}
+
+:root {
+  --sage-300: #B5C4B1;
+  --sage-500: #7F9C7F;
+  --gold-300: #D4BB7B;
+  --gold-400: #C4A455;
+  --rose-300: #D4B5B5;
+  --cream-100: #FCFAF6;
+  --cream-200: #FAF7F2;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background: linear-gradient(135deg, var(--cream-200) 0%, #F0EBE3 50%, #F5EDE4 100%);
+  color: #3D3D3D;
+  min-height: 100dvh;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+    "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
+}
+
+/* Glassmorphism cards */
+.glass-card {
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 16px;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
+}
+
+.glass-card-highlight {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 2px solid var(--gold-400);
+  border-radius: 16px;
+  box-shadow: 0 0 20px rgba(196, 164, 85, 0.25);
+}
+
+.glass-card-selected {
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(200, 200, 200, 0.4);
+  border-radius: 16px;
+  opacity: 0.55;
+  filter: grayscale(30%);
+}
+
+/* Buttons */
+.btn-primary {
+  @apply bg-sage-300 text-white font-medium rounded-xl px-6 py-3
+    active:scale-95 transition-all duration-150;
+  box-shadow: 0 2px 8px rgba(181, 196, 177, 0.3);
+}
+
+.btn-primary:disabled {
+  @apply opacity-50 cursor-not-allowed;
+}
+
+.btn-tag {
+  @apply px-3 py-2 rounded-full text-sm font-medium
+    border border-transparent active:scale-95 transition-all duration-150;
+}
+
+.btn-tag-active {
+  @apply bg-gold-300 text-white border-gold-400;
+  box-shadow: 0 2px 8px rgba(196, 164, 85, 0.3);
+}
+
+.btn-tag-inactive {
+  @apply bg-white/50 text-sage-600 border-sage-200;
+}
+
+/* Phase tabs */
+.phase-tab {
+  @apply flex-1 py-3 px-2 text-center text-sm font-medium
+    rounded-t-xl transition-all duration-200;
+}
+
+.phase-tab-active {
+  @apply bg-white/70 text-gold-500 border-b-2 border-gold-400;
+}
+
+.phase-tab-inactive {
+  @apply bg-white/30 text-sage-500;
+}
+
+.phase-tab-notified {
+  @apply relative;
+}
+
+.phase-tab-notified::after {
+  content: "";
+  @apply absolute top-1 right-1 w-2 h-2 rounded-full bg-rose-400;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Rune card */
+.rune-quality-badge {
+  @apply text-xs px-2 py-0.5 rounded-full font-medium;
+}
+
+/* Animations */
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.2); }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-slide-up {
+  animation: slideUp 0.3s ease-out;
+}
+
+/* Mobile-safe bottom padding */
+.safe-bottom {
+  padding-bottom: max(env(safe-area-inset-bottom), 16px);
+}
+
+/* Scrollbar hide for mobile */
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hero selector grid */
+.hero-option {
+  @apply flex items-center gap-2 px-4 py-3 rounded-xl text-left
+    active:scale-[0.97] transition-all duration-150;
+}
+
+.hero-option-active {
+  @apply bg-sage-200/60 border border-sage-300;
+}
+
+.hero-option-inactive {
+  @apply bg-white/40 border border-transparent hover:bg-white/60;
+}

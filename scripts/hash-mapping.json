@@ -1,0 +1,8 @@
+{
+  "_comment": "CommunityDragon (.bin.json) 哈希key → 可读字段名映射。当CDragon数据出现新哈希时，在此添加映射。",
+  "mName": "name",
+  "mDescription": "description",
+  "mTier": "tier",
+  "mSet": "set",
+  "mEffectType": "effect_type"
+}

@@ -1,0 +1,2197 @@
+{
+  "runes": [
+    {
+      "cn": "回归基本功",
+      "slug": "back-to-basics",
+      "tier": "chromatic",
+      "description": "你的终极技能已被封印。获得30%技能伤害、治疗效果、护盾，和60技能急速",
+      "winRate": "53.97",
+      "pickRate": "8.98",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Back_To_Basics_mayhem_augment.webp"
+    },
+    {
+      "cn": "史上最大雪球",
+      "slug": "biggest-snowball-ever",
+      "tier": "chromatic",
+      "description": "Upgrades your Mark into a massive snowball, empowering it with an increased size radius and the ability…",
+      "winRate": "",
+      "pickRate": "",
+      "fetters": [
+        "下雪天"
+      ],
+      "icon_url": "https://arammayhem.com/augments/Biggest_Snowball_Ever_mayhem_augment.webp"
+    },
+    {
+      "cn": "利刃华尔兹",
+      "slug": "blade-waltz",
+      "tier": "chromatic",
+      "description": "获得召唤师技能利刃华尔兹。 利刃华尔兹会让你进入不可被选取状态，在此期间对敌人进行反复突进并造成伤害",
+      "winRate": "48.20",
+      "pickRate": "10.00",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Blade_Waltz_mayhem_augment.webp"
+    },
+    {
+      "cn": "魄罗之王的弹跳",
+      "slug": "bounce-of-the-poro-king",
+      "tier": "chromatic",
+      "description": "Replace a summoner spell with Bounce of the Poro King. [b]Bounce of the Poro King:[/b] See win rate…",
+      "winRate": "",
+      "pickRate": "",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Bounce_of_the_Poro_King_mayhem_augment.webp"
+    },
+    {
+      "cn": "你摸不到",
+      "slug": "cant-touch-this",
+      "tier": "chromatic",
+      "description": "施放你的终极技能会使你进入持续@InvulnDuration@秒的的免疫伤害状态(@Cooldown@秒冷却时间)",
+      "winRate": "46.76",
+      "pickRate": "4.57",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Cant_Touch_This_mayhem_augment.webp"
+    },
+    {
+      "cn": "地狱三头犬",
+      "slug": "cerberus",
+      "tier": "chromatic",
+      "description": "Gain the Hail of Blades and Press the Attack keystone runes. See win rate, pick rate, best champions, combo…",
+      "winRate": "",
+      "pickRate": "",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Cerberus_mayhem_augment.webp"
+    },
+    {
+      "cn": "死亡之环",
+      "slug": "circle-of-death",
+      "tier": "chromatic",
+      "description": "你造成的治疗效果和生命回复效果会对相距最近的那个敌方英雄造成@HealToDamageConversion*100@%该治疗数额的魔法伤害",
+      "winRate": "50.62",
+      "pickRate": "6.94",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Circle_of_Death_mayhem_augment.webp"
+    },
+    {
+      "cn": "小丑学院",
+      "slug": "clown-college",
+      "tier": "chromatic",
+      "description": "Gain Shaco Backstab, Deceive and Hallucinate explosion. Replace a summoner spell with Deceive. [b]Passive…",
+      "winRate": "",
+      "pickRate": "",
+      "fetters": [
+        "丧钟"
+      ],
+      "icon_url": "https://arammayhem.com/augments/Clown_College_mayhem_augment.webp"
+    },
+    {
+      "cn": "巨像的勇气",
+      "slug": "courage-of-the-colossus",
+      "tier": "chromatic",
+      "description": "定身或缚地一个敌方英雄后获得100 – 300(基于等级)（+ 5%最大生命值）护盾值",
+      "winRate": "49.14",
+      "pickRate": "8.53",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Courage_of_the_Colossus_mayhem_augment.webp"
+    },
+    {
+      "cn": "残忍",
+      "slug": "cruelty",
+      "tier": "chromatic",
+      "description": "Immobilizing or grounding an enemy champion summons a comet above them that lands at their current location after 1…",
+      "winRate": "",
+      "pickRate": "",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Cruelty_mayhem_augment.webp"
+    },
+    {
+      "cn": "全凭身法",
+      "slug": "dashing",
+      "tier": "chromatic",
+      "description": "你的冲刺、跳跃、闪烁或传送类技能获得100技能急速",
+      "winRate": "50.68",
+      "pickRate": "14.91",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Dashing_mayhem_augment.webp"
+    },
+    {
+      "cn": "你肩上的恶魔",
+      "slug": "devil-on-your-shoulder",
+      "tier": "chromatic",
+      "description": "Forge a pact with Teemo, who drains 0.5% of your [b]current[/b] health every second, increased to 5%…",
+      "winRate": "",
+      "pickRate": "",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Devil_on_Your_Shoulder_mayhem_augment.webp"
+    },
+    {
+      "cn": "亮出你的剑",
+      "slug": "draw-your-sword",
+      "tier": "chromatic",
+      "description": "变为近战状态，并且获得30%攻击力、30%生命值、25%攻击速度、20%生命偷取和25%移动速度 ，每个属性都基于舍弃的攻击距离提升0-30%（从500开始，每15提升3%）",
+      "winRate": "61.55",
+      "pickRate": "12.27",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Draw_Your_Sword_mayhem_augment.webp"
+    },
+    {
+      "cn": "飞身踢",
+      "slug": "dropkick",
+      "tier": "chromatic",
+      "description": "Your basic attacks and abilities execute enemy champions below 5% (+ 3% per 100 of your AD) (+ 0.2% per 1000 of your…",
+      "winRate": "",
+      "pickRate": "",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Dropkick_mayhem_augment.webp"
+    },
+    {
+      "cn": "卡皮巴拉空投",
+      "slug": "droppybara",
+      "tier": "chromatic",
+      "description": "获得召唤师技能卡皮巴拉空投。 在2秒后，一个卡皮巴拉撞进地面，造成25%最大生命值的真实伤害",
+      "winRate": "47.53",
+      "pickRate": "5.41",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Droppybara_mayhem_augment.webp"
+    },
+    {
+      "cn": "双刀流",
+      "slug": "dual-wield",
+      "tier": "chromatic",
+      "description": "在你攻击时，发射一个次级弩箭，造成40%伤害和40%效能的命中。获得20%总攻击速度",
+      "winRate": "58.57",
+      "pickRate": "29.63",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Dual_Wield_mayhem_augment.webp"
+    },
+    {
+      "cn": "信念者的强化",
+      "slug": "empowered-by-the-faithful",
+      "tier": "chromatic",
+      "description": "Granting a heal or shield to an allied champion blesses them for 8 seconds. Whenever a blessed ally…",
+      "winRate": "",
+      "pickRate": "",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Empowered_By_The_Faithful_mayhem_augment.webp"
+    },
+    {
+      "cn": "至高天诺言",
+      "slug": "empyrean-promise",
+      "tier": "chromatic",
+      "description": "获得15%治疗和护盾强度，获得至高天诺言召唤师技能。警惕传送至你的友军并在着陆时提供持续3秒的100 - 250(基于等级) +100%AP + 10%额外生命值护盾值",
+      "winRate": "48.92",
+      "pickRate": "1.26",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Empyrean_Promise_mayhem_augment.webp"
+    },
+    {
+      "cn": "尤里卡",
+      "slug": "eureka",
+      "tier": "chromatic",
+      "description": "获得相当于30%法术强度的技能急速",
+      "winRate": "58.59",
+      "pickRate": "37.71",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Eureka_mayhem_augment.webp"
+    },
+    {
+      "cn": "连拨击锤",
+      "slug": "fan-the-hammer",
+      "tier": "chromatic",
+      "description": "Your next basic attack in each cardinal direction within 750 range additionally on-attack fires 5 bolts at the…",
+      "winRate": "",
+      "pickRate": "",
+      "fetters": [
+        "神龙烈焰"
+      ],
+      "icon_url": "https://arammayhem.com/augments/Fan_The_Hammer_mayhem_augment.webp"
+    },
+    {
+      "cn": "感受燃烧",
+      "slug": "feel-the-burn",
+      "tier": "chromatic",
+      "description": "获得召唤师技能感受灼烧。 感受灼烧会对所有附近的敌人们施放引燃和虚弱。 范围：800",
+      "winRate": "49.46",
+      "pickRate": "4.61",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Feel_the_Burn_mayhem_augment.webp"
+    },
+    {
+      "cn": "精怪魔法",
+      "slug": "fey-magic",
+      "tier": "chromatic",
+      "description": "你的终极技能的伤害会对敌人造成持续2秒的变形效果",
+      "winRate": "47.29",
+      "pickRate": "5.33",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Fey_Magic_mayhem_augment.webp"
+    },
+    {
+      "cn": "最终形态",
+      "slug": "final-form",
+      "tier": "chromatic",
+      "description": "在施放你的终极技能时，获得持续10秒的50%最大生命值护盾、20%全能吸血和30%额外移动速度。(20秒冷却时间)",
+      "winRate": "52.38",
+      "pickRate": "17.84",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Final_Form_mayhem_augment.webp"
+    },
+    {
+      "cn": "砍伤",
+      "slug": "gash",
+      "tier": "chromatic",
+      "description": "获得50%攻击速度。攻击造成 20-40/10-20（+25%/20%额外护甲）真实伤害 命中",
+      "winRate": "51.01",
+      "pickRate": "8.36",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Gash_mayhem_augment.webp"
+    },
+    {
+      "cn": "巨人杀手",
+      "slug": "giant-slayer",
+      "tier": "chromatic",
+      "description": "体型变小，获得30%移动速度，并基于敌方英雄体型大于你的程度造成10%到30%额外伤害",
+      "winRate": "60.05",
+      "pickRate": "44.28",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Giant_Slayer_mayhem_augment.webp"
+    },
+    {
+      "cn": "玻璃大炮",
+      "slug": "glass-cannon",
+      "tier": "chromatic",
+      "description": "减少30%最大生命值。造成15%额外真实伤害",
+      "winRate": "46.94",
+      "pickRate": "6.18",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Glass_Cannon_mayhem_augment.webp"
+    },
+    {
+      "cn": "夺金",
+      "slug": "goldrend",
+      "tier": "chromatic",
+      "description": "用攻击或技能对一个英雄造成伤害时会造成额外50-150(基于等级) +40%额外AD +20%AP魔法伤害，并为你提供30金币和持续1.5秒的25%移动速度(每个英雄有30秒冷却时间)",
+      "winRate": "51.47",
+      "pickRate": "6.32",
+      "fetters": [
+        "金币雨"
+      ],
+      "icon_url": "https://arammayhem.com/augments/Goldrend_mayhem_augment.webp"
+    },
+    {
+      "cn": "歌利亚巨人",
+      "slug": "goliath",
+      "tier": "chromatic",
+      "description": "体型变大，获得35%生命值和15%适应之力",
+      "winRate": "56.00",
+      "pickRate": "32.19",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Goliath_mayhem_augment.webp"
+    },
+    {
+      "cn": "男爵之手",
+      "slug": "hand-of-baron",
+      "tier": "chromatic",
+      "description": "获得33%适应之力，附近友方小兵都获得极大增强",
+      "winRate": "52.18",
+      "pickRate": "1.57",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Hand_of_Baron_mayhem_augment.webp"
+    },
+    {
+      "cn": "当心小蛋糕！",
+      "slug": "heads-up-cupcake",
+      "tier": "chromatic",
+      "description": "Periodically, a Cupcake will fly across the map. Champions can consume the Cupcake by moving within its…",
+      "winRate": "",
+      "pickRate": "",
+      "fetters": [
+        "金币雨"
+      ],
+      "icon_url": "https://arammayhem.com/augments/Heads_Up_Cupcake!_mayhem_augment.webp"
+    },
+    {
+      "cn": "神圣雪球",
+      "slug": "holy-snowball",
+      "tier": "chromatic",
+      "description": "你的雪球获得100技能急速，使用雪球冲刺后获得1秒的免疫伤害",
+      "winRate": "49.01",
+      "pickRate": "9.91",
+      "fetters": [
+        "下雪天"
+      ],
+      "icon_url": "https://arammayhem.com/augments/Holy_Snowball_mayhem_augment.webp"
+    },
+    {
+      "cn": "小猫咪找妈妈",
+      "slug": "im-a-baby-kitty-where-is-mama",
+      "tier": "chromatic",
+      "description": "站在一个友军的附近并将其标记为你的妈妈。 当朝着妈妈移动时，获得37.5%移动速度。当靠近你的妈妈时，获得75%移动速度、50%治疗和护盾强度",
+      "winRate": "50.61",
+      "pickRate": "1.74",
+      "fetters": [
+        "喂呜喂呜"
+      ],
+      "icon_url": "https://arammayhem.com/augments/I&#x27;m_a_Baby_Kitty_Where_is_Mama_mayhem_augment.webp"
+    },
+    {
+      "cn": "炼狱导管",
+      "slug": "infernal-conduit",
+      "tier": "chromatic",
+      "description": "技能会施加一层可无限叠加的灼烧，每秒造成1.2 - 12 (基于等级) (+ 2.8 %额外AD) (+ 1.2 % AP) 点魔法伤害。 灼烧效果会降低你各基础技能的冷却时间0.08秒",
+      "winRate": "57.96",
+      "pickRate": "28.46",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Infernal_Conduit_mayhem_augment.webp"
+    },
+    {
+      "cn": "无限循环往复",
+      "slug": "infinite-recursion",
+      "tier": "chromatic",
+      "description": "获得60技能急速，参与击杀额外获得3技能急速",
+      "winRate": "56.93",
+      "pickRate": "18.84",
+      "fetters": [
+        "叠角龙"
+      ],
+      "icon_url": "https://arammayhem.com/augments/Infinite_Recursion_mayhem_augment.webp"
+    },
+    {
+      "cn": "珠光护手",
+      "slug": "jeweled-gauntlet",
+      "tier": "chromatic",
+      "description": "你的技能可以造成暴击，造成145%总伤害。获得25%(+ 4.5% AP)%暴击几率",
+      "winRate": "59.25",
+      "pickRate": "50.88",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Jeweled_Gauntlet_mayhem_augment.webp"
+    },
+    {
+      "cn": "尊我为王",
+      "slug": "king-me",
+      "tier": "chromatic",
+      "description": "当你第一次携带一件传说级装备并乘坐敌人的传送门时，你会加冕为王，升级你的装备并获得一个随机棱彩阶强化符文",
+      "winRate": "52.84",
+      "pickRate": "11.62",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/King_Me_mayhem_augment.webp"
+    },
+    {
+      "cn": "激光治疗",
+      "slug": "laser-heal",
+      "tier": "chromatic",
+      "description": "施放一个持续2.5秒的治疗激光，治疗友军200-550(基于等级) +70%AP +50%额外生命值 生命值，对敌人造成100-350(基于等级) +50%AP魔法伤害并使敌人减速20%",
+      "winRate": "49.66",
+      "pickRate": "5.92",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Laser_Heal_mayhem_augment.webp"
+    },
+    {
+      "cn": "科学狂人",
+      "slug": "mad-scientist",
+      "tier": "chromatic",
+      "description": "在回合开始时，你的体型要么变大(获得@ADAmp*100@%适应之力和@HealthAmp*100@%生命值)要么变小(获得@Haste@技能急速和@MovespeedAmp*100@%移动速度)",
+      "winRate": "53.51",
+      "pickRate": "7.84",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Mad_Scientist_mayhem_augment.webp"
+    },
+    {
+      "cn": "物法皆修",
+      "slug": "master-of-duality",
+      "tier": "chromatic",
+      "description": "你的每次攻击为你提供6 - 18 法术强度，并且你的每次技能为你提供3 - 9 攻击力 增益可无限叠加并刷新，但有5秒的持续时间",
+      "winRate": "50.95",
+      "pickRate": "14.12",
+      "fetters": [
+        "叠角龙"
+      ],
+      "icon_url": "https://arammayhem.com/augments/Master_of_Duality_mayhem_augment.webp"
+    },
+    {
+      "cn": "秘术冲拳",
+      "slug": "mystic-punch",
+      "tier": "chromatic",
+      "description": "命中使你的各个技能的冷却时间缩减其1.25秒冷却时间",
+      "winRate": "53.57",
+      "pickRate": "25.36",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Mystic_Punch_mayhem_augment.webp"
+    },
+    {
+      "cn": "不祥契约",
+      "slug": "ominous-pact",
+      "tier": "chromatic",
+      "description": "基于已损失生命值，获得至多75 - 150(基于等级)法术强度，50%移动速度和20%全能吸血。施放技能会消耗你的5%当前生命值。 在30%生命值时获得最大增益",
+      "winRate": "49.04",
+      "pickRate": "7.10",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Ominous_Pact_mayhem_augment.webp"
+    },
+    {
+      "cn": "全能龙魂",
+      "slug": "omni-soul",
+      "tier": "chromatic",
+      "description": "获得3个随机龙魂",
+      "winRate": "51.46",
+      "pickRate": "5.41",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Omni_Soul_mayhem_augment.webp"
+    },
+    {
+      "cn": "轨道镭射",
+      "slug": "orbitallaser",
+      "tier": "chromatic",
+      "description": "在2.5秒后，召唤一道轨道镭射光束落下，造成25%目标最大生命值的真实伤害并在3秒内持续造成共360-600 (基于等级) 的魔法伤害。 每场游戏仅会有一位玩家拥有这个强化符文",
+      "winRate": "46.67",
+      "pickRate": "1.15",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/OrbitalLaser_mayhem_augment.webp"
+    },
+    {
+      "cn": "潘朵拉的盒子",
+      "slug": "pandorasbox",
+      "tier": "chromatic",
+      "description": "将你的所有强化符文变为随机的棱彩阶强化符文",
+      "winRate": "54.79",
+      "pickRate": "20.08",
+      "fetters": [
+        "掷骰狂人"
+      ],
+      "icon_url": "https://arammayhem.com/augments/PandorasBox_mayhem_augment.webp"
+    },
+    {
+      "cn": "舞会女王",
+      "slug": "prom-queen",
+      "tier": "chromatic",
+      "description": "每25秒自动获得一个围绕你的聚光灯，聚光灯会在2.5秒后落下，当它着陆时，获得洛的终极技能，魅惑你碰到的敌人们",
+      "winRate": "48.61",
+      "pickRate": "5.04",
+      "fetters": [
+        "完全自动化"
+      ],
+      "icon_url": "https://arammayhem.com/augments/Prom_Queen_mayhem_augment.webp"
+    },
+    {
+      "cn": "蛋白粉奶昔",
+      "slug": "protein-shake",
+      "tier": "chromatic",
+      "description": "获得25%(+35%额外护甲)(+35%额外魔抗)治疗和护盾强度",
+      "winRate": "47.96",
+      "pickRate": "8.91",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Protein_Shake_mayhem_augment.webp"
+    },
+    {
+      "cn": "量子计算",
+      "slug": "quantum-computing",
+      "tier": "chromatic",
+      "description": "Automatically cast an improved version of Tactical Sweep when an enemy champion is within 650 units of you…",
+      "winRate": "",
+      "pickRate": "",
+      "fetters": [
+        "完全自动化"
+      ],
+      "icon_url": "https://arammayhem.com/augments/Quantum_Computing_mayhem_augment.webp"
+    },
+    {
+      "cn": "任务：海牛阿福的勇士",
+      "slug": "quest-urfs-champion",
+      "tier": "chromatic",
+      "description": "需求：参与击杀@TakedownsNeeded@次。 奖励：金铲铲",
+      "winRate": "50.40",
+      "pickRate": "4.45",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Quest:_Urf&#x27;s_Champion_mayhem_augment.webp"
+    },
+    {
+      "cn": "任务：沃格勒特的巫师帽",
+      "slug": "quest-wooglets-witchcap",
+      "tier": "chromatic",
+      "description": "即刻：获得【无用大棒】。 需求：持有【灭世者的死亡之帽】和【中娅沙漏】。 奖励：获得【沃格勒特的巫师帽】",
+      "winRate": "53.94",
+      "pickRate": "15.88",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Quest:_Wooglet&#x27;s_Witchcap_mayhem_augment.webp"
+    },
+    {
+      "cn": "红包",
+      "slug": "red-envelopes",
+      "tier": "chromatic",
+      "description": "每25-15(基于等级)秒，你的周围随机出现红包，拾取红包可以获得10-18(基于等级)到28-58(基于等级)金币，随机属性，以及持续4秒的150移动速度",
+      "winRate": "58.11",
+      "pickRate": "23.61",
+      "fetters": [
+        "金币雨"
+      ],
+      "icon_url": "https://arammayhem.com/augments/Red_Envelopes_mayhem_augment.webp"
+    },
+    {
+      "cn": "最万用的瞄准镜",
+      "slug": "scopiest-weapons",
+      "tier": "chromatic",
+      "description": "获得300攻击距离，如果你是远程英雄则降低至150攻击距离",
+      "winRate": "52.60",
+      "pickRate": "19.04",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Scopiest_Weapons_mayhem_augment.webp"
+    },
+    {
+      "cn": "慢炖",
+      "slug": "slow-cooker",
+      "tier": "chromatic",
+      "description": "每一秒，对500码内的敌方英雄们施加一层可无限叠加的灼烧，在5秒的持续时间里每秒造成0.35%最大生命值的伤害",
+      "winRate": "55.66",
+      "pickRate": "16.78",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Slow_Cooker_mayhem_augment.webp"
+    },
+    {
+      "cn": "属性叠属性叠属性！",
+      "slug": "stats-on-stats-on-stats",
+      "tier": "chromatic",
+      "description": "获得5个属性锻造器，有更高几率出现黄金阶和棱彩阶锻造器！ 在你的下一次强化符文选取时，每个栏位获得一次额外的刷新",
+      "winRate": "56.02",
+      "pickRate": "16.04",
+      "fetters": [
+        "掷骰狂人"
+      ],
+      "icon_url": "https://arammayhem.com/augments/Stats_on_Stats_on_Stats!_mayhem_augment.webp"
+    },
+    {
+      "cn": "和我一起困在这里",
+      "slug": "stuck-in-here-with-me",
+      "tier": "chromatic",
+      "description": "使用你的终极技能时会嘲讽附近的敌人们并提供给你持续2秒的40%伤害减免",
+      "winRate": "46.62",
+      "pickRate": "1.87",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Stuck_In_Here_With_Me_mayhem_augment.webp"
+    },
+    {
+      "cn": "战争交响乐",
+      "slug": "symphony-of-war",
+      "tier": "chromatic",
+      "description": "获得致命节奏和征服者基石符文",
+      "winRate": "50.84",
+      "pickRate": "15.29",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Symphony_of_War_mayhem_augment.webp"
+    },
+    {
+      "cn": "踢踏舞",
+      "slug": "tap-dancer",
+      "tier": "chromatic",
+      "description": "Basic attacks on-hit against enemy champions and minions grant 10 [b]bonus[/b] movement speed, lasting for 5…",
+      "winRate": "",
+      "pickRate": "",
+      "fetters": [
+        "叠角龙"
+      ],
+      "icon_url": "https://arammayhem.com/augments/Tap_Dancer_mayhem_augment.webp"
+    },
+    {
+      "cn": "质变：混沌",
+      "slug": "transmute-chaos",
+      "tier": "chromatic",
+      "description": "获得2个随机的强化符文",
+      "winRate": "59.28",
+      "pickRate": "30.33",
+      "fetters": [
+        "掷骰狂人"
+      ],
+      "icon_url": "https://arammayhem.com/augments/Transmute:_Chaos_mayhem_augment.webp"
+    },
+    {
+      "cn": "扳机炼狱",
+      "slug": "triggered-inferno",
+      "tier": "chromatic",
+      "description": "Your damaging basic attacks and abilities against at least one enemy champion unique from the previous…",
+      "winRate": "",
+      "pickRate": "",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Triggered_Inferno_mayhem_augment.webp"
+    },
+    {
+      "cn": "精准奇才",
+      "slug": "trueshotprodigy",
+      "tier": "chromatic",
+      "description": "Upon damaging an enemy while located at over 700 units away at the time of the hit, cast Trueshot Barrage in…",
+      "winRate": "",
+      "pickRate": "",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/TrueshotProdigy_mayhem_augment.webp"
+    },
+    {
+      "cn": "终极唤醒",
+      "slug": "ultimate-awakening",
+      "tier": "chromatic",
+      "description": "你的终极技能获得30技能急速。在施放你的终极技能后，重置你所有基础技能的冷却时间并获得持续15秒的300基础技能急速。(20秒冷却时间)",
+      "winRate": "48.13",
+      "pickRate": "7.58",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Ultimate_Awakening_mayhem_augment.webp"
+    },
+    {
+      "cn": "终极刷新",
+      "slug": "ultimate-revolution",
+      "tier": "chromatic",
+      "description": "在施放终极技能后刷新你的终极技能。(@Cooldown@秒冷却时间或阵亡时重置)",
+      "winRate": "47.24",
+      "pickRate": "7.71",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Ultimate_Revolution_mayhem_augment.webp"
+    },
+    {
+      "cn": "升级：米凯尔的祝福",
+      "slug": "upgrade-mikaels-blessing",
+      "tier": "chromatic",
+      "description": "Upgrades Mikael's Blessing, reducing the cooldown of Purify to 45 seconds and empowering its active…",
+      "winRate": "",
+      "pickRate": "",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Upgrade_Mikael&#x27;s_Blessing_mayhem_augment.webp"
+    },
+    {
+      "cn": "任务：艾卡西亚的陷落",
+      "slug": "void-immolation",
+      "tier": "chromatic",
+      "description": "即刻：获得一个斑比的熔渣并且你可以同时购买两件献祭装备。 需求：持有【日炎圣盾】和【璀璨回响】。 奖励：将【日炎圣盾】和【璀璨回响】组合成【虚空献祭】",
+      "winRate": "55.42",
+      "pickRate": "10.39",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Void_Immolation_mayhem_augment.webp"
+    },
+    {
+      "cn": "虚空裂隙",
+      "slug": "void-rift",
+      "tier": "chromatic",
+      "description": "Damaging an enemy champion with an ability summons a Void Scar at the location they were damaged for 6 seconds. If…",
+      "winRate": "",
+      "pickRate": "",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Void_Rift_mayhem_augment.webp"
+    },
+    {
+      "cn": "风语者的祝福",
+      "slug": "windspeakers-blessing",
+      "tier": "chromatic",
+      "description": "你的治疗效果和护盾效果还会提升目标30-60的护甲和魔法抗性，这些加成持续3秒",
+      "winRate": "51.81",
+      "pickRate": "5.06",
+      "fetters": [
+        "喂呜喂呜"
+      ],
+      "icon_url": "https://arammayhem.com/augments/Windspeaker&#x27;s_Blessing_mayhem_augment.webp"
+    },
+    {
+      "cn": "全心为你",
+      "slug": "all-for-you",
+      "tier": "gold",
+      "description": "你的治疗和护盾在用在一个友军身上时会变强@HealShieldAmp*100@%",
+      "winRate": "49.95",
+      "pickRate": "4.82",
+      "fetters": [
+        "喂呜喂呜"
+      ],
+      "icon_url": "https://arammayhem.com/augments/All_For_You_mayhem_augment.webp"
+    },
+    {
+      "cn": "尖端发明家",
+      "slug": "apex-inventor",
+      "tier": "gold",
+      "description": "获得60装备急速(相当于37%装备冷却缩减)。 装备急速可缩减所有装备技能的冷却时间%i:cooldown%",
+      "winRate": "49.47",
+      "pickRate": "20.29",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Apex_Inventor_mayhem_augment.webp"
+    },
+    {
+      "cn": "超强大脑",
+      "slug": "big-brain",
+      "tier": "gold",
+      "description": "获得一个可吸收300%法术强度伤害的护盾，护盾被打破前持续生效。护盾会在阵亡时或每70秒刷新一次",
+      "winRate": "53.14",
+      "pickRate": "12.18",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Big_Brain_mayhem_augment.webp"
+    },
+    {
+      "cn": "面包和黄油",
+      "slug": "bread-and-butter",
+      "tier": "gold",
+      "description": "你的Q获得100技能急速",
+      "winRate": "50.52",
+      "pickRate": "19.24",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Bread_And_Butter_mayhem_augment.webp"
+    },
+    {
+      "cn": "面包和奶酪",
+      "slug": "bread-and-cheese",
+      "tier": "gold",
+      "description": "你的E获得@EAbilityHaste@技能急速",
+      "winRate": "50.51",
+      "pickRate": "14.20",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Bread_and_Cheese_mayhem_augment.webp"
+    },
+    {
+      "cn": "面包和果酱",
+      "slug": "bread-and-jam",
+      "tier": "gold",
+      "description": "你的W获得@WAbilityHaste@技能急速",
+      "winRate": "48.80",
+      "pickRate": "11.58",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Bread_And_Jam_mayhem_augment.webp"
+    },
+    {
+      "cn": "星界躯体",
+      "slug": "celestial-body",
+      "tier": "gold",
+      "description": "获得1500，但你造成的伤害降低10%",
+      "winRate": "55.49",
+      "pickRate": "32.61",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Celestial_Body_mayhem_augment.webp"
+    },
+    {
+      "cn": "作弊：我能回城！",
+      "slug": "cheating",
+      "tier": "gold",
+      "description": "按下【回城】能够回到基地，购买装备并且获得强化符文",
+      "winRate": "52.14",
+      "pickRate": "19.17",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Cheating_mayhem_augment.webp"
+    },
+    {
+      "cn": "会心治疗",
+      "slug": "critical-healing",
+      "tier": "gold",
+      "description": "你的治疗和护盾可以暴击，获得@CritHeal*100@%额外数额的效果。获得20%暴击几率",
+      "winRate": "54.91",
+      "pickRate": "32.29",
+      "fetters": [
+        "喂呜喂呜"
+      ],
+      "icon_url": "https://arammayhem.com/augments/Critical_Healing_mayhem_augment.webp"
+    },
+    {
+      "cn": "暴击飞弹",
+      "slug": "critical-missile",
+      "tier": "gold",
+      "description": "获得25%暴击率，当你暴击时，会施放1-4道飞弹(基于暴击率)，每道飞弹造成11-40(+7%额外攻击力)(+10%法术强度)魔法伤害",
+      "winRate": "61.69",
+      "pickRate": "45.08",
+      "fetters": [
+        "神龙烈焰"
+      ],
+      "icon_url": "https://arammayhem.com/augments/Critical_Missile_mayhem_augment.webp"
+    },
+    {
+      "cn": "暴击律动",
+      "slug": "critical-rhythm",
+      "tier": "gold",
+      "description": "获得25%暴击几率。你的普攻在暴击时获得可叠加的6%攻击速度。(至多至10层)",
+      "winRate": "53.81",
+      "pickRate": "22.34",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Critical_Rhythm_mayhem_augment.webp"
+    },
+    {
+      "cn": "黎明使者的坚决",
+      "slug": "dawnbringers-resolve",
+      "tier": "gold",
+      "description": "在跌到@HealthThreshold*100@%生命值以下时，在3秒里持续回复共@HealAmount*100@%最大生命值。（45秒 冷却时间）",
+      "winRate": "49.83",
+      "pickRate": "6.20",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Dawnbringer&#x27;s_Resolve_mayhem_augment.webp"
+    },
+    {
+      "cn": "魔鬼之舞",
+      "slug": "demons-dance",
+      "tier": "gold",
+      "description": "Gain the Fleet Footwork and Grasp of the Undying keystone runes. See win rate, pick rate, best champions, combo…",
+      "winRate": "",
+      "pickRate": "",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Demon&#x27;s_Dance_mayhem_augment.webp"
+    },
+    {
+      "cn": "神圣干预",
+      "slug": "divine-intervention",
+      "tier": "gold",
+      "description": "每35秒，召唤护体星星缓慢地降落在你身上。在它着陆时，你和附近的友军们进入2.5秒的免疫伤害状态",
+      "winRate": "49.37",
+      "pickRate": "10.65",
+      "fetters": [
+        "完全自动化"
+      ],
+      "icon_url": "https://arammayhem.com/augments/Divine_Intervention_mayhem_augment.webp"
+    },
+    {
+      "cn": "捐赠",
+      "slug": "donation",
+      "tier": "gold",
+      "description": "获得2500金币",
+      "winRate": "57.03",
+      "pickRate": "27.41",
+      "fetters": [
+        "金币雨"
+      ],
+      "icon_url": "https://arammayhem.com/augments/Donation_mayhem_augment.webp"
+    },
+    {
+      "cn": "双发快射",
+      "slug": "double-tap",
+      "tier": "gold",
+      "description": "获得25%暴击率，暴击时会额外施加一次命中",
+      "winRate": "53.38",
+      "pickRate": "15.87",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Double_Tap_mayhem_augment.webp"
+    },
+    {
+      "cn": "虚幻武器",
+      "slug": "ethereal-weapon",
+      "tier": "gold",
+      "description": "你的技能可施加命中。每个目标有1秒冷却时间",
+      "winRate": "51.90",
+      "pickRate": "20.09",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Ethereal_Weapon_mayhem_augment.webp"
+    },
+    {
+      "cn": "裁决使",
+      "slug": "executioner",
+      "tier": "gold",
+      "description": "对生命值低于30%的敌人们多造成10%伤害。在参与击杀后重置你的基础技能",
+      "winRate": "59.86",
+      "pickRate": "57.06",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Executioner_mayhem_augment.webp"
+    },
+    {
+      "cn": "最终都市列车",
+      "slug": "final-city-transit",
+      "tier": "gold",
+      "description": "在你阵亡时，朝击杀你的敌人发动一辆列车，对命中的敌人造成150-750(+50%法术强度)(+65%额外攻击力)(+15%最大生命值)物理伤害。这个列车不会停下",
+      "winRate": "52.20",
+      "pickRate": "19.03",
+      "fetters": [
+        "丧钟"
+      ],
+      "icon_url": "https://arammayhem.com/augments/Final_City_Transit_mayhem_augment.webp"
+    },
+    {
+      "cn": "火上浇油",
+      "slug": "firebrand",
+      "tier": "gold",
+      "description": "你的攻击还会灼烧敌人，在@BleedDuration@秒的持续时间里每秒持续造成@PercentMaxHPDamagePer5Seconds*20@%最大生命值的魔法伤害。灼烧可无限叠加",
+      "winRate": "50.28",
+      "pickRate": "14.03",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Firebrand_mayhem_augment.webp"
+    },
+    {
+      "cn": "有始有终",
+      "slug": "from-beginning-to-end",
+      "tier": "gold",
+      "description": "获得先攻和黑暗收割基石符文。此外，你每拥有一个强化符文，即可获得8黑暗收割层数",
+      "winRate": "57.26",
+      "pickRate": "30.89",
+      "fetters": [
+        "金币雨"
+      ],
+      "icon_url": "https://arammayhem.com/augments/From_Beginning_To_End_mayhem_augment.webp"
+    },
+    {
+      "cn": "罪恶快感",
+      "slug": "get-excited",
+      "tier": "gold",
+      "description": "参与击杀后，获得持续4秒的100%移动速度和15%总攻击速度",
+      "winRate": "53.22",
+      "pickRate": "27.17",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Get_Excited!_mayhem_augment.webp"
+    },
+    {
+      "cn": "祖母的辣椒油",
+      "slug": "grandmas-chili-oil",
+      "tier": "gold",
+      "description": "施加一个灼烧时，会在附近掉落一个持续5秒的辣椒油池子，站在一个辣椒油池子上每秒会回复60-150(+30x燃烧来源)生命值，并对敌人造成60(+100x燃烧来源)魔法伤害",
+      "winRate": "58.81",
+      "pickRate": "33.05",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Grandma&#x27;s_Chili_Oil_mayhem_augment.webp"
+    },
+    {
+      "cn": "生机迸发",
+      "slug": "growth-spurt",
+      "tier": "gold",
+      "description": "获得【生机迸发】召唤师技能。【生机迸发】会猛然提升你的体型，击飞附近的敌人们并提供300（+20%生命值）最大生命值",
+      "winRate": "50.96",
+      "pickRate": "8.76",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Growth_Spurt_mayhem_augment.webp"
+    },
+    {
+      "cn": "圣火",
+      "slug": "holy-fire",
+      "tier": "gold",
+      "description": "Your heals and shields cause you to fire a missile to the nearest enemy unit within 650 units over 0.32 seconds…",
+      "winRate": "",
+      "pickRate": "",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Holy_Fire_mayhem_augment.webp"
+    },
+    {
+      "cn": "不动如山",
+      "slug": "impassable",
+      "tier": "gold",
+      "description": "获余震和冰川增幅基石符文",
+      "winRate": "48.66",
+      "pickRate": "8.98",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Impassable_mayhem_augment.webp"
+    },
+    {
+      "cn": "关键暴击",
+      "slug": "its-critical",
+      "tier": "gold",
+      "description": "获得20%暴击几率",
+      "winRate": "49.81",
+      "pickRate": "13.06",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/It&#x27;s_Critical_mayhem_augment.webp"
+    },
+    {
+      "cn": "杀戮时间到了",
+      "slug": "its-killing-time",
+      "tier": "gold",
+      "description": "Upon casting your ultimate ability, you apply Death Mark to all enemy champions (8 second cooldown). The…",
+      "winRate": "",
+      "pickRate": "",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/It&#x27;s_Killing_Time_mayhem_augment.webp"
+    },
+    {
+      "cn": "基石法师",
+      "slug": "keystone-conjurer",
+      "tier": "gold",
+      "description": "获得召唤：艾黎和奥术彗星基石符文",
+      "winRate": "50.94",
+      "pickRate": "11.86",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Keystone_Conjurer_mayhem_augment.webp"
+    },
+    {
+      "cn": "闪电打击",
+      "slug": "lightning-strikes",
+      "tier": "gold",
+      "description": "获得40%总攻击速度。 在2.5攻击次数/秒时，造成额外的魔法伤害 命中",
+      "winRate": "54.89",
+      "pickRate": "24.27",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Lightning_Strikes_mayhem_augment.webp"
+    },
+    {
+      "cn": "魔法飞弹",
+      "slug": "magic-missile",
+      "tier": "gold",
+      "description": "用一个技能造成伤害时，会对每个被命中的敌人发射3个魔法飞弹，每个魔法飞弹基于飞行距离至多造成1%最大生命值的真实伤害",
+      "winRate": "60.51",
+      "pickRate": "51.88",
+      "fetters": [
+        "神龙烈焰"
+      ],
+      "icon_url": "https://arammayhem.com/augments/Magic_Missile_mayhem_augment.webp"
+    },
+    {
+      "cn": "神射法师",
+      "slug": "marksmage",
+      "tier": "gold",
+      "description": "你的攻击造成相当于你75%法术强度的额外物理伤害",
+      "winRate": "52.11",
+      "pickRate": "22.72",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Marksmage_mayhem_augment.webp"
+    },
+    {
+      "cn": "仆从大师",
+      "slug": "minionmancer",
+      "tier": "gold",
+      "description": "你的召唤物获得@MinionSizeIncrease*100@%体型提升、生命值和伤害",
+      "winRate": "50.73",
+      "pickRate": "2.22",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Minionmancer_mayhem_augment.webp"
+    },
+    {
+      "cn": "夜狩",
+      "slug": "nightstalking",
+      "tier": "gold",
+      "description": "在对敌人造成伤害的3秒内参与击杀该敌人会使你进入1.5秒的隐身状态",
+      "winRate": "48.54",
+      "pickRate": "15.71",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Nightstalking_mayhem_augment.webp"
+    },
+    {
+      "cn": "回力ok镖",
+      "slug": "ok-boomerang",
+      "tier": "gold",
+      "description": "每@BaseCooldown@秒朝着一个附近的敌人自动施放投掷一个回力镖，对命中的敌人们造成40 – 200 (基于等级) (+ 22%额外AD) (+ 15% AP)自适应伤害",
+      "winRate": "51.14",
+      "pickRate": "7.98",
+      "fetters": [
+        "完全自动化"
+      ],
+      "icon_url": "https://arammayhem.com/augments/Ok_Boomerang_mayhem_augment.webp"
+    },
+    {
+      "cn": "狂徒豪气",
+      "slug": "outlaws-grit",
+      "tier": "gold",
+      "description": "你的冲刺、跳跃、闪烁或传送类技能会为你提供12点额外护甲和12点额外魔法抗性，持续15秒，最多可叠加至5层(共提供60点双抗)。当前层数会在状态栏中显示",
+      "winRate": "52.70",
+      "pickRate": "10.78",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Outlaw&#x27;s_Grit_mayhem_augment.webp"
+    },
+    {
+      "cn": "溢流",
+      "slug": "overflow",
+      "tier": "gold",
+      "description": "你的法力值消耗翻倍。你的技能的治疗效果、护盾效果和伤害的效能提升10% （每 100最大法力值+ 0.5 % ）",
+      "winRate": "54.62",
+      "pickRate": "28.06",
+      "fetters": [
+        "大法师"
+      ],
+      "icon_url": "https://arammayhem.com/augments/Overflow_mayhem_augment.webp"
+    },
+    {
+      "cn": "坚韧",
+      "slug": "perseverance",
+      "tier": "gold",
+      "description": "获得250%基础生命回复，在低于25%生命值时提升至10%基础生命回复",
+      "winRate": "52.41",
+      "pickRate": "22.00",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Perseverance_mayhem_augment.webp"
+    },
+    {
+      "cn": "超凡邪恶",
+      "slug": "phenomenal-evil",
+      "tier": "gold",
+      "description": "在你用技能命中敌人时永久获得1法术强度。 如果是作为你的第二个强化符文，则自带40法术强度",
+      "winRate": "60.67",
+      "pickRate": "43.52",
+      "fetters": [
+        "叠角龙"
+      ],
+      "icon_url": "https://arammayhem.com/augments/Phenomenal_Evil_mayhem_augment.webp"
+    },
+    {
+      "cn": "弹球",
+      "slug": "pinball",
+      "tier": "gold",
+      "description": "你的雪球获得50技能急速，造成额外100-500(基于等级)真实伤害，并且可以从墙上反弹，每次反弹都会提升它25%体型，20%伤害，并且缩短它30%冷却时间",
+      "winRate": "52.61",
+      "pickRate": "19.22",
+      "fetters": [
+        "下雪天"
+      ],
+      "icon_url": "https://arammayhem.com/augments/Pinball_mayhem_augment.webp"
+    },
+    {
+      "cn": "魄罗爆破手",
+      "slug": "poro-blaster",
+      "tier": "gold",
+      "description": "你周期性地召集魄罗，最多5只，攻击和技能会发射所有魄罗，每个魄罗造成3%最大生命值的真实伤害并击退敌人",
+      "winRate": "53.76",
+      "pickRate": "21.40",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Poro_Blaster_mayhem_augment.webp"
+    },
+    {
+      "cn": "任务：钢化你心",
+      "slug": "quest-steel-your-heart",
+      "tier": "gold",
+      "description": "需求：持有【心之钢】且层数在300层或以上。 奖励：将你当前及后续的心之钢层数乘以3",
+      "winRate": "57.99",
+      "pickRate": "37.07",
+      "fetters": [
+        "叠角龙"
+      ],
+      "icon_url": "https://arammayhem.com/augments/Quest:_Steel_Your_Heart_mayhem_augment.webp"
+    },
+    {
+      "cn": "古式佳酿",
+      "slug": "rabble-rousing",
+      "tier": "gold",
+      "description": "使用一个技能时会回复5 – 60 (基于等级)（+ 1%最大生命值）点生命值",
+      "winRate": "52.51",
+      "pickRate": "19.24",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Rabble_Rousing_mayhem_augment.webp"
+    },
+    {
+      "cn": "循环往复",
+      "slug": "recursion",
+      "tier": "gold",
+      "description": "获得60技能急速",
+      "winRate": "54.14",
+      "pickRate": "26.30",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Recursion_mayhem_augment.webp"
+    },
+    {
+      "cn": "无休回复",
+      "slug": "restless-restoration",
+      "tier": "gold",
+      "description": "你每移动1000码距离就会回复20-120(基于等级)（+0.1% 最大生命值）的生命值",
+      "winRate": "52.00",
+      "pickRate": "7.80",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Restless_Restoration_mayhem_augment.webp"
+    },
+    {
+      "cn": "更万用的瞄准镜",
+      "slug": "scopier-weapons",
+      "tier": "gold",
+      "description": "获得200攻击距离，如果你是远程英雄则降低至100攻击距离",
+      "winRate": "56.26",
+      "pickRate": "33.68",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Scopier_Weapons_mayhem_augment.webp"
+    },
+    {
+      "cn": "炽烈黎明",
+      "slug": "searing-dawn",
+      "tier": "gold",
+      "description": "你的技能会标记敌人，使其在被你的友军的下一个攻击或技能命中时会受到额外40-200(基于等级)魔法伤害",
+      "winRate": "48.27",
+      "pickRate": "3.67",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Searing_Dawn_mayhem_augment.webp"
+    },
+    {
+      "cn": "缩小引擎",
+      "slug": "shrink-engine",
+      "tier": "gold",
+      "description": "每次参与击杀敌方英雄会让你变小4%，获得10技能急速和2%移动速度，死亡时损失65%层数",
+      "winRate": "61.85",
+      "pickRate": "47.10",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Shrink_Engine_mayhem_augment.webp"
+    },
+    {
+      "cn": "缩小射线",
+      "slug": "shrink-ray",
+      "tier": "gold",
+      "description": "你的攻击会对敌人造成持续3秒的@DamageReduction*100@%伤害削减效果",
+      "winRate": "48.16",
+      "pickRate": "12.72",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Shrink_Ray_mayhem_augment.webp"
+    },
+    {
+      "cn": "老练狙神",
+      "slug": "skilled-sniper",
+      "tier": "gold",
+      "description": "用一个非终极技能命中一个@SnipeDistance@码距离外的敌人时，返还该技能80%冷却时间(周期性技能返还65%)",
+      "winRate": "51.37",
+      "pickRate": "21.76",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Skilled_Sniper_mayhem_augment.webp"
+    },
+    {
+      "cn": "一板一眼",
+      "slug": "slow-and-steady",
+      "tier": "gold",
+      "description": "获得25攻击力。你的攻击速度变为@StaticRatio@。所有额外攻击速度会被转化为攻击力。(每1%攻速转为1攻击力)",
+      "winRate": "51.19",
+      "pickRate": "17.20",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Slow_And_Steady_mayhem_augment.webp"
+    },
+    {
+      "cn": "雪球扭蛋机",
+      "slug": "snowball-roulette",
+      "tier": "gold",
+      "description": "Hitting an enemy champion with Mark casts a random harmful summoner spell on them, and also casts a random…",
+      "winRate": "",
+      "pickRate": "",
+      "fetters": [
+        "下雪天"
+      ],
+      "icon_url": "https://arammayhem.com/augments/Snowball_Roulette_mayhem_augment.webp"
+    },
+    {
+      "cn": "升级：雪球",
+      "slug": "snowball-upgrade",
+      "tier": "gold",
+      "description": "Your Mark is empowered to hail a snowstorm at the location where the target was hit for 2 seconds, granting…",
+      "winRate": "",
+      "pickRate": "",
+      "fetters": [
+        "下雪天"
+      ],
+      "icon_url": "https://arammayhem.com/augments/Snowball_Upgrade_mayhem_augment.webp"
+    },
+    {
+      "cn": "咏叹奏鸣",
+      "slug": "sonata",
+      "tier": "gold",
+      "description": "每10秒交替自动施放【坚毅咏叹调】和【迅捷奏鸣曲】",
+      "winRate": "55.26",
+      "pickRate": "6.50",
+      "fetters": [
+        "完全自动化",
+        "喂呜喂呜"
+      ],
+      "icon_url": "https://arammayhem.com/augments/Sonata_mayhem_augment.webp"
+    },
+    {
+      "cn": "吞噬灵魂",
+      "slug": "soul-eater",
+      "tier": "gold",
+      "description": "定身一个敌方英雄会获得20最大生命值",
+      "winRate": "56.89",
+      "pickRate": "37.08",
+      "fetters": [
+        "叠角龙"
+      ],
+      "icon_url": "https://arammayhem.com/augments/Soul_Eater_mayhem_augment.webp"
+    },
+    {
+      "cn": "灵魂虹吸",
+      "slug": "soul-siphon",
+      "tier": "gold",
+      "description": "获得@CritChance*100@%暴击几率和作用于暴击的@HealPercentage*100@%生命偷取",
+      "winRate": "53.28",
+      "pickRate": "18.33",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Soul_Siphon_mayhem_augment.webp"
+    },
+    {
+      "cn": "心灵净化",
+      "slug": "spiritual-purification",
+      "tier": "gold",
+      "description": "参与击杀英雄时，在其上方产生一次爆炸，对敌人造成相当于其15%当前生命值的伤害。随后它会持续存在1.5秒，对敌人造成60%减速效果",
+      "winRate": "51.05",
+      "pickRate": "23.57",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Spiritual_Purification_mayhem_augment.webp"
+    },
+    {
+      "cn": "属性叠属性！",
+      "slug": "stats-on-stats",
+      "tier": "gold",
+      "description": "获得4个属性锻造器，有更高几率出现黄金阶和棱彩阶锻造器！",
+      "winRate": "62.35",
+      "pickRate": "35.01",
+      "fetters": [
+        "掷骰狂人"
+      ],
+      "icon_url": "https://arammayhem.com/augments/Stats_on_Stats!_mayhem_augment.webp"
+    },
+    {
+      "cn": "坦克引擎",
+      "slug": "tank-engine",
+      "tier": "gold",
+      "description": "参与击杀时，获得一个层数，使你的体型增大5%并提升5%最大生命值。阵亡时损失65%层数",
+      "winRate": "62.12",
+      "pickRate": "52.45",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Tank_Engine_mayhem_augment.webp"
+    },
+    {
+      "cn": "穿针引线",
+      "slug": "thread-the-needle",
+      "tier": "gold",
+      "description": "获得@PercentPen*100@%护甲穿透和法术穿透",
+      "winRate": "54.00",
+      "pickRate": "37.38",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Thread_the_Needle_mayhem_augment.webp"
+    },
+    {
+      "cn": "质变：棱彩阶",
+      "slug": "transmute-prismatic",
+      "tier": "gold",
+      "description": "获得1个随机棱彩阶强化符文",
+      "winRate": "66.80",
+      "pickRate": "58.16",
+      "fetters": [
+        "掷骰狂人"
+      ],
+      "icon_url": "https://arammayhem.com/augments/Transmute:_Prismatic_mayhem_augment.webp"
+    },
+    {
+      "cn": "接二连三",
+      "slug": "twice-thrice",
+      "tier": "gold",
+      "description": "每第三次攻击，你附带的命中会触发第二次",
+      "winRate": "51.51",
+      "pickRate": "21.97",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Twice_Thrice_mayhem_augment.webp"
+    },
+    {
+      "cn": "升级：狂妄",
+      "slug": "upgrade-hubris",
+      "tier": "gold",
+      "description": "参与击杀时，【狂妄】回复你的2.5%最大生命值+ 0.5%*层数的已损失生命值，并且在增益持续时间提供10+5*层数 的移动速度。此外，获得250金币",
+      "winRate": "55.74",
+      "pickRate": "39.04",
+      "fetters": [
+        "叠角龙"
+      ],
+      "icon_url": "https://arammayhem.com/augments/Upgrade_Hubris_mayhem_augment.webp"
+    },
+    {
+      "cn": "升级：无尽之刃",
+      "slug": "upgrade-infinity-edge",
+      "tier": "gold",
+      "description": "获得25%暴击几率和500金币。 装备【无尽之刃】后，你的暴击会随机造成额外暴击伤害，最高可至你暴击几率的50%",
+      "winRate": "55.19",
+      "pickRate": "22.20",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Upgrade_Infinity_Edge_mayhem_augment.webp"
+    },
+    {
+      "cn": "升级：耀光",
+      "slug": "upgrade-sheen",
+      "tier": "gold",
+      "description": "你的【咒刃】效果造成额外目标最大生命值物理伤害并治疗你自身。此外，获得250金币",
+      "winRate": "51.34",
+      "pickRate": "12.04",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Upgrade_Sheen_mayhem_augment.webp"
+    },
+    {
+      "cn": "吸血习性",
+      "slug": "vampirism",
+      "tier": "gold",
+      "description": "你不再能够被友军治疗或获得任何生命回复。获得30%全能吸血",
+      "winRate": "66.01",
+      "pickRate": "64.22",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Vampirism_mayhem_augment.webp"
+    },
+    {
+      "cn": "易损",
+      "slug": "vulnerability",
+      "tier": "gold",
+      "description": "你的装备效果和持续伤害效果可以暴击来造成40%额外伤害。获得20%暴击几率",
+      "winRate": "54.27",
+      "pickRate": "27.93",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Vulnerability_mayhem_augment.webp"
+    },
+    {
+      "cn": "急急小子",
+      "slug": "with-haste",
+      "tier": "gold",
+      "description": "获得移动速度，相当于你的@AbilityHasteToMSConversion*100@%技能急速",
+      "winRate": "49.65",
+      "pickRate": "6.38",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/With_Haste_mayhem_augment.webp"
+    },
+    {
+      "cn": "坚若磐石",
+      "slug": "adamant",
+      "tier": "silver",
+      "description": "每当你定身或缚地一个敌人时，获得持续10秒的2-10(基于等级)护甲或者魔抗。至多至10 层",
+      "winRate": "48.00",
+      "pickRate": "9.10",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Adamant_mayhem_augment.webp"
+    },
+    {
+      "cn": "物理转魔法",
+      "slug": "adapt",
+      "tier": "silver",
+      "description": "将额外攻击力转化为法术强度，并获得15%法术强度",
+      "winRate": "57.14",
+      "pickRate": "41.09",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/ADAPt_mayhem_augment.webp"
+    },
+    {
+      "cn": "大力",
+      "slug": "blunt-force",
+      "tier": "silver",
+      "description": "获得@ADAmp*100@%攻击力",
+      "winRate": "53.53",
+      "pickRate": "14.82",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Blunt_Force_mayhem_augment.webp"
+    },
+    {
+      "cn": "霸符兄弟",
+      "slug": "buff-buddies",
+      "tier": "silver",
+      "description": "你获得余烬之冠和洞悉之冠。 余烬之冠：普攻会灼烧和减速敌方英雄。在非战斗状态下，治疗你的一部分最大生命值。 洞悉之冠：获得技能急速，并且每秒回复法力值和能量值",
+      "winRate": "55.46",
+      "pickRate": "19.89",
+      "fetters": [
+        "大法师"
+      ],
+      "icon_url": "https://arammayhem.com/augments/Buff_Buddies_mayhem_augment.webp"
+    },
+    {
+      "cn": "砸开那颗蛋",
+      "slug": "crack-open-that-egg",
+      "tier": "silver",
+      "description": "护盾过期后会爆炸，对周围敌人造成护盾值等量魔法伤害",
+      "winRate": "49.95",
+      "pickRate": "1.62",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Crack_Open_That_Egg_mayhem_augment.webp"
+    },
+    {
+      "cn": "由暴生急",
+      "slug": "crit-n-cast",
+      "tier": "silver",
+      "description": "每拥有1%暴击率就会获得0.4技能急速",
+      "winRate": "47.63",
+      "pickRate": "6.54",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Crit_&#x27;n_Cast_mayhem_augment.webp"
+    },
+    {
+      "cn": "灵巧",
+      "slug": "deft",
+      "tier": "silver",
+      "description": "获得60%攻击速度",
+      "winRate": "57.75",
+      "pickRate": "38.02",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Deft_mayhem_augment.webp"
+    },
+    {
+      "cn": "俯冲轰炸",
+      "slug": "dive-bomber",
+      "tier": "silver",
+      "description": "在你阵亡时爆炸，对附近的敌人们造成目标@PercentMaxHPDamage*100@%最大生命值的真实伤害",
+      "winRate": "55.63",
+      "pickRate": "22.15",
+      "fetters": [
+        "丧钟"
+      ],
+      "icon_url": "https://arammayhem.com/augments/Dive_Bomber_mayhem_augment.webp"
+    },
+    {
+      "cn": "唯快不破",
+      "slug": "dont-blink",
+      "tier": "silver",
+      "description": "你每比目标多10移动速度，则对其多造成@BonusDamagePerMSDifference*1000@%额外伤害",
+      "winRate": "51.95",
+      "pickRate": "5.12",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Don&#x27;t_Blink_mayhem_augment.webp"
+    },
+    {
+      "cn": "侵蚀",
+      "slug": "erosion",
+      "tier": "silver",
+      "description": "对敌人造成伤害时会施加一层持续3秒的5%护甲和魔法抗性击碎效果，至多在6层时击碎30%",
+      "winRate": "51.90",
+      "pickRate": "11.49",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Erosion_mayhem_augment.webp"
+    },
+    {
+      "cn": "魔法转物理",
+      "slug": "escapade",
+      "tier": "silver",
+      "description": "将法术强度转化为额外攻击力，并获得15%攻击力",
+      "winRate": "54.75",
+      "pickRate": "26.38",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/escAPADe_mayhem_augment.webp"
+    },
+    {
+      "cn": "逃跑计划",
+      "slug": "escape-plan",
+      "tier": "silver",
+      "description": "在降至35%生命值时，获得持续衰减的65%最大生命值护盾、持续衰减的150%移动速度和持续衰减的缩小效果。(75秒冷却时间)",
+      "winRate": "55.86",
+      "pickRate": "17.74",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Escape_Plan_mayhem_augment.webp"
+    },
+    {
+      "cn": "火狐",
+      "slug": "firefox",
+      "tier": "silver",
+      "description": "Automatically cast Fox-Fire, gaining 40% [b]bonus[/b] movement speed that decays over 2 seconds and conjuring 3…",
+      "winRate": "",
+      "pickRate": "",
+      "fetters": [
+        "完全自动化"
+      ],
+      "icon_url": "https://arammayhem.com/augments/FireFox_mayhem_augment.webp"
+    },
+    {
+      "cn": "急救用具",
+      "slug": "first-aid-kit",
+      "tier": "silver",
+      "description": "获得@HealShieldAmp*100@%治疗和护盾强度",
+      "winRate": "51.25",
+      "pickRate": "15.81",
+      "fetters": [
+        "喂呜喂呜"
+      ],
+      "icon_url": "https://arammayhem.com/augments/First-Aid_Kit_mayhem_augment.webp"
+    },
+    {
+      "cn": "闪闪现现",
+      "slug": "flash-2",
+      "tier": "silver",
+      "description": "获得第二个【闪现】召唤师技能和70召唤师技能急速",
+      "winRate": "46.34",
+      "pickRate": "0.10",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Flash_2_mayhem_augment.webp"
+    },
+    {
+      "cn": "闪光弹",
+      "slug": "flashbang",
+      "tier": "silver",
+      "description": "Using Flash creates an explosion around the blink location that deals 70 to 240 (+ 70% AD) (+ 60% AP) magic damage…",
+      "winRate": "",
+      "pickRate": "",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Flashbang_mayhem_augment.webp"
+    },
+    {
+      "cn": "冰霜幽灵",
+      "slug": "frost-wraith",
+      "tier": "silver",
+      "description": "每@Cooldown@秒，自动施放@RootDuration@秒禁锢给附近的敌人们",
+      "winRate": "50.34",
+      "pickRate": "12.80",
+      "fetters": [
+        "完全自动化"
+      ],
+      "icon_url": "https://arammayhem.com/augments/Frost_Wraith_mayhem_augment.webp"
+    },
+    {
+      "cn": "渴血",
+      "slug": "goredrink",
+      "tier": "silver",
+      "description": "获得15%全能吸血",
+      "winRate": "59.52",
+      "pickRate": "48.05",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Goredrink_mayhem_augment.webp"
+    },
+    {
+      "cn": "恶趣味",
+      "slug": "guilty-pleasure",
+      "tier": "silver",
+      "description": "定身或缚地敌方英雄时回复10-150(基于等级)（+1.5%最大生命值）生命值",
+      "winRate": "51.08",
+      "pickRate": "12.01",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Guilty_Pleasure_mayhem_augment.webp"
+    },
+    {
+      "cn": "帽上加帽",
+      "slug": "hat-on-a-hat",
+      "tier": "silver",
+      "description": "头戴式装备和帽子提供15法术强度和8魔法抗性。 帽子饮品提供8法术强度和4魔法抗性",
+      "winRate": "52.09",
+      "pickRate": "18.76",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Hat_on_a_Hat_mayhem_augment.webp"
+    },
+    {
+      "cn": "重量级打击手",
+      "slug": "heavy-hitter",
+      "tier": "silver",
+      "description": "你的攻击造成相当于你4%最大生命值的额外物理伤害",
+      "winRate": "56.35",
+      "pickRate": "28.25",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Heavy_Hitter_mayhem_augment.webp"
+    },
+    {
+      "cn": "海克斯科技龙魂",
+      "slug": "hextech-soul",
+      "tier": "silver",
+      "description": "周期性地使你的下一个伤害型技能或攻击触发一道闪电爆裂，连锁穿过敌人以造成伤害和减速",
+      "winRate": "50.47",
+      "pickRate": "8.57",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Hextech_Soul_mayhem_augment.webp"
+    },
+    {
+      "cn": "家园卫士",
+      "slug": "homeguard",
+      "tier": "silver",
+      "description": "获得100%移动速度，在受到伤害后失效3秒",
+      "winRate": "53.33",
+      "pickRate": "9.90",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Homeguard_mayhem_augment.webp"
+    },
+    {
+      "cn": "冰寒",
+      "slug": "ice-cold",
+      "tier": "silver",
+      "description": "你的减速效果可使移动速度降低额外的100",
+      "winRate": "54.02",
+      "pickRate": "26.36",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Ice_Cold_mayhem_augment.webp"
+    },
+    {
+      "cn": "炼狱龙魂",
+      "slug": "infernal-soul",
+      "tier": "silver",
+      "description": "你获得炼狱龙魂，使用技能或攻击命中敌人时造成额外伤害",
+      "winRate": "51.35",
+      "pickRate": "22.14",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Infernal_Soul_mayhem_augment.webp"
+    },
+    {
+      "cn": "注魔",
+      "slug": "juiced",
+      "tier": "silver",
+      "description": "攻击会消耗2.5%最大法力值，造成相当于3.5%最大法力值的魔法伤害，该伤害可以暴击",
+      "winRate": "50.16",
+      "pickRate": "8.09",
+      "fetters": [
+        "大法师"
+      ],
+      "icon_url": "https://arammayhem.com/augments/Juiced_mayhem_augment.webp"
+    },
+    {
+      "cn": "杀意翻涌",
+      "slug": "kill-secured",
+      "tier": "silver",
+      "description": "朝着生命值低于40%的敌方英雄时获得100%移动速度",
+      "winRate": "49.73",
+      "pickRate": "8.65",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Kill_Secured_mayhem_augment.webp"
+    },
+    {
+      "cn": "练腿日",
+      "slug": "leg-day",
+      "tier": "silver",
+      "description": "获得50移动速度和40%减速抗性",
+      "winRate": "52.15",
+      "pickRate": "12.81",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Leg_Day_mayhem_augment.webp"
+    },
+    {
+      "cn": "点亮他们！",
+      "slug": "light-em-up",
+      "tier": "silver",
+      "description": "每第4次攻击造成额外44 – 320 (基于等级) (+ 140%额外AD) (+ 76% AP) 魔法伤害",
+      "winRate": "54.71",
+      "pickRate": "27.11",
+      "fetters": [
+        "神龙烈焰"
+      ],
+      "icon_url": "https://arammayhem.com/augments/Light_&#x27;em_Up!_mayhem_augment.webp"
+    },
+    {
+      "cn": "强力护盾",
+      "slug": "mighty-shield",
+      "tier": "silver",
+      "description": "当你获得护盾时，获得%i:miniAdaptiveForce%40-100(基于等级)适应之力，持续3秒。(5秒冷却时间)",
+      "winRate": "47.93",
+      "pickRate": "6.22",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Mighty_Shield_mayhem_augment.webp"
+    },
+    {
+      "cn": "由心及物",
+      "slug": "mind-to-matter",
+      "tier": "silver",
+      "description": "使你的最大生命值提升，数额相当于你一半的法力值",
+      "winRate": "56.94",
+      "pickRate": "27.88",
+      "fetters": [
+        "大法师"
+      ],
+      "icon_url": "https://arammayhem.com/augments/Mind_to_Matter_mayhem_augment.webp"
+    },
+    {
+      "cn": "山脉龙魂",
+      "slug": "mountainsoul",
+      "tier": "silver",
+      "description": "你获得山脉龙魂，在脱离战斗之后获得一个持续一小段时间的护盾",
+      "winRate": "48.52",
+      "pickRate": "7.33",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/MountainSoul_mayhem_augment.webp"
+    },
+    {
+      "cn": "海洋龙魂",
+      "slug": "ocean-soul",
+      "tier": "silver",
+      "description": "获得【海洋龙魂】，在对敌方英雄造成伤害后提供高额的生命和法力回复",
+      "winRate": "54.84",
+      "pickRate": "16.52",
+      "fetters": [
+        "大法师"
+      ],
+      "icon_url": "https://arammayhem.com/augments/Ocean_Soul_mayhem_augment.webp"
+    },
+    {
+      "cn": "吵闹鬼",
+      "slug": "poltergeist",
+      "tier": "silver",
+      "description": "获得【吵闹鬼】召唤师技能。 吵闹鬼会同时施放召唤师技能【屏障】和【幽灵疾步】",
+      "winRate": "47.46",
+      "pickRate": "2.52",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Poltergeist_mayhem_augment.webp"
+    },
+    {
+      "cn": "纯粹主义者 - 术师",
+      "slug": "purist-caster",
+      "tier": "silver",
+      "description": "获得10%冷却减缩，你的所有攻速转换为技能急速每1%攻速转换为0.65技能急速",
+      "winRate": "48.69",
+      "pickRate": "7.49",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Purist_-_Caster_mayhem_augment.webp"
+    },
+    {
+      "cn": "退敌力场",
+      "slug": "repulsor",
+      "tier": "silver",
+      "description": "在你跌下@HealthThreshold2*100@%生命值时，附近的敌人们会被击退并对其施加持续1.5秒的90%减速",
+      "winRate": "46.18",
+      "pickRate": "4.78",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Repulsor_mayhem_augment.webp"
+    },
+    {
+      "cn": "万用瞄准镜",
+      "slug": "scoped-weapons",
+      "tier": "silver",
+      "description": "获得100攻击距离，如果你是远程英雄则降低至50攻击距离",
+      "winRate": "51.94",
+      "pickRate": "22.67",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Scoped_Weapons_mayhem_augment.webp"
+    },
+    {
+      "cn": "自我毁灭",
+      "slug": "self-destruct",
+      "tier": "silver",
+      "description": "每25秒，会有一个炸弹附在你身上。在@BombDelay@秒后，它会爆炸，造成20%目标最大生命值的真实伤害并击飞附近的敌人们",
+      "winRate": "52.06",
+      "pickRate": "19.56",
+      "fetters": [
+        "完全自动化",
+        "丧钟"
+      ],
+      "icon_url": "https://arammayhem.com/augments/Self_Destruct_mayhem_augment.webp"
+    },
+    {
+      "cn": "暗影疾奔",
+      "slug": "shadow-runner",
+      "tier": "silver",
+      "description": "在使用一个冲刺、跳跃、闪烁或传送类技能或离开潜行状态之后，获得持续3秒的100移动速度",
+      "winRate": "55.84",
+      "pickRate": "21.38",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Shadow_Runner_mayhem_augment.webp"
+    },
+    {
+      "cn": "扇巴掌",
+      "slug": "slap-around",
+      "tier": "silver",
+      "description": "每当你定身或缚地一个敌人时，获得一层可叠加的20 适应之力。阵亡时损失50%层数",
+      "winRate": "61.96",
+      "pickRate": "56.80",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Slap_Around_mayhem_augment.webp"
+    },
+    {
+      "cn": "天音爆",
+      "slug": "sonic-boom",
+      "tier": "silver",
+      "description": "在为你的友军提供增益效果、治疗效果或护盾效果时，会对其附近的敌人造成30 - 150(基于等级)真实伤害和持续2秒的30%减速",
+      "winRate": "50.69",
+      "pickRate": "4.63",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Sonic_Boom_mayhem_augment.webp"
+    },
+    {
+      "cn": "速度恶魔",
+      "slug": "speed-demon",
+      "tier": "silver",
+      "description": "用技能伤害敌方英雄会获得350移动速度，在2秒内衰减",
+      "winRate": "54.22",
+      "pickRate": "30.43",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Speed_Demon_mayhem_augment.webp"
+    },
+    {
+      "cn": "转得我眩晕了",
+      "slug": "spin-me-right-round",
+      "tier": "silver",
+      "description": "将一个召唤师技能替换为骄行荡寇。 骄行荡寇发射一根钩爪，吸附在地形上，在此之后，你可以再次施放来绕着它摆荡。在摆荡状态下，自动攻击相距最近的那个敌人。在与一个敌方英雄碰撞或再次施放时结束摆荡",
+      "winRate": "44.61",
+      "pickRate": "3.92",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Spin_Me_Right_Round_mayhem_augment.webp"
+    },
+    {
+      "cn": "旋转至胜",
+      "slug": "spin-to-win",
+      "tier": "silver",
+      "description": "你的旋转类技能获得@SpinHaste@技能急速并且多造成@SpinDamageAmp*100@%伤害！",
+      "winRate": "51.54",
+      "pickRate": "5.83",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Spin_To_Win_mayhem_augment.webp"
+    },
+    {
+      "cn": "叠角龙",
+      "slug": "stackosaurusrex",
+      "tier": "silver",
+      "description": "在你获得一个技能的永久层数时，多获得75%！",
+      "winRate": "52.68",
+      "pickRate": "0.71",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/StackosaurusRex_mayhem_augment.webp"
+    },
+    {
+      "cn": "属性！",
+      "slug": "stats",
+      "tier": "silver",
+      "description": "获得3个属性锻造器",
+      "winRate": "59.85",
+      "pickRate": "29.29",
+      "fetters": [
+        "掷骰狂人"
+      ],
+      "icon_url": "https://arammayhem.com/augments/Stats!_mayhem_augment.webp"
+    },
+    {
+      "cn": "快中求稳",
+      "slug": "swift-and-safe",
+      "tier": "silver",
+      "description": "在冲刺或闪烁后，获得持续2秒的65-290(基于等级)(+65% 额外AD)(+26% AP)护盾值。 (5秒冷却时间)",
+      "winRate": "54.57",
+      "pickRate": "14.08",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Swift_and_Safe_mayhem_augment.webp"
+    },
+    {
+      "cn": "会心防御",
+      "slug": "tank-it-or-leave-it",
+      "tier": "silver",
+      "description": "你可以使用你的暴击几率(最大50%几率)来进行会心防御，使你有一定几率来使所受伤害降低20%。获得25%暴击几率",
+      "winRate": "52.83",
+      "pickRate": "13.38",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Tank_It_Or_Leave_It_mayhem_augment.webp"
+    },
+    {
+      "cn": "残暴之力",
+      "slug": "the-brutalizer",
+      "tier": "silver",
+      "description": "获得@AD@攻击力、@AbilityHaste@技能急速和@Lethality@穿甲",
+      "winRate": "50.40",
+      "pickRate": "17.39",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/The_Brutalizer_mayhem_augment.webp"
+    },
+    {
+      "cn": "折磨者",
+      "slug": "tormentor",
+      "tier": "silver",
+      "description": "Immobilizing or grounding an enemy champion inflicts them with a Burn for 5 seconds, dealing magic damage equal…",
+      "winRate": "",
+      "pickRate": "",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Tormentor_mayhem_augment.webp"
+    },
+    {
+      "cn": "双生火焰",
+      "slug": "twin-fire",
+      "tier": "silver",
+      "description": "技能会发射1-4个飞弹(基于暴击率)，每个飞弹造成10-30(基于等级)(+7%额外攻击力+7%法术强度)魔法伤害，获得15%暴击几率",
+      "winRate": "53.82",
+      "pickRate": "28.33",
+      "fetters": [
+        "神龙烈焰"
+      ],
+      "icon_url": "https://arammayhem.com/augments/Twin_Fire_mayhem_augment.webp"
+    },
+    {
+      "cn": "台风",
+      "slug": "typhoon",
+      "tier": "silver",
+      "description": "你的攻击会对一个额外目标发射一根弩箭，这个弩箭会造成削减过的伤害并施加命中",
+      "winRate": "53.86",
+      "pickRate": "32.22",
+      "fetters": [
+        "神龙烈焰"
+      ],
+      "icon_url": "https://arammayhem.com/augments/Typhoon_mayhem_augment.webp"
+    },
+    {
+      "cn": "终极不可阻挡",
+      "slug": "ultimate-unstoppable",
+      "tier": "silver",
+      "description": "在你使用你的终极技能后，你获得持续@UnstoppableDuration@秒的控制免疫。 (@Cooldown@秒冷却时间)",
+      "winRate": "47.96",
+      "pickRate": "10.01",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Ultimate_Unstoppable_mayhem_augment.webp"
+    },
+    {
+      "cn": "升级：收集者",
+      "slug": "upgrade-collector",
+      "tier": "silver",
+      "description": "使用【收集者】的被动处决敌人时的处决阈值提升@ExecutionInc*100@%，并且提供额外@UpgradedGoldAmount@金币。 获得250金币",
+      "winRate": "56.23",
+      "pickRate": "38.84",
+      "fetters": [
+        "金币雨"
+      ],
+      "icon_url": "https://arammayhem.com/augments/Upgrade_Collector_mayhem_augment.webp"
+    },
+    {
+      "cn": "升级：弯刀",
+      "slug": "upgrade-cutlass",
+      "tier": "silver",
+      "description": "【幽魂弯刀】和【求生索】的冷却时间降低至@UpgradeCD@秒。主动效果激活时，获得@DamageAmp*100@%伤害增幅",
+      "winRate": "43.76",
+      "pickRate": "0.22",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Upgrade_Cutlass_mayhem_augment.webp"
+    },
+    {
+      "cn": "升级：献祭",
+      "slug": "upgrade-immolate",
+      "tier": "silver",
+      "description": "【璀璨回响】和【日炎圣盾】每当有目标受到【献祭】效果影响时，提供@GoldPerTick@ 金币 。获得250金币",
+      "winRate": "52.71",
+      "pickRate": "16.46",
+      "fetters": [
+        "金币雨"
+      ],
+      "icon_url": "https://arammayhem.com/augments/Upgrade_Immolate_mayhem_augment.webp"
+    },
+    {
+      "cn": "升级：荆棘之甲",
+      "slug": "upgrade-thornmail",
+      "tier": "silver",
+      "description": "脱离战斗20-5秒后，你的棘刺背心或者荆棘之甲会获得一个外壳，反弹50-250(+12%最大生命值)(+30%护甲)(+30%魔抗)伤害",
+      "winRate": "54.63",
+      "pickRate": "11.07",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Upgrade_Thornmail_mayhem_augment.webp"
+    },
+    {
+      "cn": "升级：中娅",
+      "slug": "upgrade-zhonyas",
+      "tier": "silver",
+      "description": "升级你的【探索者的护臂】、【沃格勒特的巫师帽】和【中娅沙漏】，使你能够在静滞效果期间移动，并在静滞期间获得50%额外移动速度。此外，【中娅沙漏】的静滞冷却时间降低至45秒",
+      "winRate": "52.90",
+      "pickRate": "19.58",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Upgrade_Zhonya&#x27;s_mayhem_augment.webp"
+    },
+    {
+      "cn": "负重爆气",
+      "slug": "weighted-popoffs",
+      "tier": "silver",
+      "description": "使用技能对敌方英雄造成伤害会为你提供持续6秒的爆气层数（最大：6）。 每层爆气可以使你的各个非终极技能的冷却时间转速加快2.5%，在6层时提升至5%",
+      "winRate": "54.87",
+      "pickRate": "37.29",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Weighted_Popoffs_mayhem_augment.webp"
+    },
+    {
+      "cn": "刃下生风",
+      "slug": "wind-beneath-blade",
+      "tier": "silver",
+      "description": "从每1点固定护甲穿透和法术穿透中获得1.5移动速度。每拥有10%百分比护甲穿透和法术穿透，就获得@PercentPenConversion@移动速度",
+      "winRate": "50.10",
+      "pickRate": "9.41",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Wind_Beneath_Blade_mayhem_augment.webp"
+    },
+    {
+      "cn": "巫师式思考",
+      "slug": "witchful-thinking",
+      "tier": "silver",
+      "description": "获得20-80(基于等级)法术强度",
+      "winRate": "54.54",
+      "pickRate": "29.53",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Witchful_Thinking_mayhem_augment.webp"
+    },
+    {
+      "cn": "狂热者",
+      "slug": "zealot",
+      "tier": "silver",
+      "description": "Gain 35% (+ 5% per 100 AP) [b]bonus[/b] attack speed and 25% (+ 5% per 100 AP) critical strike chance. See win rate…",
+      "winRate": "",
+      "pickRate": "",
+      "fetters": [],
+      "icon_url": "https://arammayhem.com/augments/Zealot_mayhem_augment.webp"
+    }
+  ],
+  "fetters": [
+    {
+      "slug": "fully-automated",
+      "name": "完全自动化",
+      "oldName": "完全自动化",
+      "description": "完全自动化海克斯大乱斗强化符文套装完整指南。让海克斯大乱斗工厂真正成长的第一步。减少自动施法冷却时间。 查看层级加成，并浏览全部 8 个成员强化符文。",
+      "members": [
+        "firefox",
+        "frost-wraith",
+        "self-destruct",
+        "ok-boomerang",
+        "sonata",
+        "divine-intervention",
+        "quantum-computing",
+        "prom-queen"
+      ],
+      "effects": []
+    },
+    {
+      "slug": "make-it-rain",
+      "name": "金币雨",
+      "oldName": "金币雨",
+      "description": "金币雨海克斯大乱斗强化符文套装完整指南。金钱主宰一切。击杀敌人后掉落金币，你和队友都可以拾取。 查看层级加成，并浏览全部 7 个成员强化符文。",
+      "members": [
+        "upgrade-immolate",
+        "upgrade-collector",
+        "from-beginning-to-end",
+        "donation",
+        "red-envelopes",
+        "goldrend",
+        "heads-up-cupcake"
+      ],
+      "effects": []
+    },
+    {
+      "slug": "stackosaurus-rex",
+      "name": "叠角龙",
+      "oldName": "叠角龙",
+      "description": "叠角龙海克斯大乱斗强化符文套装完整指南。获得层数时，额外获得更多层数。 查看层级加成，并浏览全部 7 个成员强化符文。",
+      "members": [
+        "quest-steel-your-heart",
+        "upgrade-hubris",
+        "soul-eater",
+        "phenomenal-evil",
+        "master-of-duality",
+        "tap-dancer",
+        "infinite-recursion"
+      ],
+      "effects": []
+    },
+    {
+      "slug": "dive-bomb-set",
+      "name": "丧钟",
+      "oldName": "俯冲炸弹",
+      "description": "丧钟海克斯大乱斗强化符文套装完整指南。冲向死亡并使用强化符文造成真实伤害。减少死亡计时。 查看层级加成，并浏览全部 4 个成员强化符文。",
+      "members": [
+        "dive-bomber",
+        "self-destruct",
+        "final-city-transit",
+        "clown-college"
+      ],
+      "effects": []
+    },
+    {
+      "slug": "firecracker-set",
+      "name": "神龙烈焰",
+      "oldName": "神龙烈焰",
+      "description": "神龙烈焰海克斯大乱斗强化符文套装完整指南。飞弹很酷，更多飞弹更酷。烟火飞弹会额外弹跳至附近敌人并造成原始伤害的一部分。 查看层级加成，并浏览全部 6 个成员强化符文。",
+      "members": [
+        "typhoon",
+        "light-em-up",
+        "twin-fire",
+        "critical-missile",
+        "magic-missile",
+        "fan-the-hammer"
+      ],
+      "effects": []
+    },
+    {
+      "slug": "snowday",
+      "name": "下雪天",
+      "oldName": "下雪天",
+      "description": "下雪天海克斯大乱斗强化符文套装完整指南。雪球嗖嗖嗖。为雪球强化符文获得技能急速和额外伤害。 查看层级加成，并浏览全部 5 个成员强化符文。",
+      "members": [
+        "snowball-upgrade",
+        "snowball-roulette",
+        "pinball",
+        "biggest-snowball-ever",
+        "holy-snowball"
+      ],
+      "effects": []
+    },
+    {
+      "slug": "wee-woo-wee-woo",
+      "name": "喂呜喂呜",
+      "oldName": "喂呜喂呜",
+      "description": "喂呜喂呜海克斯大乱斗强化符文套装完整指南。对生命值低于50%的友军获得额外效果。 查看层级加成，并浏览全部 6 个成员强化符文。",
+      "members": [
+        "first-aid-kit",
+        "all-for-you",
+        "critical-healing",
+        "sonata",
+        "windspeakers-blessing",
+        "im-a-baby-kitty-where-is-mama"
+      ],
+      "effects": []
+    },
+    {
+      "slug": "high-roller",
+      "name": "掷骰狂人",
+      "oldName": "掷骰狂人",
+      "description": "掷骰狂人海克斯大乱斗强化符文套装完整指南。不出手必不中。小兵死亡时有几率掉落属性铁砧券。 查看层级加成，并浏览全部 6 个成员强化符文。",
+      "members": [
+        "transmute-prismatic",
+        "transmute-chaos",
+        "pandorasbox",
+        "stats",
+        "stats-on-stats",
+        "stats-on-stats-on-stats"
+      ],
+      "effects": []
+    },
+    {
+      "slug": "archmage",
+      "name": "大法师",
+      "oldName": null,
+      "description": "大法师海克斯大乱斗强化符文套装完整指南。施放技能时，返还另一个随机技能的部分冷却时间。 查看层级加成，并浏览全部 5 个成员强化符文。",
+      "members": [
+        "juiced",
+        "mind-to-matter",
+        "buff-buddies",
+        "ocean-soul",
+        "overflow"
+      ],
+      "effects": []
+    }
+  ]
+}

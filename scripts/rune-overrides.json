@@ -1,0 +1,2079 @@
+[
+  {
+    "nameEn": "ARAM_LegDay",
+    "name": "灵动",
+    "tier": "silver",
+    "quality": "silver",
+    "effect_type": "mobility",
+    "pros": "+50移动速度，+40%减速抵抗",
+    "cons": "无其他战斗属性",
+    "scenarios": "腿短需要走位的英雄"
+  },
+  {
+    "nameEn": "ARAM_ItsKillingTime",
+    "name": "裁决使",
+    "tier": "gold",
+    "quality": "gold",
+    "effect_type": "damage",
+    "pros": "击杀刷新技能，收割机器",
+    "cons": "对满血敌人无效",
+    "scenarios": "刺客、ADC收割型英雄"
+  },
+  {
+    "nameEn": "ARAM_SpinToWin",
+    "name": "疾风斩",
+    "tier": "silver",
+    "quality": "silver",
+    "effect_type": "damage",
+    "pros": "周期性周围AOE伤害",
+    "cons": "范围有限",
+    "scenarios": "近战英雄"
+  },
+  {
+    "nameEn": "VeilOfWarding",
+    "name": "防护面纱",
+    "tier": "silver",
+    "quality": "silver",
+    "effect_type": "defense",
+    "pros": "周期性法术护盾，防关键控制",
+    "cons": "15秒CD",
+    "scenarios": "脆皮英雄防先手控制"
+  },
+  {
+    "nameEn": "ARAM_SonicBoom",
+    "name": "音爆",
+    "tier": "silver",
+    "quality": "silver",
+    "effect_type": "damage",
+    "pros": "技能附带额外范围伤害",
+    "cons": "触发频率受限",
+    "scenarios": "技能型英雄"
+  },
+  {
+    "nameEn": "ARAM_LightningStrikes",
+    "name": "闪电打击",
+    "tier": "gold",
+    "quality": "gold",
+    "effect_type": "damage",
+    "pros": "攻击触发连锁闪电",
+    "cons": "AD英雄专用",
+    "scenarios": "ADC和普攻型英雄"
+  },
+  {
+    "nameEn": "ARAM_ShadowRunner",
+    "name": "暗夜猎杀",
+    "tier": "silver",
+    "quality": "silver",
+    "effect_type": "mobility",
+    "pros": "朝被标记敌人+40%移速",
+    "cons": "撤退时无效",
+    "scenarios": "刺客和追击型英雄"
+  },
+  {
+    "nameEn": "ARAM_ScopierWeapons",
+    "name": "远程武器",
+    "tier": "gold",
+    "quality": "gold",
+    "effect_type": "damage",
+    "pros": "+75/50攻击距离",
+    "cons": "提升幅度有限",
+    "scenarios": "ADC和短手英雄"
+  },
+  {
+    "nameEn": "ARAM_Tormentor",
+    "name": "恶趣味",
+    "tier": "silver",
+    "quality": "silver",
+    "effect_type": "damage",
+    "pros": "控制时增伤+回复",
+    "cons": "依赖控制触发",
+    "scenarios": "控制型英雄"
+  },
+  {
+    "nameEn": "SwiftAndSafe",
+    "name": "疾行",
+    "tier": "silver",
+    "quality": "silver",
+    "effect_type": "mobility",
+    "pros": "脱战+100%移速",
+    "cons": "战斗中无效",
+    "scenarios": "需要频繁走位的英雄"
+  },
+  {
+    "nameEn": "ARAM_TankItOrLeaveIt",
+    "name": "强硬",
+    "tier": "silver",
+    "quality": "silver",
+    "effect_type": "defense",
+    "pros": "+双抗",
+    "cons": "纯防御",
+    "scenarios": "坦克英雄"
+  },
+  {
+    "nameEn": "ARAM_ScopedWeapons",
+    "name": "远程优势",
+    "tier": "silver",
+    "quality": "silver",
+    "effect_type": "damage",
+    "pros": "+攻击距离",
+    "cons": "近战英雄效果减半",
+    "scenarios": "远程英雄"
+  },
+  {
+    "nameEn": "ARAM_Quest_SteelYourHeart",
+    "name": "任务：钢化你心",
+    "tier": "gold",
+    "quality": "gold",
+    "effect_type": "defense",
+    "pros": "完成条件获得强力装备",
+    "cons": "需要完成任务",
+    "scenarios": "能频繁参与击杀的英雄"
+  },
+  {
+    "nameEn": "ARAM_QuantumComputing",
+    "name": "量子计算",
+    "tier": "chromatic",
+    "quality": "prismatic",
+    "effect_type": "mobility",
+    "pros": "位移技能+175急速，全场飞雷神",
+    "cons": "无位移技能无效",
+    "scenarios": "有位移技能的刺客战士"
+  },
+  {
+    "nameEn": "ARAM_SoulSiphon",
+    "name": "灵魂虹吸",
+    "tier": "gold",
+    "quality": "gold",
+    "effect_type": "sustain",
+    "pros": "暴击回血+25%暴击率",
+    "cons": "非暴击流无效",
+    "scenarios": "暴击流AD"
+  },
+  {
+    "nameEn": "ARAM_DrawYourSword",
+    "name": "亮出你的剑",
+    "tier": "chromatic",
+    "quality": "prismatic",
+    "effect_type": "damage",
+    "pros": "全属性大幅提升",
+    "cons": "失去远程优势",
+    "scenarios": "近战ADC或战士"
+  },
+  {
+    "nameEn": "ARAM_Recursion",
+    "name": "循环往复",
+    "tier": "gold",
+    "quality": "gold",
+    "effect_type": "utility",
+    "pros": "+60技能急速",
+    "cons": "无其他效果",
+    "scenarios": "技能依赖型英雄"
+  },
+  {
+    "nameEn": "ARAM_Flashbang",
+    "name": "闪光弹",
+    "tier": "silver",
+    "quality": "silver",
+    "effect_type": "utility",
+    "pros": "周期性致盲周围敌人",
+    "cons": "范围有限",
+    "scenarios": "近战英雄"
+  },
+  {
+    "nameEn": "ARAM_FrostWraith",
+    "name": "冰霜幽灵",
+    "tier": "silver",
+    "quality": "silver",
+    "effect_type": "defense",
+    "pros": "周期性释放冰霜减速光环",
+    "cons": "自动释放不可控",
+    "scenarios": "坦克和控制英雄"
+  },
+  {
+    "nameEn": "HatOnAHat",
+    "name": "帽子戏法",
+    "tier": "silver",
+    "quality": "silver",
+    "effect_type": "damage",
+    "pros": "额外适应之力",
+    "cons": "数值不高",
+    "scenarios": "通用"
+  },
+  {
+    "nameEn": "MightyShield",
+    "name": "巨力盾",
+    "tier": "silver",
+    "quality": "silver",
+    "effect_type": "defense",
+    "pros": "获得额外护盾",
+    "cons": "护盾值有限",
+    "scenarios": "坦克英雄"
+  },
+  {
+    "nameEn": "ARAM_BreadAndButter",
+    "name": "基础强化",
+    "tier": "gold",
+    "quality": "gold",
+    "effect_type": "damage",
+    "pros": "基础属性提升",
+    "cons": "无特殊机制",
+    "scenarios": "通用"
+  },
+  {
+    "nameEn": "ARAM_MadScientist",
+    "name": "尖端发明家",
+    "tier": "chromatic",
+    "quality": "prismatic",
+    "effect_type": "utility",
+    "pros": "+100装备急速",
+    "cons": "无主动装备时无效",
+    "scenarios": "出主动装备的英雄"
+  },
+  {
+    "nameEn": "ARAM_SymphonyofWar",
+    "name": "战争交响曲",
+    "tier": "chromatic",
+    "quality": "prismatic",
+    "effect_type": "damage",
+    "pros": "多方向AOE伤害",
+    "cons": "需要管理方向CD",
+    "scenarios": "普攻型英雄"
+  },
+  {
+    "nameEn": "ARAM_HolyFire",
+    "name": "神圣之火",
+    "tier": "gold",
+    "quality": "gold",
+    "effect_type": "damage",
+    "pros": "周期性燃烧光环",
+    "cons": "范围有限",
+    "scenarios": "前排坦克战士"
+  },
+  {
+    "nameEn": "UltimateAwakening",
+    "name": "终极唤醒",
+    "tier": "chromatic",
+    "quality": "prismatic",
+    "effect_type": "utility",
+    "pros": "大招后重置小技能",
+    "cons": "10秒内置CD",
+    "scenarios": "大招CD短的英雄"
+  },
+  {
+    "nameEn": "ARAM_Dashing",
+    "name": "冲刺",
+    "tier": "chromatic",
+    "quality": "prismatic",
+    "effect_type": "mobility",
+    "pros": "位移后获得属性加成",
+    "cons": "依赖位移触发",
+    "scenarios": "有位移的英雄"
+  },
+  {
+    "nameEn": "Gash",
+    "name": "伤口撕裂",
+    "tier": "chromatic",
+    "quality": "prismatic",
+    "effect_type": "damage",
+    "pros": "技能命中叠加撕裂伤害",
+    "cons": "需要持续命中",
+    "scenarios": "持续输出型英雄"
+  },
+  {
+    "nameEn": "ARAM_TransmuteGold",
+    "name": "质变：黄金阶",
+    "tier": "silver",
+    "quality": "silver",
+    "effect_type": "utility",
+    "pros": "稳定获得黄金符文",
+    "cons": "不如棱彩强力",
+    "scenarios": "想要稳定提升时选择",
+    "special_label": "稳扎稳打"
+  },
+  {
+    "nameEn": "ARAM_OkBoomerang",
+    "name": "回力OK镖",
+    "tier": "gold",
+    "quality": "gold",
+    "effect_type": "damage",
+    "pros": "技能弹射附加伤害",
+    "cons": "需要命中触发",
+    "scenarios": "技能型英雄"
+  },
+  {
+    "nameEn": "ARAM_Typhoon",
+    "name": "台风",
+    "tier": "silver",
+    "quality": "silver",
+    "effect_type": "damage",
+    "pros": "周期性大幅攻速提升",
+    "cons": "触发间隔较长",
+    "scenarios": "ADC和攻速英雄"
+  },
+  {
+    "nameEn": "ARAM_Overflow",
+    "name": "溢流",
+    "tier": "gold",
+    "quality": "gold",
+    "effect_type": "utility",
+    "pros": "法力回复转为生命回复",
+    "cons": "法力值低的英雄效果差",
+    "scenarios": "高法力消耗的法师"
+  },
+  {
+    "nameEn": "ARAM_SlowCooker",
+    "name": "慢炖",
+    "tier": "chromatic",
+    "quality": "prismatic",
+    "effect_type": "damage",
+    "pros": "无限灼烧打坦奇快",
+    "cons": "需要持续技能命中",
+    "scenarios": "持续输出法师"
+  },
+  {
+    "nameEn": "ARAM_FeyMagic",
+    "name": "妖精魔法",
+    "tier": "chromatic",
+    "quality": "prismatic",
+    "effect_type": "utility",
+    "pros": "大招变羊群控",
+    "cons": "只对大招伤害触发",
+    "scenarios": "有大范围大招的英雄"
+  },
+  {
+    "nameEn": "ARAM_MagicMissile",
+    "name": "魔法飞弹",
+    "tier": "gold",
+    "quality": "gold",
+    "effect_type": "damage",
+    "pros": "技能命中触发真伤飞弹",
+    "cons": "6秒CD",
+    "scenarios": "技能频率高的法师"
+  },
+  {
+    "nameEn": "ARAM_ADAPt",
+    "name": "适应之力",
+    "tier": "silver",
+    "quality": "silver",
+    "effect_type": "damage",
+    "pros": "根据等级获得适应之力",
+    "cons": "前期加成少",
+    "scenarios": "通用"
+  },
+  {
+    "nameEn": "ARAM_Perseverance",
+    "name": "坚韧",
+    "tier": "gold",
+    "quality": "gold",
+    "effect_type": "sustain",
+    "pros": "超高生命回复",
+    "cons": "被集火仍可能被秒",
+    "scenarios": "坦克和前排战士"
+  },
+  {
+    "nameEn": "ARAM_FromBeginningToEnd",
+    "name": "由心及物",
+    "tier": "gold",
+    "quality": "gold",
+    "effect_type": "damage",
+    "pros": "技能命中叠加适配之力",
+    "cons": "需要频繁命中",
+    "scenarios": "技能型英雄"
+  },
+  {
+    "nameEn": "ARAM_Upgrade_IE",
+    "name": "升级：无尽",
+    "tier": "gold",
+    "quality": "gold",
+    "effect_type": "damage",
+    "pros": "强化无尽之刃效果",
+    "cons": "需要出无尽",
+    "scenarios": "暴击流AD"
+  },
+  {
+    "nameEn": "ARAM_DivineIntervention",
+    "name": "神圣干预",
+    "tier": "gold",
+    "quality": "gold",
+    "effect_type": "defense",
+    "pros": "周期性团队无敌光环",
+    "cons": "自动施放不可控",
+    "scenarios": "辅助和团队型英雄"
+  },
+  {
+    "nameEn": "ARAM_AllForYou",
+    "name": "全心为你",
+    "tier": "gold",
+    "quality": "gold",
+    "effect_type": "utility",
+    "pros": "治疗/护盾转移给友军",
+    "cons": "自己得不到治疗",
+    "scenarios": "辅助英雄"
+  },
+  {
+    "nameEn": "ARAM_Vulnerability",
+    "name": "易伤",
+    "tier": "gold",
+    "quality": "gold",
+    "effect_type": "damage",
+    "pros": "技能命中叠加易伤",
+    "cons": "自己不能直接享受",
+    "scenarios": "技能型辅助和法师"
+  },
+  {
+    "nameEn": "ARAM_OutlawsGrit",
+    "name": "黎明使者的决心",
+    "tier": "gold",
+    "quality": "gold",
+    "effect_type": "defense",
+    "pros": "半血自动回复30%最大生命值",
+    "cons": "45秒CD",
+    "scenarios": "所有英雄的通用保命选择"
+  },
+  {
+    "nameEn": "ARAM_Flashy",
+    "name": "闪闪现现",
+    "tier": "gold",
+    "quality": "gold",
+    "effect_type": "mobility",
+    "pros": "3层闪现充能",
+    "cons": "需要时间回复充能",
+    "scenarios": "需要多段位移的英雄"
+  },
+  {
+    "nameEn": "ARAM_CourageoftheColossus",
+    "name": "巨像的勇气",
+    "tier": "chromatic",
+    "quality": "prismatic",
+    "effect_type": "defense",
+    "pros": "控制触发高额护盾",
+    "cons": "无控制英雄无法触发",
+    "scenarios": "开团型坦克"
+  },
+  {
+    "nameEn": "ARAM_DualWield",
+    "name": "双刀流",
+    "tier": "chromatic",
+    "quality": "prismatic",
+    "effect_type": "damage",
+    "pros": "双击触发攻击特效",
+    "cons": "技能型英雄提升有限",
+    "scenarios": "攻击特效流ADC"
+  },
+  {
+    "nameEn": "ARAM_JeweledGauntlet",
+    "name": "珠光护手",
+    "tier": "chromatic",
+    "quality": "prismatic",
+    "effect_type": "damage",
+    "pros": "技能暴击伤害质变",
+    "cons": "需要堆暴击率",
+    "scenarios": "AP爆发英雄"
+  },
+  {
+    "nameEn": "ARAM_InfernalConduit",
+    "name": "炼狱导管",
+    "tier": "chromatic",
+    "quality": "prismatic",
+    "effect_type": "damage",
+    "pros": "无限灼烧+减CD",
+    "cons": "需要持续命中",
+    "scenarios": "持续输出法师"
+  },
+  {
+    "nameEn": "ARAM_GiantSlayer",
+    "name": "巨人杀手",
+    "tier": "chromatic",
+    "quality": "prismatic",
+    "effect_type": "damage",
+    "pros": "常驻移速+体型差增伤",
+    "cons": "无",
+    "scenarios": "几乎所有输出英雄"
+  },
+  {
+    "nameEn": "ARAM_TapDancer",
+    "name": "踢踏舞",
+    "tier": "chromatic",
+    "quality": "prismatic",
+    "effect_type": "mobility",
+    "pros": "无限叠移速转攻速",
+    "cons": "需要持续攻击暖机",
+    "scenarios": "攻速流AD"
+  },
+  {
+    "nameEn": "ARAM_DemonsDance",
+    "name": "恶魔之舞",
+    "tier": "gold",
+    "quality": "gold",
+    "effect_type": "sustain",
+    "pros": "迅捷步伐+不灭之握双符文",
+    "cons": "需要普攻触发",
+    "scenarios": "战士和持续输出前排"
+  },
+  {
+    "nameEn": "ARAM_MasterofDuality",
+    "name": "物法皆修",
+    "tier": "chromatic",
+    "quality": "prismatic",
+    "effect_type": "damage",
+    "pros": "AD和AP互相加成",
+    "cons": "混合出装需要",
+    "scenarios": "双修英雄"
+  },
+  {
+    "nameEn": "ARAM_Firebrand",
+    "name": "火焰烙印",
+    "tier": "gold",
+    "quality": "gold",
+    "effect_type": "damage",
+    "pros": "普攻无限灼烧",
+    "cons": "需要持续普攻",
+    "scenarios": "攻速流AD"
+  },
+  {
+    "nameEn": "ARAM_MysticPunch",
+    "name": "神秘之拳",
+    "tier": "chromatic",
+    "quality": "prismatic",
+    "effect_type": "damage",
+    "pros": "技能附加额外伤害",
+    "cons": "近战限定",
+    "scenarios": "近战AP"
+  },
+  {
+    "nameEn": "ARAM_CriticalHealing",
+    "name": "会心治疗",
+    "tier": "gold",
+    "quality": "gold",
+    "effect_type": "sustain",
+    "pros": "暴击时额外治疗",
+    "cons": "非暴击流无效",
+    "scenarios": "暴击流AD"
+  },
+  {
+    "nameEn": "ARAM_DawnbringersResolve",
+    "name": "黎明使者的决心",
+    "tier": "gold",
+    "quality": "gold",
+    "effect_type": "defense",
+    "pros": "半血回复30%最大生命值",
+    "cons": "45秒CD",
+    "scenarios": "通用保命"
+  },
+  {
+    "nameEn": "ARAM_Marksmage",
+    "name": "灵体武器",
+    "tier": "gold",
+    "quality": "gold",
+    "effect_type": "damage",
+    "pros": "技能触发攻击特效",
+    "cons": "1秒CD",
+    "scenarios": "技能型AD英雄"
+  },
+  {
+    "nameEn": "ARAM_KeystoneConjurer",
+    "name": "往复循环",
+    "tier": "gold",
+    "quality": "gold",
+    "effect_type": "damage",
+    "pros": "黑暗收割+先攻双符文",
+    "cons": "需要先手消耗",
+    "scenarios": "消耗型英雄"
+  },
+  {
+    "nameEn": "ARAM_UltimateUnstoppable",
+    "name": "不可阻挡",
+    "tier": "silver",
+    "quality": "silver",
+    "effect_type": "defense",
+    "pros": "大招期间免控",
+    "cons": "只在大招期间",
+    "scenarios": "需要安全放大的英雄"
+  },
+  {
+    "nameEn": "ARAM_SearingDawn",
+    "name": "炽热黎明",
+    "tier": "gold",
+    "quality": "gold",
+    "effect_type": "damage",
+    "pros": "对低血量敌人燃烧光环",
+    "cons": "光环范围有限",
+    "scenarios": "前排坦克战士"
+  },
+  {
+    "nameEn": "BabyKitty",
+    "name": "小猫咪找妈妈",
+    "tier": "chromatic",
+    "quality": "prismatic",
+    "effect_type": "utility",
+    "pros": "朝友方移动获得移速+治疗",
+    "cons": "需要靠近友方",
+    "scenarios": "辅助英雄"
+  },
+  {
+    "nameEn": "OminousPact",
+    "name": "黑暗契约",
+    "tier": "chromatic",
+    "quality": "prismatic",
+    "effect_type": "damage",
+    "pros": "牺牲生命值换取伤害",
+    "cons": "降低生存能力",
+    "scenarios": "高输出英雄"
+  },
+  {
+    "nameEn": "ARAM_BigBrain",
+    "name": "大智慧",
+    "tier": "gold",
+    "quality": "gold",
+    "effect_type": "damage",
+    "pros": "根据AP获得额外效果",
+    "cons": "AD英雄无效",
+    "scenarios": "高AP法师"
+  },
+  {
+    "nameEn": "ARAM_CantTouchThis",
+    "name": "不可触碰",
+    "tier": "chromatic",
+    "quality": "prismatic",
+    "effect_type": "defense",
+    "pros": "大招后2秒无敌",
+    "cons": "需要精准时机",
+    "scenarios": "大招CD短的英雄"
+  },
+  {
+    "nameEn": "SnowballRoulette",
+    "name": "雪球扭蛋机",
+    "tier": "gold",
+    "quality": "gold",
+    "effect_type": "damage",
+    "pros": "雪球附加随机效果",
+    "cons": "随机性强",
+    "scenarios": "雪球使用者"
+  },
+  {
+    "nameEn": "ARAM_TankEngine",
+    "name": "坦克引擎",
+    "tier": "gold",
+    "quality": "gold",
+    "effect_type": "defense",
+    "pros": "参与击杀永久叠血量体型",
+    "cons": "死亡损失层数",
+    "scenarios": "坦克"
+  },
+  {
+    "nameEn": "ARAM_CelestialBody",
+    "name": "天体",
+    "tier": "gold",
+    "quality": "gold",
+    "effect_type": "defense",
+    "pros": "+最大生命值",
+    "cons": "纯血量",
+    "scenarios": "坦克英雄"
+  },
+  {
+    "nameEn": "ARAM_Recall",
+    "name": "召回",
+    "tier": "gold",
+    "quality": "gold",
+    "effect_type": "utility",
+    "pros": "周期性回复生命法力",
+    "cons": "战斗中效果差",
+    "scenarios": "需要续航的英雄"
+  },
+  {
+    "nameEn": "ARAM_SelfDestruct",
+    "name": "死亡轰炸",
+    "tier": "silver",
+    "quality": "silver",
+    "effect_type": "damage",
+    "pros": "死后自爆真伤",
+    "cons": "需要死亡触发",
+    "scenarios": "开团型前排"
+  },
+  {
+    "nameEn": "ARAM_ClownCollege",
+    "name": "小丑学院",
+    "tier": "chromatic",
+    "quality": "prismatic",
+    "effect_type": "damage",
+    "pros": "分身+爆炸",
+    "cons": "分身容易被识破",
+    "scenarios": "AP/AD刺客"
+  },
+  {
+    "nameEn": "ARAM_DiveBomber",
+    "name": "俯冲轰炸",
+    "tier": "silver",
+    "quality": "silver",
+    "effect_type": "damage",
+    "pros": "死亡时俯冲爆炸",
+    "cons": "需要死亡触发",
+    "scenarios": "开团英雄"
+  },
+  {
+    "nameEn": "ARAM_FirstAidKit",
+    "name": "急救箱",
+    "tier": "silver",
+    "quality": "silver",
+    "effect_type": "utility",
+    "pros": "+20%治疗护盾强度",
+    "cons": "无治疗护盾时无效",
+    "scenarios": "辅助治疗型英雄"
+  },
+  {
+    "nameEn": "ARAM_Erosion",
+    "name": "侵蚀",
+    "tier": "silver",
+    "quality": "silver",
+    "effect_type": "damage",
+    "pros": "攻击降低双抗",
+    "cons": "需要持续攻击",
+    "scenarios": "攻速流对抗坦克"
+  },
+  {
+    "nameEn": "ARAM_WindspeakersBlessing",
+    "name": "风语者的祝福",
+    "tier": "chromatic",
+    "quality": "prismatic",
+    "effect_type": "utility",
+    "pros": "治疗/护盾时额外增益",
+    "cons": "需要治疗护盾技能",
+    "scenarios": "辅助英雄"
+  },
+  {
+    "nameEn": "ARAM_RestlessRestoration",
+    "name": "不倦回复",
+    "tier": "gold",
+    "quality": "gold",
+    "effect_type": "sustain",
+    "pros": "移动即回血",
+    "cons": "不动不回血",
+    "scenarios": "需要频繁走位的英雄"
+  },
+  {
+    "nameEn": "ARAM_ShrinkRay",
+    "name": "缩小射线",
+    "tier": "gold",
+    "quality": "gold",
+    "effect_type": "utility",
+    "pros": "技能命中缩小敌人减益",
+    "cons": "效果持续时间短",
+    "scenarios": "技能频率高的法师"
+  },
+  {
+    "nameEn": "ARAM_SlapAround",
+    "name": "扇巴掌",
+    "tier": "silver",
+    "quality": "silver",
+    "effect_type": "damage",
+    "pros": "控制叠适应之力",
+    "cons": "需要频繁控制",
+    "scenarios": "控制型英雄"
+  },
+  {
+    "nameEn": "ARAM_Repulsor",
+    "name": "斥力器",
+    "tier": "silver",
+    "quality": "silver",
+    "effect_type": "defense",
+    "pros": "自动击退防突进",
+    "cons": "自动触发不可控",
+    "scenarios": "后排防突进"
+  },
+  {
+    "nameEn": "ARAM_WitchfulThinking",
+    "name": "巫术思维",
+    "tier": "silver",
+    "quality": "silver",
+    "effect_type": "damage",
+    "pros": "随等级成长AP",
+    "cons": "前期加成少",
+    "scenarios": "AP英雄基础选择"
+  },
+  {
+    "nameEn": "ARAM_IceCold",
+    "name": "冰冷",
+    "tier": "silver",
+    "quality": "silver",
+    "effect_type": "utility",
+    "pros": "技能减速效果增强",
+    "cons": "无控制技能无效",
+    "scenarios": "控制型英雄"
+  },
+  {
+    "nameEn": "ARAM_Goredrink",
+    "name": "血之渴望",
+    "tier": "silver",
+    "quality": "silver",
+    "effect_type": "sustain",
+    "pros": "击杀回复生命值",
+    "cons": "依赖击杀触发",
+    "scenarios": "收割型英雄"
+  },
+  {
+    "nameEn": "ARAM_GuiltyPleasure",
+    "name": "恶趣味",
+    "tier": "silver",
+    "quality": "silver",
+    "effect_type": "damage",
+    "pros": "对控制目标额外伤害+回复",
+    "cons": "依赖控制",
+    "scenarios": "控制型英雄"
+  },
+  {
+    "nameEn": "ARAM_HeavyHitter",
+    "name": "重拳出击",
+    "tier": "silver",
+    "quality": "silver",
+    "effect_type": "damage",
+    "pros": "生命值转额外伤害",
+    "cons": "伤害不算高",
+    "scenarios": "坦克英雄"
+  },
+  {
+    "nameEn": "ARAM_Homeguard",
+    "name": "家园守卫",
+    "tier": "silver",
+    "quality": "silver",
+    "effect_type": "mobility",
+    "pros": "离开基地时加速",
+    "cons": "大乱斗无效",
+    "scenarios": "召唤师峡谷"
+  },
+  {
+    "nameEn": "ARAM_BuffBuddies",
+    "name": "霸符兄弟",
+    "tier": "silver",
+    "quality": "silver",
+    "effect_type": "utility",
+    "pros": "红蓝Buff常驻",
+    "cons": "无特殊机制",
+    "scenarios": "通用"
+  },
+  {
+    "nameEn": "ARAM_Deft",
+    "name": "灵巧",
+    "tier": "silver",
+    "quality": "silver",
+    "effect_type": "damage",
+    "pros": "+60%攻速",
+    "cons": "只加攻速",
+    "scenarios": "攻速流AD"
+  },
+  {
+    "nameEn": "ARAM_BluntForce",
+    "name": "钝力",
+    "tier": "silver",
+    "quality": "silver",
+    "effect_type": "damage",
+    "pros": "+20%攻击力",
+    "cons": "无其他效果",
+    "scenarios": "AD英雄可靠基础"
+  },
+  {
+    "nameEn": "ARAM_Eureka",
+    "name": "尤里卡",
+    "tier": "chromatic",
+    "quality": "prismatic",
+    "effect_type": "utility",
+    "pros": "技能急速=30%AP",
+    "cons": "AD英雄无效",
+    "scenarios": "高AP法师"
+  },
+  {
+    "nameEn": "ARAM_Cerberus",
+    "name": "地狱三头犬",
+    "tier": "chromatic",
+    "quality": "prismatic",
+    "effect_type": "damage",
+    "pros": "丛刃+强攻双符文",
+    "cons": "只对普攻型有效",
+    "scenarios": "ADC、攻速战士"
+  },
+  {
+    "nameEn": "ARAM_Earthwake",
+    "name": "大地苏醒",
+    "tier": "chromatic",
+    "quality": "prismatic",
+    "effect_type": "damage",
+    "pros": "位移留下爆炸轨迹",
+    "cons": "无位移英雄无法利用",
+    "scenarios": "高位移频率英雄"
+  },
+  {
+    "nameEn": "ARAM_PandorasBox",
+    "name": "潘多拉的盒子",
+    "tier": "chromatic",
+    "quality": "prismatic",
+    "effect_type": "utility",
+    "pros": "随机棱彩符文",
+    "cons": "随机性强",
+    "scenarios": "搏上限",
+    "special_label": "搏一搏，单车变摩托！"
+  },
+  {
+    "nameEn": "ARAM_TrueshotProdigy",
+    "name": "弹射大炮",
+    "tier": "chromatic",
+    "quality": "prismatic",
+    "effect_type": "damage",
+    "pros": "远程技能命中追加攻击",
+    "cons": "近战无效",
+    "scenarios": "远程消耗型英雄"
+  },
+  {
+    "nameEn": "ARAM_Stats",
+    "name": "属性！",
+    "tier": "silver",
+    "quality": "silver",
+    "effect_type": "utility",
+    "pros": "随机属性永久提升",
+    "cons": "属性数值不算高",
+    "scenarios": "锻体流起步",
+    "special_label": "锻体流核心"
+  },
+  {
+    "nameEn": "ARAM_StatsOnStats",
+    "name": "属性叠属性！",
+    "tier": "gold",
+    "quality": "gold",
+    "effect_type": "utility",
+    "pros": "中等属性提升",
+    "cons": "随机分布",
+    "scenarios": "继续锻体",
+    "special_label": "锻体流核心"
+  },
+  {
+    "nameEn": "ARAM_StatsOnStatsOnStats",
+    "name": "属性叠属性叠属性！",
+    "tier": "chromatic",
+    "quality": "prismatic",
+    "effect_type": "utility",
+    "pros": "大量属性提升",
+    "cons": "需要前面基础",
+    "scenarios": "顶配锻体",
+    "special_label": "锻体流核心"
+  },
+  {
+    "nameEn": "ARAM_TransmuteChaos",
+    "name": "质变：混沌",
+    "tier": "chromatic",
+    "quality": "prismatic",
+    "effect_type": "utility",
+    "pros": "随机2个强化符文",
+    "cons": "随机性强",
+    "scenarios": "搏上限",
+    "special_label": "你是主播！！！"
+  },
+  {
+    "nameEn": "ARAM_TransmutePrismatic",
+    "name": "质变：棱彩阶",
+    "tier": "gold",
+    "quality": "gold",
+    "effect_type": "utility",
+    "pros": "可能获得顶级棱彩符文",
+    "cons": "随机性大",
+    "scenarios": "欧皇专属",
+    "special_label": "欧皇附体！"
+  },
+  {
+    "nameEn": "ARAM_BladeWaltz",
+    "name": "利刃华尔兹",
+    "tier": "chromatic",
+    "quality": "prismatic",
+    "effect_type": "damage",
+    "pros": "不可选中多段打击",
+    "cons": "替换召唤师技能",
+    "scenarios": "AD/AP刺客"
+  },
+  {
+    "nameEn": "ARAM_InfernoTriggered",
+    "name": "炼狱扳机",
+    "tier": "chromatic",
+    "quality": "prismatic",
+    "effect_type": "damage",
+    "pros": "S评价自动大招",
+    "cons": "需要叠S评价",
+    "scenarios": "连招型AD英雄"
+  },
+  {
+    "nameEn": "ARAM_PoroKing",
+    "name": "魄罗之王的弹跳",
+    "tier": "chromatic",
+    "quality": "prismatic",
+    "effect_type": "damage",
+    "pros": "弹跳伤害+击退",
+    "cons": "需要把握时机",
+    "scenarios": "开团和分割战场"
+  },
+  {
+    "nameEn": "ARAM_Dropkick",
+    "name": "踢倒",
+    "tier": "chromatic",
+    "quality": "prismatic",
+    "effect_type": "damage",
+    "pros": "普攻斩杀残血",
+    "cons": "对高血量无效",
+    "scenarios": "AD收割型英雄"
+  },
+  {
+    "nameEn": "Sonata",
+    "name": "娑娜塔",
+    "tier": "gold",
+    "quality": "gold",
+    "effect_type": "utility",
+    "pros": "自动团队增益",
+    "cons": "自动释放不可控",
+    "scenarios": "通用"
+  },
+  {
+    "nameEn": "ARAM_SpeedDemon",
+    "name": "速度恶魔",
+    "tier": "silver",
+    "quality": "silver",
+    "effect_type": "mobility",
+    "pros": "高移速时额外伤害",
+    "cons": "需要保持高移速",
+    "scenarios": "高移速英雄"
+  },
+  {
+    "nameEn": "ARAM_PhenomenalEvil",
+    "name": "超凡邪恶",
+    "tier": "gold",
+    "quality": "gold",
+    "effect_type": "damage",
+    "pros": "技能命中永久叠AP",
+    "cons": "需要频繁消耗",
+    "scenarios": "消耗型AP法师"
+  },
+  {
+    "nameEn": "ARAM_Firefox",
+    "name": "火狐",
+    "tier": "silver",
+    "quality": "silver",
+    "effect_type": "damage",
+    "pros": "周期性火焰弹",
+    "cons": "自动释放不可控",
+    "scenarios": "通用"
+  },
+  {
+    "nameEn": "Donation",
+    "name": "捐赠",
+    "tier": "gold",
+    "quality": "gold",
+    "effect_type": "utility",
+    "pros": "获得1750金币",
+    "cons": "只有一个符文位",
+    "scenarios": "需要快速成型"
+  },
+  {
+    "nameEn": "ARAM_LittleDevil",
+    "name": "小恶魔",
+    "tier": "chromatic",
+    "quality": "prismatic",
+    "effect_type": "damage",
+    "pros": "周期性额外伤害",
+    "cons": "数值不高",
+    "scenarios": "通用"
+  },
+  {
+    "nameEn": "Flash2",
+    "name": "闪光2号",
+    "tier": "silver",
+    "quality": "silver",
+    "effect_type": "mobility",
+    "pros": "额外闪现+召唤师技能急速",
+    "cons": "替换一个召唤师技能",
+    "scenarios": "需要多段位移"
+  },
+  {
+    "nameEn": "GrandmasChiliOil",
+    "name": "祖母的辣椒油",
+    "tier": "gold",
+    "quality": "gold",
+    "effect_type": "damage",
+    "pros": "攻击附加燃烧",
+    "cons": "数值较低",
+    "scenarios": "通用"
+  },
+  {
+    "nameEn": "RedEnvelopes",
+    "name": "红包",
+    "tier": "gold",
+    "quality": "gold",
+    "effect_type": "utility",
+    "pros": "额外金币和属性",
+    "cons": "需要拾取红包",
+    "scenarios": "发育型英雄"
+  },
+  {
+    "nameEn": "ShrinkEngine",
+    "name": "缩小引擎",
+    "tier": "gold",
+    "quality": "gold",
+    "effect_type": "utility",
+    "pros": "参与击杀叠急速移速",
+    "cons": "死亡损失一半",
+    "scenarios": "能频繁参与击杀"
+  },
+  {
+    "nameEn": "ARAM_CriticalMissile",
+    "name": "暴击飞弹",
+    "tier": "gold",
+    "quality": "gold",
+    "effect_type": "damage",
+    "pros": "暴击追加飞弹",
+    "cons": "非暴击流无效",
+    "scenarios": "暴击流AD"
+  },
+  {
+    "nameEn": "CritNCast",
+    "name": "暴击施法",
+    "tier": "silver",
+    "quality": "silver",
+    "effect_type": "utility",
+    "pros": "暴击率转技能急速",
+    "cons": "非暴击流无效",
+    "scenarios": "暴击+技能混合型"
+  },
+  {
+    "nameEn": "GoldenSnowball",
+    "name": "神圣雪球",
+    "tier": "chromatic",
+    "quality": "prismatic",
+    "effect_type": "damage",
+    "pros": "雪球附加神圣伤害",
+    "cons": "需要雪球命中",
+    "scenarios": "雪球使用者"
+  },
+  {
+    "nameEn": "BiggestSnowballEver",
+    "name": "巨型雪球",
+    "tier": "chromatic",
+    "quality": "prismatic",
+    "effect_type": "mobility",
+    "pros": "雪球穿透+群控+AOE",
+    "cons": "需要雪球命中",
+    "scenarios": "ARAM专属"
+  },
+  {
+    "nameEn": "SnowballUpgrade",
+    "name": "升级：雪球",
+    "tier": "gold",
+    "quality": "gold",
+    "effect_type": "utility",
+    "pros": "雪球效果强化",
+    "cons": "需要雪球",
+    "scenarios": "雪球使用者"
+  },
+  {
+    "nameEn": "PinballSnowball",
+    "name": "弹球",
+    "tier": "gold",
+    "quality": "gold",
+    "effect_type": "mobility",
+    "pros": "雪球弹跳额外目标",
+    "cons": "不可控方向",
+    "scenarios": "雪球使用者"
+  },
+  {
+    "nameEn": "SoulEater",
+    "name": "吞噬灵魂",
+    "tier": "gold",
+    "quality": "gold",
+    "effect_type": "sustain",
+    "pros": "击杀回复大量生命值",
+    "cons": "需要击杀",
+    "scenarios": "收割型英雄"
+  },
+  {
+    "nameEn": "GrowthSpurt",
+    "name": "成长加速",
+    "tier": "gold",
+    "quality": "gold",
+    "effect_type": "utility",
+    "pros": "随时间成长属性",
+    "cons": "前期弱",
+    "scenarios": "后期英雄"
+  },
+  {
+    "nameEn": "EmpyreanPromise",
+    "name": "天界承诺",
+    "tier": "chromatic",
+    "quality": "prismatic",
+    "effect_type": "defense",
+    "pros": "治疗/护盾储存伤害",
+    "cons": "需要治疗护盾触发",
+    "scenarios": "辅助英雄"
+  },
+  {
+    "nameEn": "LaserHeal",
+    "name": "激光治疗",
+    "tier": "chromatic",
+    "quality": "prismatic",
+    "effect_type": "sustain",
+    "pros": "周期性激光治疗",
+    "cons": "治疗量有限",
+    "scenarios": "通用"
+  },
+  {
+    "nameEn": "Twinfire",
+    "name": "双生火焰",
+    "tier": "silver",
+    "quality": "silver",
+    "effect_type": "damage",
+    "pros": "技能双重施放",
+    "cons": "有内置CD",
+    "scenarios": "技能型英雄"
+  },
+  {
+    "nameEn": "ARAM_Quest_UrfsChampion",
+    "name": "任务：乌尔夫的冠军",
+    "tier": "chromatic",
+    "quality": "prismatic",
+    "effect_type": "utility",
+    "pros": "完成条件获得金铲铲",
+    "cons": "需要22次参与击杀",
+    "scenarios": "频繁参与击杀的英雄"
+  },
+  {
+    "nameEn": "ARAM_Quest_WoogletsWitchcap",
+    "name": "任务：沃格莱特的巫帽",
+    "tier": "chromatic",
+    "quality": "prismatic",
+    "effect_type": "defense",
+    "pros": "完成条件获得金身装备",
+    "cons": "需要完成任务",
+    "scenarios": "AP英雄"
+  },
+  {
+    "nameEn": "ARAM_ProteinShake",
+    "name": "蛋白质奶昔",
+    "tier": "chromatic",
+    "quality": "prismatic",
+    "effect_type": "defense",
+    "pros": "治疗转化为护盾",
+    "cons": "依赖治疗",
+    "scenarios": "坦克和有回复的英雄"
+  },
+  {
+    "nameEn": "FinalForm",
+    "name": "最终形态",
+    "tier": "chromatic",
+    "quality": "prismatic",
+    "effect_type": "defense",
+    "pros": "大招后超级赛亚人状态",
+    "cons": "依赖大招CD",
+    "scenarios": "战士和刺客"
+  },
+  {
+    "nameEn": "Vampirism",
+    "name": "吸血习性",
+    "tier": "gold",
+    "quality": "gold",
+    "effect_type": "sustain",
+    "pros": "+25%全能吸血",
+    "cons": "无法被队友治疗",
+    "scenarios": "高输出有自保的英雄"
+  },
+  {
+    "nameEn": "EscapePlan",
+    "name": "逃跑计划",
+    "tier": "silver",
+    "quality": "silver",
+    "effect_type": "defense",
+    "pros": "残血大护盾+移速",
+    "cons": "75秒CD",
+    "scenarios": "脆皮英雄保命"
+  },
+  {
+    "nameEn": "ARAM_SpiritualPurification",
+    "name": "精神净化",
+    "tier": "gold",
+    "quality": "gold",
+    "effect_type": "utility",
+    "pros": "周期性解控",
+    "cons": "自动触发不可控",
+    "scenarios": "通用"
+  },
+  {
+    "nameEn": "ARAM_SkilledSniper",
+    "name": "弹射大炮",
+    "tier": "gold",
+    "quality": "gold",
+    "effect_type": "damage",
+    "pros": "远程技能追加攻击",
+    "cons": "近战无效",
+    "scenarios": "远程消耗英雄"
+  },
+  {
+    "nameEn": "ARAM_MindtoMatter",
+    "name": "精神转化",
+    "tier": "silver",
+    "quality": "silver",
+    "effect_type": "defense",
+    "pros": "法力值转化为护盾",
+    "cons": "法力值低的英雄差",
+    "scenarios": "高法力值法师"
+  },
+  {
+    "nameEn": "ARAM_BreadAndCheese",
+    "name": "强化攻击",
+    "tier": "gold",
+    "quality": "gold",
+    "effect_type": "damage",
+    "pros": "攻击力+法强双提升",
+    "cons": "提升幅度一般",
+    "scenarios": "双修英雄"
+  },
+  {
+    "nameEn": "ARAM_BreadAndJam",
+    "name": "强化防御",
+    "tier": "gold",
+    "quality": "gold",
+    "effect_type": "defense",
+    "pros": "双抗+生命值提升",
+    "cons": "纯防御",
+    "scenarios": "坦克英雄"
+  },
+  {
+    "nameEn": "ARAM_Goliath",
+    "name": "巨人",
+    "tier": "chromatic",
+    "quality": "prismatic",
+    "effect_type": "defense",
+    "pros": "+体型+生命值",
+    "cons": "更大的受击判定",
+    "scenarios": "坦克英雄"
+  },
+  {
+    "nameEn": "ARAM_Minionmancer",
+    "name": "小兵统帅",
+    "tier": "gold",
+    "quality": "gold",
+    "effect_type": "utility",
+    "pros": "强化小兵",
+    "cons": "后期小兵意义小",
+    "scenarios": "推线英雄"
+  },
+  {
+    "nameEn": "ARAM_RabbleRousing",
+    "name": "煽动",
+    "tier": "gold",
+    "quality": "gold",
+    "effect_type": "utility",
+    "pros": "友方小兵获得强化",
+    "cons": "后期效果差",
+    "scenarios": "推进阵容"
+  },
+  {
+    "nameEn": "ARAM_BacktoBasics",
+    "name": "返璞归真",
+    "tier": "chromatic",
+    "quality": "prismatic",
+    "effect_type": "damage",
+    "pros": "基础技能伤害提升",
+    "cons": "大招伤害降低",
+    "scenarios": "依赖小技能的英雄"
+  },
+  {
+    "nameEn": "ARAM_InfernalSoul",
+    "name": "地狱龙魂",
+    "tier": "silver",
+    "quality": "silver",
+    "effect_type": "damage",
+    "pros": "获得地狱龙魂效果",
+    "cons": "无其他效果",
+    "scenarios": "通用"
+  },
+  {
+    "nameEn": "ARAM_MountainSoul",
+    "name": "山脉龙魂",
+    "tier": "silver",
+    "quality": "silver",
+    "effect_type": "defense",
+    "pros": "获得山脉龙魂效果",
+    "cons": "无其他效果",
+    "scenarios": "通用"
+  },
+  {
+    "nameEn": "ARAM_OceanSoul",
+    "name": "海洋龙魂",
+    "tier": "silver",
+    "quality": "silver",
+    "effect_type": "sustain",
+    "pros": "获得海洋龙魂效果",
+    "cons": "无其他效果",
+    "scenarios": "通用"
+  },
+  {
+    "nameEn": "ARAM_OmniSoul",
+    "name": "全能龙魂",
+    "tier": "chromatic",
+    "quality": "prismatic",
+    "effect_type": "utility",
+    "pros": "随机龙魂效果",
+    "cons": "随机性强",
+    "scenarios": "通用"
+  },
+  {
+    "nameEn": "ARAM_SlowAndSteady",
+    "name": "稳扎稳打",
+    "tier": "gold",
+    "quality": "gold",
+    "effect_type": "defense",
+    "pros": "+双抗+韧性",
+    "cons": "降低移速",
+    "scenarios": "坦克英雄"
+  },
+  {
+    "nameEn": "ARAM_Executioner",
+    "name": "处决者",
+    "tier": "gold",
+    "quality": "gold",
+    "effect_type": "damage",
+    "pros": "低血量额外伤害",
+    "cons": "对满血无效",
+    "scenarios": "收割型英雄"
+  },
+  {
+    "nameEn": "ARAM_CircleofDeath",
+    "name": "死亡之环",
+    "tier": "chromatic",
+    "quality": "prismatic",
+    "effect_type": "damage",
+    "pros": "周期性AOE伤害光环",
+    "cons": "需要近身",
+    "scenarios": "近战英雄"
+  },
+  {
+    "nameEn": "ARAM_DontBlink",
+    "name": "别眨眼",
+    "tier": "silver",
+    "quality": "silver",
+    "effect_type": "damage",
+    "pros": "技能命中附加标记伤害",
+    "cons": "需要连续命中",
+    "scenarios": "技能型英雄"
+  },
+  {
+    "nameEn": "ARAM_EtherealWeapon",
+    "name": "虚幻武器",
+    "tier": "gold",
+    "quality": "gold",
+    "effect_type": "damage",
+    "pros": "攻击附加魔法伤害",
+    "cons": "AD英雄效果有限",
+    "scenarios": "双修英雄"
+  },
+  {
+    "nameEn": "ARAM_FanTheHammer",
+    "name": "连续射击",
+    "tier": "chromatic",
+    "quality": "prismatic",
+    "effect_type": "damage",
+    "pros": "连续攻击伤害递增",
+    "cons": "需要持续攻击",
+    "scenarios": "ADC"
+  },
+  {
+    "nameEn": "ARAM_GetExcited",
+    "name": "兴奋起来",
+    "tier": "gold",
+    "quality": "gold",
+    "effect_type": "mobility",
+    "pros": "击杀/助攻获得移速",
+    "cons": "依赖参与击杀",
+    "scenarios": "收割型英雄"
+  },
+  {
+    "nameEn": "ARAM_Impassable",
+    "name": "不可通行",
+    "tier": "gold",
+    "quality": "gold",
+    "effect_type": "defense",
+    "pros": "创造障碍物",
+    "cons": "效果有限",
+    "scenarios": "控制型英雄"
+  },
+  {
+    "nameEn": "ARAM_ItsCritical",
+    "name": "暴击专精",
+    "tier": "gold",
+    "quality": "gold",
+    "effect_type": "damage",
+    "pros": "+50%暴击率",
+    "cons": "只加暴击",
+    "scenarios": "暴击流AD"
+  },
+  {
+    "nameEn": "ARAM_LightemUp",
+    "name": "点亮他们！",
+    "tier": "silver",
+    "quality": "silver",
+    "effect_type": "damage",
+    "pros": "攻击附带火花爆炸",
+    "cons": "需要多次攻击",
+    "scenarios": "ADC"
+  },
+  {
+    "nameEn": "ARAM_ScopiestWeapons",
+    "name": "超远程武器",
+    "tier": "chromatic",
+    "quality": "prismatic",
+    "effect_type": "damage",
+    "pros": "+大量攻击距离",
+    "cons": "近战效果差",
+    "scenarios": "ADC"
+  },
+  {
+    "nameEn": "ARAM_ThreadtheNeedle",
+    "name": "穿针引线",
+    "tier": "gold",
+    "quality": "gold",
+    "effect_type": "damage",
+    "pros": "穿透护甲",
+    "cons": "对脆皮收益低",
+    "scenarios": "对抗坦克"
+  },
+  {
+    "nameEn": "ARAM_TwiceThrice",
+    "name": "再三再四",
+    "tier": "gold",
+    "quality": "gold",
+    "effect_type": "damage",
+    "pros": "攻击次数翻倍",
+    "cons": "单次伤害降低",
+    "scenarios": "攻击特效英雄"
+  },
+  {
+    "nameEn": "ARAM_VirtuousCycle",
+    "name": "良性循环",
+    "tier": "silver",
+    "quality": "silver",
+    "effect_type": "sustain",
+    "pros": "治疗附带额外治疗",
+    "cons": "需要治疗技能",
+    "scenarios": "辅助英雄"
+  },
+  {
+    "nameEn": "ARAM_WithHaste",
+    "name": "急速",
+    "tier": "gold",
+    "quality": "gold",
+    "effect_type": "utility",
+    "pros": "+技能急速",
+    "cons": "数值不高",
+    "scenarios": "通用"
+  },
+  {
+    "nameEn": "ARAM_escAPADe",
+    "name": "AP逃脱",
+    "tier": "silver",
+    "quality": "silver",
+    "effect_type": "mobility",
+    "pros": "施法后短暂加速",
+    "cons": "持续时间短",
+    "scenarios": "法师"
+  },
+  {
+    "nameEn": "Adamant",
+    "name": "坚定不移",
+    "tier": "silver",
+    "quality": "silver",
+    "effect_type": "defense",
+    "pros": "控制叠高双抗",
+    "cons": "需要频繁控制",
+    "scenarios": "控制型坦克"
+  },
+  {
+    "nameEn": "ARAM_ApexInventor",
+    "name": "尖端发明家",
+    "tier": "gold",
+    "quality": "gold",
+    "effect_type": "utility",
+    "pros": "装备急速",
+    "cons": "无主动装备无效",
+    "scenarios": "出主动装备的英雄"
+  },
+  {
+    "nameEn": "ARAM_Cruelty",
+    "name": "残酷",
+    "tier": "chromatic",
+    "quality": "prismatic",
+    "effect_type": "damage",
+    "pros": "对低血量造成额外伤害",
+    "cons": "高血量无效",
+    "scenarios": "收割英雄"
+  },
+  {
+    "nameEn": "KingMe",
+    "name": "称王",
+    "tier": "chromatic",
+    "quality": "prismatic",
+    "effect_type": "damage",
+    "pros": "对高血量敌人额外伤害",
+    "cons": "低血量无效",
+    "scenarios": "开团英雄"
+  },
+  {
+    "nameEn": "GlassCannon",
+    "name": "玻璃大炮",
+    "tier": "chromatic",
+    "quality": "prismatic",
+    "effect_type": "damage",
+    "pros": "+伤害-生命值",
+    "cons": "降低生存",
+    "scenarios": "后排输出"
+  },
+  {
+    "nameEn": "Nightstalking",
+    "name": "暗夜猎杀",
+    "tier": "gold",
+    "quality": "gold",
+    "effect_type": "mobility",
+    "pros": "朝标记敌人+移速",
+    "cons": "撤退时无效",
+    "scenarios": "刺客"
+  },
+  {
+    "nameEn": "Quest_Sneakerhead",
+    "name": "任务：鞋控",
+    "tier": "chromatic",
+    "quality": "prismatic",
+    "effect_type": "mobility",
+    "pros": "完成条件获得移速",
+    "cons": "需要完成任务",
+    "scenarios": "需要移速的英雄"
+  },
+  {
+    "nameEn": "ARAM_Upgrade_Collector",
+    "name": "升级：收集者",
+    "tier": "silver",
+    "quality": "silver",
+    "effect_type": "damage",
+    "pros": "强化收集者效果",
+    "cons": "需要出收集者",
+    "scenarios": "AD收割"
+  },
+  {
+    "nameEn": "ARAM_Upgrade_Hubris",
+    "name": "升级：狂妄",
+    "tier": "gold",
+    "quality": "gold",
+    "effect_type": "damage",
+    "pros": "强化狂妄效果",
+    "cons": "需要出狂妄",
+    "scenarios": "AD英雄"
+  },
+  {
+    "nameEn": "ARAM_Upgrade_Immolate",
+    "name": "升级：献祭",
+    "tier": "silver",
+    "quality": "silver",
+    "effect_type": "damage",
+    "pros": "强化献祭效果",
+    "cons": "需要出献祭装备",
+    "scenarios": "坦克"
+  },
+  {
+    "nameEn": "ARAM_Upgrade_Sheen",
+    "name": "升级：耀光",
+    "tier": "gold",
+    "quality": "gold",
+    "effect_type": "damage",
+    "pros": "强化耀光效果",
+    "cons": "需要出耀光装备",
+    "scenarios": "技能型英雄"
+  },
+  {
+    "nameEn": "ARAM_Upgrade_ZH",
+    "name": "升级：中娅",
+    "tier": "silver",
+    "quality": "silver",
+    "effect_type": "defense",
+    "pros": "强化中娅沙漏",
+    "cons": "需要出中娅",
+    "scenarios": "AP英雄"
+  },
+  {
+    "nameEn": "Upgrade_MikaelsBlessing",
+    "name": "升级：米凯尔",
+    "tier": "chromatic",
+    "quality": "prismatic",
+    "effect_type": "utility",
+    "pros": "强化米凯尔的祝福",
+    "cons": "需要出米凯尔",
+    "scenarios": "辅助英雄"
+  },
+  {
+    "nameEn": "ARAM_UltimateRevolution",
+    "name": "终极革命",
+    "tier": "chromatic",
+    "quality": "prismatic",
+    "effect_type": "utility",
+    "pros": "大招二连发",
+    "cons": "75秒CD",
+    "scenarios": "大招效果强大的英雄"
+  },
+  {
+    "nameEn": "ARAM_MountainSoul",
+    "name": "山脉龙魂",
+    "tier": "silver",
+    "quality": "silver",
+    "effect_type": "defense",
+    "pros": "获得山脉龙魂",
+    "cons": "无其他",
+    "scenarios": "通用"
+  },
+  {
+    "nameEn": "ARAM_IceCold",
+    "name": "冰霜之魂",
+    "tier": "silver",
+    "quality": "silver",
+    "effect_type": "sustain",
+    "pros": "海洋龙魂回血",
+    "cons": "战斗回复慢",
+    "scenarios": "需要续航"
+  },
+  {
+    "nameEn": "ARAM_DualWield",
+    "name": "双刀流",
+    "tier": "chromatic",
+    "quality": "prismatic",
+    "effect_type": "damage",
+    "pros": "攻击特效双触发",
+    "cons": "技能型提升有限",
+    "scenarios": "攻击特效ADC"
+  },
+  {
+    "nameEn": "CriticalRhythm",
+    "name": "暴击节奏",
+    "tier": "gold",
+    "quality": "gold",
+    "effect_type": "damage",
+    "pros": "暴击后攻速提升",
+    "cons": "非暴击流无效",
+    "scenarios": "暴击流AD"
+  },
+  {
+    "nameEn": "ARAM_TrainOfTheDead",
+    "name": "最终都市列车",
+    "tier": "gold",
+    "quality": "gold",
+    "effect_type": "damage",
+    "pros": "死亡时释放列车撞击",
+    "cons": "需要死亡触发",
+    "scenarios": "开团坦克"
+  },
+  {
+    "nameEn": "ARAM_PromQueen",
+    "name": "舞会皇后",
+    "tier": "silver",
+    "quality": "silver",
+    "effect_type": "utility",
+    "pros": "友方增益光环",
+    "cons": "光环范围有限",
+    "scenarios": "辅助英雄"
+  },
+  {
+    "nameEn": "ReEnergize",
+    "name": "重新充能",
+    "tier": "silver",
+    "quality": "silver",
+    "effect_type": "utility",
+    "pros": "周期性回复生命和法力",
+    "cons": "回复量有限",
+    "scenarios": "需要续航的英雄"
+  },
+  {
+    "nameEn": "Upgrade_Thornmail",
+    "name": "升级：荆棘之甲",
+    "tier": "silver",
+    "quality": "silver",
+    "effect_type": "defense",
+    "pros": "强化反伤效果",
+    "cons": "需要出荆棘之甲",
+    "scenarios": "坦克英雄"
+  },
+  {
+    "nameEn": "Fetch",
+    "name": "拾取",
+    "tier": "silver",
+    "quality": "silver",
+    "effect_type": "utility",
+    "pros": "自动拾取附近道具",
+    "cons": "范围有限",
+    "scenarios": "通用"
+  },
+  {
+    "nameEn": "PromQueen",
+    "name": "舞会皇后",
+    "tier": "chromatic",
+    "quality": "prismatic",
+    "effect_type": "utility",
+    "pros": "周期性友方增益光环",
+    "cons": "光环范围有限",
+    "scenarios": "辅助英雄"
+  },
+  {
+    "nameEn": "ARAM_FeeltheBurn",
+    "name": "感受灼烧",
+    "tier": "chromatic",
+    "quality": "prismatic",
+    "effect_type": "damage",
+    "pros": "技能附加灼烧效果",
+    "cons": "需要技能命中",
+    "scenarios": "技能型英雄"
+  },
+  {
+    "nameEn": "ARAM_MissingPingAugment",
+    "name": "信号增强",
+    "tier": "chromatic",
+    "quality": "prismatic",
+    "effect_type": "utility",
+    "pros": "发送信号获得增益",
+    "cons": "需要主动发信号",
+    "scenarios": "团队协作"
+  },
+  {
+    "nameEn": "InfiniteRecursion",
+    "name": "无限递归",
+    "tier": "chromatic",
+    "quality": "prismatic",
+    "effect_type": "damage",
+    "pros": "技能连击伤害递增",
+    "cons": "需要连续命中",
+    "scenarios": "技能连招型英雄"
+  },
+  {
+    "nameEn": "ARAM_CrackOpenThatEgg",
+    "name": "敲开蛋壳",
+    "tier": "silver",
+    "quality": "silver",
+    "effect_type": "defense",
+    "pros": "护盾爆炸造成范围伤害",
+    "cons": "依赖护盾触发",
+    "scenarios": "有护盾技能的英雄"
+  },
+  {
+    "nameEn": "ARAM_Juiced",
+    "name": "充能",
+    "tier": "silver",
+    "quality": "silver",
+    "effect_type": "utility",
+    "pros": "获得强化增益",
+    "cons": "持续时间有限",
+    "scenarios": "通用"
+  },
+  {
+    "nameEn": "TrainOfTheDead",
+    "name": "最终都市列车",
+    "tier": "gold",
+    "quality": "gold",
+    "effect_type": "damage",
+    "pros": "死亡时释放列车撞击",
+    "cons": "需要死亡触发",
+    "scenarios": "开团坦克"
+  },
+  {
+    "nameEn": "ARAM_EmpoweredByTheFaithful",
+    "name": "信仰之力",
+    "tier": "chromatic",
+    "quality": "prismatic",
+    "effect_type": "damage",
+    "pros": "治疗/护盾叠层释放AOE",
+    "cons": "需要时间叠层",
+    "scenarios": "辅助英雄"
+  },
+  {
+    "nameEn": "KillSecured",
+    "name": "确保击杀",
+    "tier": "silver",
+    "quality": "silver",
+    "effect_type": "damage",
+    "pros": "低血量敌人额外伤害",
+    "cons": "对满血无效",
+    "scenarios": "收割型英雄"
+  },
+  {
+    "nameEn": "ARAM_Purist_Caster",
+    "name": "纯粹施法者",
+    "tier": "silver",
+    "quality": "silver",
+    "effect_type": "damage",
+    "pros": "提升技能伤害",
+    "cons": "降低攻速",
+    "scenarios": "纯技能型法师"
+  },
+  {
+    "nameEn": "YouSpinMeRightRound",
+    "name": "旋转不停",
+    "tier": "silver",
+    "quality": "silver",
+    "effect_type": "damage",
+    "pros": "周期性旋转AOE",
+    "cons": "范围有限",
+    "scenarios": "近战英雄"
+  },
+  {
+    "nameEn": "Goldrend",
+    "name": "金裂",
+    "tier": "chromatic",
+    "quality": "prismatic",
+    "effect_type": "damage",
+    "pros": "金币转化为伤害",
+    "cons": "消耗金币",
+    "scenarios": "经济型英雄"
+  },
+  {
+    "nameEn": "ARAM_Zealot",
+    "name": "狂热者",
+    "tier": "silver",
+    "quality": "silver",
+    "effect_type": "damage",
+    "pros": "攻速和移速加成",
+    "cons": "受到更多伤害",
+    "scenarios": "ADC"
+  },
+  {
+    "nameEn": "ARAM_VoidRift",
+    "name": "虚空裂隙",
+    "tier": "chromatic",
+    "quality": "prismatic",
+    "effect_type": "damage",
+    "pros": "技能留下伤害区域",
+    "cons": "区域固定",
+    "scenarios": "技能型法师"
+  },
+  {
+    "nameEn": "Poltergeist",
+    "name": "捣蛋鬼",
+    "tier": "silver",
+    "quality": "silver",
+    "effect_type": "utility",
+    "pros": "周期性随机效果",
+    "cons": "随机性强",
+    "scenarios": "通用"
+  },
+  {
+    "nameEn": "WindBeneathBlade",
+    "name": "剑下之风",
+    "tier": "silver",
+    "quality": "silver",
+    "effect_type": "mobility",
+    "pros": "攻击后获得移速",
+    "cons": "需要持续攻击",
+    "scenarios": "近战AD"
+  },
+  {
+    "nameEn": "ARAM_Quest_VoidImmolation",
+    "name": "任务：虚空献祭",
+    "tier": "chromatic",
+    "quality": "prismatic",
+    "effect_type": "damage",
+    "pros": "完成条件获得虚空之力",
+    "cons": "需要完成任务",
+    "scenarios": "任务型英雄"
+  },
+  {
+    "nameEn": "ARAM_WeightedPopoffs",
+    "name": "重磅登场",
+    "tier": "silver",
+    "quality": "silver",
+    "effect_type": "damage",
+    "pros": "击杀后爆炸伤害",
+    "cons": "需要击杀触发",
+    "scenarios": "收割型英雄"
+  },
+  {
+    "nameEn": "ARAM_WatchOutGrapefruit",
+    "name": "小心葡萄柚",
+    "tier": "chromatic",
+    "quality": "prismatic",
+    "effect_type": "damage",
+    "pros": "周期性投掷爆炸物",
+    "cons": "自动释放不可控",
+    "scenarios": "通用"
+  },
+  {
+    "nameEn": "ARAM_Poro_Blast",
+    "name": "魄罗爆破",
+    "tier": "gold",
+    "quality": "gold",
+    "effect_type": "damage",
+    "pros": "魄罗爆炸造成伤害",
+    "cons": "需要魄罗命中",
+    "scenarios": "魄罗相关"
+  },
+  {
+    "nameEn": "CriticalMissile",
+    "name": "暴击飞弹",
+    "tier": "gold",
+    "quality": "gold",
+    "effect_type": "damage",
+    "pros": "暴击追加飞弹",
+    "cons": "非暴击流无效",
+    "scenarios": "暴击流AD"
+  },
+  {
+    "nameEn": "ARAM_StuckInHereWithMe",
+    "name": "与我困在一起",
+    "tier": "chromatic",
+    "quality": "prismatic",
+    "effect_type": "defense",
+    "pros": "限制敌人移动",
+    "cons": "自己也受影响",
+    "scenarios": "坦克英雄"
+  },
+  {
+    "nameEn": "Dropybara_Active",
+    "name": "水豚掉落",
+    "tier": "chromatic",
+    "quality": "prismatic",
+    "effect_type": "utility",
+    "pros": "周期性掉落道具",
+    "cons": "需要拾取",
+    "scenarios": "通用"
+  },
+  {
+    "nameEn": "HandOfBaron",
+    "name": "男爵之手",
+    "tier": "chromatic",
+    "quality": "prismatic",
+    "effect_type": "damage",
+    "pros": "获得纳什男爵之力",
+    "cons": "持续时间有限",
+    "scenarios": "通用"
+  },
+  {
+    "nameEn": "ARAM_DoubleTap",
+    "name": "双击",
+    "tier": "gold",
+    "quality": "gold",
+    "effect_type": "damage",
+    "pros": "攻击双重触发",
+    "cons": "单次伤害降低",
+    "scenarios": "攻击特效英雄"
+  },
+  {
+    "nameEn": "HextechSoul",
+    "name": "海克斯龙魂",
+    "tier": "silver",
+    "quality": "silver",
+    "effect_type": "utility",
+    "pros": "获得海克斯龙魂效果",
+    "cons": "无其他效果",
+    "scenarios": "通用"
+  },
+  {
+    "nameEn": "ARAM_TheBrutalizer",
+    "name": "残暴之力",
+    "tier": "silver",
+    "quality": "silver",
+    "effect_type": "damage",
+    "pros": "+穿甲+攻击力",
+    "cons": "纯输出",
+    "scenarios": "AD刺客"
+  }
+]
