@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
+import { compressImage } from "@/lib/utils";
 
 interface Hero {
   id: string; name: string; attack_type: string; title: string; nicknames?: string;
@@ -313,7 +314,8 @@ export default function RecsTab({ adminKey }: { adminKey: string }) {
     setBcUploading(prev => ({ ...prev, [psId]: true }));
     setBcUploadError(prev => { const next = { ...prev }; delete next[psId]; return next; });
     try {
-      const fd = new FormData(); fd.append("file", file);
+      const compressed = await compressImage(file);
+      const fd = new FormData(); fd.append("file", compressed);
       const res = await fetch("/api/admin/upload", { method: "POST", headers: { "X-Admin-Key": adminKey }, body: fd });
       const d = await res.json();
       if (d.url) {

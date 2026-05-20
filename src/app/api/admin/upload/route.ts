@@ -2,6 +2,8 @@ import { NextRequest } from "next/server";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { validateAdmin, adminError } from "@/lib/admin-auth";
 
+export const maxDuration = 30; // 手机端上传大图需要更多时间
+
 const BUCKET = "build-cards";
 
 export async function POST(req: NextRequest) {

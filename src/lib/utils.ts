@@ -62,3 +62,46 @@ export function clearGameFromStorage() {
   if (typeof window === "undefined") return;
   localStorage.removeItem(GAME_STORAGE_KEY);
 }
+
+const MAX_UPLOAD_BYTES = 500 * 1024; // 500KB
+
+export function compressImage(file: File, maxBytes = MAX_UPLOAD_BYTES): Promise<File> {
+  return new Promise((resolve, reject) => {
+    if (file.size <= maxBytes) return resolve(file);
+    if (!file.type.startsWith("image/")) return resolve(file);
+
+    const img = new Image();
+    const url = URL.createObjectURL(file);
+    img.onload = () => {
+      URL.revokeObjectURL(url);
+      const canvas = document.createElement("canvas");
+      let { width, height } = img;
+
+      // 限制最大尺寸 1200px，减少内存占用
+      const maxDim = 1200;
+      if (width > maxDim || height > maxDim) {
+        const ratio = Math.min(maxDim / width, maxDim / height);
+        width = Math.round(width * ratio);
+        height = Math.round(height * ratio);
+      }
+
+      canvas.width = width;
+      canvas.height = height;
+      const ctx = canvas.getContext("2d");
+      if (!ctx) return resolve(file);
+      ctx.drawImage(img, 0, 0, width, height);
+
+      canvas.toBlob(
+        (blob) => {
+          if (!blob) return resolve(file);
+          const compressed = new File([blob], file.name.replace(/\.[^.]+$/, ".jpg"), { type: "image/jpeg" });
+          resolve(compressed.size < file.size ? compressed : file);
+        },
+        "image/jpeg",
+        0.75
+      );
+    };
+    img.onerror = () => resolve(file);
+    img.src = url;
+  });
+}

@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback, useRef } from "react";
 import RecsTab from "@/app/admin/components/RecsTab";
+import { compressImage } from "@/lib/utils";
 
 const TABS = [
   { key: "dashboard", label: "仪表盘", icon: "📊" },
@@ -671,8 +672,9 @@ function BuildCardsTab({ adminKey }: { adminKey: string }) {
                 if (!f) return;
                 setUploading(true);
                 setUploadMsg("");
+                const compressed = await compressImage(f);
                 const fd = new FormData();
-                fd.append("file", f);
+                fd.append("file", compressed);
                 try {
                   const res = await fetch("/api/admin/upload", {
                     method: "POST",
