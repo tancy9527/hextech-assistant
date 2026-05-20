@@ -377,8 +377,11 @@ export default function RecsTab({ adminKey }: { adminKey: string }) {
     if (res.ok) {
       setBcSaveMsg("图文卡已保存");
       setTimeout(() => setBcSaveMsg(""), 2000);
+    } else {
+      const d = await res.json().catch(() => ({ error: "保存失败" }));
+      setBcUploadError(prev => ({ ...prev, [psId]: `保存失败：${d.error || res.statusText}` }));
+      if (modalHero) loadHero(modalHero.id);
     }
-    if (!res.ok) { if (modalHero) loadHero(modalHero.id); }
   };
 
   // === 筛选 ===

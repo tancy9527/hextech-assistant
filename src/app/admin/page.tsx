@@ -53,8 +53,12 @@ export default function AdminPage() {
   const handleLogin = async () => {
     if (!adminKey.trim()) return;
     setAuthError("");
-    // Verify the key works
     try {
+      await fetch("/api/admin/auth", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ key: adminKey.trim() }),
+      });
       const res = await fetch("/api/admin/heroes", {
         headers: { "Content-Type": "application/json", "X-Admin-Key": adminKey.trim() },
       });
