@@ -302,7 +302,7 @@ export default function HomePage() {
           海克斯助手
         </h1>
         <p className="text-[12px] text-sage-500">
-          ARAM Mayhem · 符文推荐
+          大乱斗符文搭配推荐
         </p>
       </div>
 
