@@ -9,7 +9,6 @@ import PlaystyleSelector from "@/app/components/PlaystyleSelector";
 import TeamTags from "@/app/components/TeamTags";
 import RuneCard from "@/app/components/RuneCard";
 import RuneQuickSearch from "@/app/components/RuneQuickSearch";
-import NotificationPrompt from "@/app/components/NotificationPrompt";
 import ExclusionBar from "@/app/components/ExclusionBar";
 import BuildCard from "@/app/components/BuildCard";
 import {
@@ -306,9 +305,6 @@ export default function HomePage() {
           ARAM Mayhem · 符文推荐
         </p>
       </div>
-
-      {/* Notification permission prompt */}
-      <NotificationPrompt />
 
       {/* Hero selector */}
       <HeroSelector
