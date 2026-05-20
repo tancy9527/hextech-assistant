@@ -26,11 +26,14 @@ export default function AdminPage() {
   const [checking, setChecking] = useState(true);
   const [authError, setAuthError] = useState("");
 
-  // Auto-detect if auth is needed
+  // 页面加载时检查是否已保存密钥，尝试自动登录
   useEffect(() => {
     async function check() {
-      const saved = sessionStorage.getItem("admin_key") || "";
-      // Try a call with saved key or without
+      const saved = localStorage.getItem("admin_key");
+      if (!saved) {
+        setChecking(false);
+        return;
+      }
       try {
         const res = await fetch("/api/admin/heroes", {
           headers: { "Content-Type": "application/json", "X-Admin-Key": saved },
@@ -38,13 +41,11 @@ export default function AdminPage() {
         if (res.ok) {
           setAdminKey(saved);
           setAuthorized(true);
-        } else if (res.status === 401) {
-          // Auth required but no valid key
-          sessionStorage.removeItem("admin_key");
-          setAuthorized(false);
+        } else {
+          localStorage.removeItem("admin_key");
         }
       } catch {
-        // Server might not be running yet
+        // 服务器未响应，直接显示登录页
       }
       setChecking(false);
     }
@@ -52,7 +53,6 @@ export default function AdminPage() {
   }, []);
 
   const handleLogin = async () => {
-    if (!adminKey.trim()) return;
     setAuthError("");
     try {
       await fetch("/api/admin/auth", {
@@ -64,7 +64,7 @@ export default function AdminPage() {
         headers: { "Content-Type": "application/json", "X-Admin-Key": adminKey.trim() },
       });
       if (res.ok) {
-        sessionStorage.setItem("admin_key", adminKey.trim());
+        localStorage.setItem("admin_key", adminKey.trim());
         setAuthorized(true);
       } else {
         setAuthError("密钥不正确，或服务器未配置 ADMIN_SECRET_KEY");

@@ -20,7 +20,7 @@ export default function AdminLoginPage() {
         body: JSON.stringify({ key: key.trim() }),
       });
       if (res.ok) {
-        sessionStorage.setItem("admin_key", key.trim());
+        localStorage.setItem("admin_key", key.trim());
         router.push("/admin");
       } else {
         const d = await res.json();
