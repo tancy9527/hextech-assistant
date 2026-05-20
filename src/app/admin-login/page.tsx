@@ -10,24 +10,46 @@ export default function AdminLoginPage() {
   const router = useRouter();
 
   const handleLogin = async () => {
-    if (!key.trim()) return;
     setLoading(true);
     setError("");
     try {
-      const res = await fetch("/api/admin/auth", {
+      const ctrl = new AbortController();
+      const timer = setTimeout(() => ctrl.abort(), 15000);
+
+      const authRes = await fetch("/api/admin/auth", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ key: key.trim() }),
+        signal: ctrl.signal,
       });
+      clearTimeout(timer);
+
+      if (!authRes.ok) {
+        const d = await authRes.json().catch(() => ({}));
+        setError(d.error || "密钥不正确");
+        setLoading(false);
+        return;
+      }
+
+      const timer2 = setTimeout(() => ctrl.abort(), 15000);
+      const res = await fetch("/api/admin/heroes", {
+        headers: { "Content-Type": "application/json", "X-Admin-Key": key.trim() },
+        signal: ctrl.signal,
+      });
+      clearTimeout(timer2);
+
       if (res.ok) {
         localStorage.setItem("admin_key", key.trim());
         router.push("/admin");
       } else {
-        const d = await res.json();
-        setError(d.error || "密钥不正确");
+        setError("密钥不正确，或服务器未配置 ADMIN_SECRET_KEY");
       }
-    } catch {
-      setError("无法连接服务器");
+    } catch (e: any) {
+      if (e?.name === "AbortError") {
+        setError("请求超时，请检查网络后重试");
+      } else {
+        setError(`无法连接服务器：${e.message || "未知错误"}`);
+      }
     }
     setLoading(false);
   };

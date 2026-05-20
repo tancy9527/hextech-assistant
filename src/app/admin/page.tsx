@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback, useRef } from "react";
+import { useRouter } from "next/navigation";
 import RecsTab from "@/app/admin/components/RecsTab";
 import { compressImage } from "@/lib/utils";
 
@@ -24,14 +25,13 @@ export default function AdminPage() {
   const [adminKey, setAdminKey] = useState("");
   const [authorized, setAuthorized] = useState(false);
   const [checking, setChecking] = useState(true);
-  const [authError, setAuthError] = useState("");
+  const router = useRouter();
 
-  // 页面加载时检查是否已保存密钥，尝试自动登录
   useEffect(() => {
     async function check() {
       const saved = localStorage.getItem("admin_key");
       if (!saved) {
-        setChecking(false);
+        router.replace("/admin-login");
         return;
       }
       try {
@@ -41,74 +41,23 @@ export default function AdminPage() {
         if (res.ok) {
           setAdminKey(saved);
           setAuthorized(true);
+          setChecking(false);
         } else {
           localStorage.removeItem("admin_key");
+          router.replace("/admin-login");
         }
       } catch {
-        // 服务器未响应，直接显示登录页
+        setChecking(false);
       }
-      setChecking(false);
     }
     check();
-  }, []);
-
-  const handleLogin = async () => {
-    setAuthError("");
-    try {
-      await fetch("/api/admin/auth", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ key: adminKey.trim() }),
-      });
-      const res = await fetch("/api/admin/heroes", {
-        headers: { "Content-Type": "application/json", "X-Admin-Key": adminKey.trim() },
-      });
-      if (res.ok) {
-        localStorage.setItem("admin_key", adminKey.trim());
-        setAuthorized(true);
-      } else {
-        setAuthError("密钥不正确，或服务器未配置 ADMIN_SECRET_KEY");
-      }
-    } catch {
-      setAuthError("无法连接服务器");
-    }
-  };
-
-  if (checking) {
-    return (
-      <main className="max-w-md mx-auto px-4 py-6">
-        <div className="glass-card p-6 text-center">
-          <p className="text-[14px] text-sage-500">验证中...</p>
-        </div>
-      </main>
-    );
-  }
+  }, [router]);
 
   if (!authorized) {
     return (
       <main className="max-w-md mx-auto px-4 py-6">
         <div className="glass-card p-6 text-center">
-          <h1 className="text-[20px] font-bold text-sage-700 mb-4">后台管理</h1>
-          <p className="text-[13px] text-sage-500 mb-4">
-            请输入管理员密钥
-          </p>
-          {authError && (
-            <p className="text-[12px] text-rose-500 mb-3 bg-rose-50 py-1.5 px-3 rounded-lg">{authError}</p>
-          )}
-          <input
-            type="password"
-            value={adminKey}
-            onChange={(e) => setAdminKey(e.target.value)}
-            onKeyDown={(e) => e.key === "Enter" && handleLogin()}
-            placeholder="如未配置 ADMIN_SECRET_KEY 可留空"
-            className="w-full px-4 py-2 rounded-xl border border-sage-200 text-[14px] mb-3"
-          />
-          <button onClick={handleLogin} className="btn-primary w-full py-2 text-[14px]">
-            进入后台
-          </button>
-          <p className="text-[11px] text-sage-400 mt-3">
-            如未在 .env.local 中配置 ADMIN_SECRET_KEY，可直接进入
-          </p>
+          <p className="text-[14px] text-sage-500">{checking ? "验证中..." : "请先登录"}</p>
         </div>
       </main>
     );

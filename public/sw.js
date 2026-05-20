@@ -22,8 +22,8 @@ self.addEventListener("activate", (event) => {
 self.addEventListener("fetch", (event) => {
   if (event.request.method !== "GET") return;
 
-  // Stale-while-revalidate for API
-  if (event.request.url.includes("/api/")) {
+  // Stale-while-revalidate for API (skip admin APIs)
+  if (event.request.url.includes("/api/") && !event.request.url.includes("/api/admin/")) {
     event.respondWith(
       caches.open(CACHE_NAME).then((cache) =>
         cache.match(event.request).then((cached) => {
