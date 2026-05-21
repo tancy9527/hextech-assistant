@@ -111,7 +111,6 @@ export interface GameSession {
   hero_id: string | null;
   started_at: string;
   is_active: boolean;
-  selected_tags: string[];
   created_at?: string;
 }
 
@@ -123,12 +122,6 @@ export interface SelectedRuneEntry {
 export interface ExcludedRunes {
   selected: SelectedRuneEntry[];
   seen: string[];
-}
-
-export interface TeamTag {
-  key: string;
-  label: string;
-  icon: string;
 }
 
 export interface TierFilter {
@@ -155,13 +148,6 @@ export const PHASE_THRESHOLDS: Record<
   "11": { timeSec: 780, label: "选择第三个海克斯符文" },
   "15": { timeSec: 1440, label: "选择终极海克斯符文" },
 };
-
-export const TEAM_TAGS: TeamTag[] = [
-  { key: "anti_ad", label: "敌方AD多", icon: "⚔️" },
-  { key: "anti_ap", label: "敌方AP多", icon: "🔮" },
-  { key: "anti_cc", label: "控制多", icon: "⛓️" },
-  { key: "anti_tank", label: "坦克多", icon: "🛡️" },
-];
 
 export const TIER_FILTERS: TierFilter[] = [
   { key: "all", label: "全部", color: "bg-cream-300 text-sage-700" },

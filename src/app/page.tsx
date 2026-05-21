@@ -1,12 +1,12 @@
 "use client";
 
-import { useState, useEffect, useCallback, useMemo } from "react";
+import { useState, useEffect, useCallback, useMemo, useRef } from "react";
+import { flushSync } from "react-dom";
 import type { Hero, RuneTier, RecommendationResult, Playstyle, Rune } from "@/types";
 import { TIER_FILTERS } from "@/types";
 import HeroSelector from "@/app/components/HeroSelector";
 import HeroInfo from "@/app/components/HeroInfo";
 import PlaystyleSelector from "@/app/components/PlaystyleSelector";
-import TeamTags from "@/app/components/TeamTags";
 import RuneCard from "@/app/components/RuneCard";
 import RuneQuickSearch from "@/app/components/RuneQuickSearch";
 import ExclusionBar from "@/app/components/ExclusionBar";
@@ -33,9 +33,6 @@ export default function HomePage() {
   const [playstylesLoading, setPlaystylesLoading] = useState(false);
   const [selectedPlaystyle, setSelectedPlaystyle] = useState<Playstyle | null>(null);
 
-  // Tags
-  const [activeTags, setActiveTags] = useState<string[]>([]);
-
   // Tier filter
   const [tierFilter, setTierFilter] = useState<RuneTier | "all">("all");
 
@@ -57,6 +54,11 @@ export default function HomePage() {
     image_url: string; title?: string; description?: string;
     items: string[]; alts: string[];
   }>>>(new Map());
+
+  // Card modal state
+  const [cardModalOpen, setCardModalOpen] = useState(false);
+  const [triggerPos, setTriggerPos] = useState<{ x: number; y: number } | null>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
 
   // Excluded runes
   const [excluded, setExcluded] = useState(loadExcludedRunes());
@@ -170,7 +172,6 @@ export default function HomePage() {
     if (selectedPlaystyle) {
       params.set("playstyleId", selectedPlaystyle.id);
     }
-    if (activeTags.length > 0) params.set("tags", activeTags.join(","));
 
     const excludedIds = getAllExcludedIds();
     if (excludedIds.length > 0)
@@ -184,7 +185,21 @@ export default function HomePage() {
       })
       .catch(() => {})
       .finally(() => setRecsLoading(false));
-  }, [selectedHero, selectedPlaystyle, playstylesLoading, activeTags]);
+  }, [selectedHero, selectedPlaystyle, playstylesLoading]);
+
+  // 流派变化时自动打开卡牌弹窗
+  useEffect(() => {
+    if (!selectedHero || !selectedPlaystyle) {
+      setCardModalOpen(false);
+      return;
+    }
+    const card = buildCardsMap.get(selectedHero.id)?.get(selectedPlaystyle.id);
+    if (card) {
+      setCardModalOpen(true);
+    } else {
+      setCardModalOpen(false);
+    }
+  }, [selectedPlaystyle?.id, selectedHero?.id, buildCardsMap]);
 
   // Merge recommendations with all runes
   const displayRunes = useMemo(() => {
@@ -252,20 +267,30 @@ export default function HomePage() {
   // Handlers
   const handleHeroSelect = useCallback((hero: Hero) => {
     setSelectedHero(hero);
-    setActiveTags([]);
     clearExcludedRunes();
     setExcluded({ selected: [], seen: [] });
     setSelectedPlaystyle(null);
+    setCardModalOpen(false);
   }, []);
 
   const handlePlaystyleSelect = useCallback((p: Playstyle) => {
     setSelectedPlaystyle(p);
   }, []);
 
-  const handleTagToggle = useCallback((tag: string) => {
-    setActiveTags((prev) =>
-      prev.includes(tag) ? prev.filter((t) => t !== tag) : [...prev, tag]
-    );
+  const handleCardClose = useCallback(() => {
+    const el = triggerRef.current;
+    if (el) {
+      const rect = el.getBoundingClientRect();
+      flushSync(() => {
+        setTriggerPos({ x: rect.left + rect.width / 2, y: rect.top + rect.height / 2 });
+      });
+    }
+    setCardModalOpen(false);
+  }, []);
+
+  const handleCardOpen = useCallback(() => {
+    setTriggerPos(null);
+    setCardModalOpen(true);
   }, []);
 
   const handleRuneSelect = useCallback((runeId: string) => {
@@ -286,7 +311,6 @@ export default function HomePage() {
   const handleReset = useCallback(() => {
     clearExcludedRunes();
     setExcluded({ selected: [], seen: [] });
-    setActiveTags([]);
     setTierFilter("all");
     setDisplayLimit(15);
   }, []);
@@ -328,6 +352,31 @@ export default function HomePage() {
         />
       )}
 
+      {/* 玩法说明 */}
+      {selectedHero && selectedPlaystyle?.description && (
+        <div className="glass-card p-3.5 mb-4 border-l-[3px] border-l-sage-400 rounded-2xl relative">
+          <div className="flex items-center justify-between mb-2">
+            <h3 className="text-[13px] font-semibold text-sage-600 flex items-center gap-1.5">
+              <span className="text-[14px]">📖</span>
+              玩法说明
+            </h3>
+            {buildCardsMap.get(selectedHero.id)?.get(selectedPlaystyle.id) && (
+              <button
+                ref={triggerRef}
+                onClick={handleCardOpen}
+                className="text-[11px] px-2.5 py-1 rounded-full bg-sage-100 text-sage-600 font-medium hover:bg-sage-200 active:scale-95 transition-all flex items-center gap-1 flex-shrink-0"
+              >
+                <span className="text-[12px]">🎴</span>
+                查看攻略卡
+              </button>
+            )}
+          </div>
+          <p className="text-[12px] text-sage-600/80 leading-relaxed whitespace-pre-wrap">
+            {selectedPlaystyle.description}
+          </p>
+        </div>
+      )}
+
       {/* Build card (image guide with flip animation) */}
       {selectedHero && (
         <BuildCard
@@ -335,6 +384,9 @@ export default function HomePage() {
           playstyleId={selectedPlaystyle?.id}
           heroName={selectedHero.name}
           cardsMap={buildCardsMap}
+          modalOpen={cardModalOpen}
+          onClose={handleCardClose}
+          triggerPos={triggerPos}
         />
       )}
 
@@ -379,11 +431,6 @@ export default function HomePage() {
           </div>
         );
       })()}
-
-      {/* Team tags */}
-      {selectedHero && (
-        <TeamTags activeTags={activeTags} onToggle={handleTagToggle} />
-      )}
 
       {/* Rune quick search */}
       {selectedHero && allRunes.length > 0 && (() => {

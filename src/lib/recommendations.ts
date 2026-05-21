@@ -5,13 +5,6 @@ import {
   type RecommendationResult,
 } from "@/types";
 
-const TAG_BOOST_MAP: Record<string, { boost: number; label: string }> = {
-  anti_ad: { boost: 5, label: "敌方AD较多，防御装可酌情考虑" },
-  anti_cc: { boost: 5, label: "敌方控制多，韧性可酌情考虑" },
-  anti_tank: { boost: 5, label: "敌方坦克多，百分比伤害可酌情考虑" },
-  anti_ap: { boost: 5, label: "敌方AP较多，魔抗可酌情考虑" },
-};
-
 const QUALITY_MULTIPLIER: Record<Rune["quality"], number> = {
   prismatic: 1.1,
   gold: 1.0,
@@ -81,7 +74,6 @@ function getFetterBoost(
 export function computeRecommendations(
   recs: HeroRuneRecommendation[],
   runes: Rune[],
-  activeTags: string[] = [],
   selectedRuneIds: string[] = [],
   synergies: RuneSynergy[] = [],
   fetterData?: FetterSynergyInput
@@ -93,16 +85,6 @@ export function computeRecommendations(
     .map((rec) => {
       let boost = 0;
       const boostReasons: string[] = [];
-
-      for (const tag of activeTags) {
-        if (rec.adjustment_tags?.includes(tag)) {
-          const config = TAG_BOOST_MAP[tag];
-          if (config) {
-            boost += config.boost;
-            boostReasons.push(config.label);
-          }
-        }
-      }
 
       const { boost: synergyBoost, reasons: synergyReasons } =
         getSynergyBoost(rec.rune_id, selectedRuneIds, synergies);
@@ -162,4 +144,4 @@ export function computeRecommendations(
   return [...scored, ...selectedResults];
 }
 
-export { TAG_BOOST_MAP, QUALITY_MULTIPLIER, getSynergyBoost, getFetterBoost };
+export { QUALITY_MULTIPLIER, getSynergyBoost, getFetterBoost };

@@ -8,8 +8,6 @@ export async function GET(req: NextRequest) {
     const { searchParams } = new URL(req.url);
     const heroId = searchParams.get("heroId");
     const playstyleId = searchParams.get("playstyleId") || undefined;
-    const tagsParam = searchParams.get("tags") || "";
-    const tags = tagsParam ? tagsParam.split(",").filter(Boolean) : [];
     const selectedParam = searchParams.get("selected") || "";
     const selectedRuneIds = selectedParam ? selectedParam.split(",").filter(Boolean) : [];
 
@@ -83,7 +81,6 @@ export async function GET(req: NextRequest) {
     const results = computeRecommendations(
       allRecs,
       runes,
-      tags,
       selectedRuneIds,
       synergies || [],
       { runeFetters, fetterNames }
