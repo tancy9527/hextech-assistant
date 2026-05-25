@@ -86,6 +86,8 @@ export default function RecsTab({ adminKey }: { adminKey: string }) {
   const [detailLoading, setDetailLoading] = useState(false);
   const [detailError, setDetailError] = useState("");
 
+  const [allBuildCards, setAllBuildCards] = useState<BuildCard[]>([]);
+  const [cardFilter, setCardFilter] = useState<"all" | "withCards" | "withoutCards">("all");
   const [expandedPsIds, setExpandedPsIds] = useState<Set<string>>(new Set());
   const [psName, setPsName] = useState("");
   const [psDesc, setPsDesc] = useState("");
@@ -113,13 +115,20 @@ export default function RecsTab({ adminKey }: { adminKey: string }) {
 
   const h = { "Content-Type": "application/json", "X-Admin-Key": adminKey };
 
+  const handleCardFilterChange = (filter: "withCards" | "withoutCards") => {
+    setCardFilter(prev => prev === filter ? "all" : filter);
+    setHeroLimit(10);
+  };
+
   useEffect(() => {
     Promise.all([
       fetch("/api/admin/heroes", { headers: h }).then(r => r.json()),
       fetch("/api/admin/runes?active=true", { headers: h }).then(r => r.json()),
-    ]).then(([hData, rData]) => {
+      fetch("/api/admin/build-cards", { headers: h }).then(r => r.json()),
+    ]).then(([hData, rData, bcData]) => {
       if (Array.isArray(hData)) setHeroes(hData);
       if (Array.isArray(rData)) setAllRunes(rData);
+      if (Array.isArray(bcData)) setAllBuildCards(bcData);
       setLoading(false);
     });
   }, [adminKey]);
@@ -387,8 +396,28 @@ export default function RecsTab({ adminKey }: { adminKey: string }) {
   };
 
   // === 筛选 ===
+  const heroIdsWithCards = new Set(allBuildCards.map(c => c.hero_id));
+  const heroesWithCardsCount = heroes.filter(h => heroIdsWithCards.has(h.id)).length;
+  const heroesWithoutCardsCount = heroes.length - heroesWithCardsCount;
+
+  let searchHint = "";
+  if (search && cardFilter !== "all") {
+    const otherGroup = cardFilter === "withoutCards"
+      ? heroes.filter(h => heroIdsWithCards.has(h.id))
+      : heroes.filter(h => !heroIdsWithCards.has(h.id));
+    const matchInOther = otherGroup.filter(h => h.name.includes(search));
+    if (matchInOther.length > 0) {
+      const heroNames = matchInOther.map(h => h.name).join("、");
+      searchHint = cardFilter === "withoutCards"
+        ? `"${search}"已被推荐图文（${heroNames}），请前往「已推荐图文」或「全部英雄」中查看`
+        : `"${search}"暂无图文推荐（${heroNames}）`;
+    }
+  }
+
   const filteredHeroes = heroes
     .filter(h => {
+      if (cardFilter === "withCards" && !heroIdsWithCards.has(h.id)) return false;
+      if (cardFilter === "withoutCards" && heroIdsWithCards.has(h.id)) return false;
       if (!search) return true;
       const q = search.toLowerCase();
       return h.name.includes(search) ||
@@ -402,12 +431,34 @@ export default function RecsTab({ adminKey }: { adminKey: string }) {
 
   return (
     <div>
-      <input
-        placeholder="搜索英雄..."
-        value={search}
-        onChange={e => { setSearch(e.target.value); setHeroLimit(10); }}
-        className="w-full px-3 py-2 rounded-xl border border-sage-200 text-[13px] text-sage-700 placeholder-sage-400 bg-white/50 mb-3 focus:outline-none focus:border-gold-400"
-      />
+      <div className="flex gap-2 mb-3">
+        <input
+          placeholder="搜索英雄..."
+          value={search}
+          onChange={e => { setSearch(e.target.value); setHeroLimit(10); }}
+          className="flex-1 min-w-0 px-3 py-2 rounded-xl border border-sage-200 text-[13px] text-sage-700 placeholder-sage-400 bg-white/50 focus:outline-none focus:border-gold-400"
+        />
+        <button
+          onClick={() => handleCardFilterChange("withoutCards")}
+          className={`whitespace-nowrap text-[12px] px-3 py-2 rounded-xl font-medium transition-all ${
+            cardFilter === "withoutCards"
+              ? "bg-rose-200 text-rose-700 shadow-sm"
+              : "bg-white/50 text-sage-500 hover:bg-rose-50"
+          }`}
+        >
+          未推荐图文({heroesWithoutCardsCount})
+        </button>
+        <button
+          onClick={() => handleCardFilterChange("withCards")}
+          className={`whitespace-nowrap text-[12px] px-3 py-2 rounded-xl font-medium transition-all ${
+            cardFilter === "withCards"
+              ? "bg-emerald-200 text-emerald-700 shadow-sm"
+              : "bg-white/50 text-sage-500 hover:bg-emerald-50"
+          }`}
+        >
+          已推荐图文({heroesWithCardsCount})
+        </button>
+      </div>
 
       {/* 英雄卡片网格 */}
       <div className="grid grid-cols-2 gap-2">
@@ -432,6 +483,17 @@ export default function RecsTab({ adminKey }: { adminKey: string }) {
         >
           显示更多（剩余 {filteredHeroes.length - heroLimit} 个英雄）
         </button>
+      )}
+
+      {filteredHeroes.length === 0 && searchHint && (
+        <div className="bg-amber-50 rounded-xl p-4 text-center mt-3">
+          <p className="text-[13px] text-amber-700">{searchHint}</p>
+        </div>
+      )}
+      {filteredHeroes.length === 0 && !searchHint && (
+        <div className="bg-white/40 rounded-xl p-4 text-center mt-3">
+          <p className="text-[13px] text-sage-400">无匹配英雄</p>
+        </div>
       )}
 
       {/* ============ 弹窗：英雄配置（Portal 到 body 避免 backdrop-filter containing block） ============ */}

@@ -7,10 +7,10 @@ import { compressImage } from "@/lib/utils";
 
 const TABS = [
   { key: "dashboard", label: "仪表盘", icon: "📊" },
-  { key: "heroes", label: "英雄管理", icon: "🦸" },
-  { key: "runes", label: "符文管理", icon: "⚡" },
   { key: "recommendations", label: "推荐配置", icon: "🔗" },
+  { key: "runes", label: "符文管理", icon: "⚡" },
   { key: "fetters", label: "羁绊管理", icon: "🧩" },
+  { key: "heroes", label: "英雄管理", icon: "🦸" },
 ];
 
 function apiHeaders(adminKey: string) {
@@ -324,6 +324,13 @@ function RunesTab({ adminKey }: { adminKey: string }) {
         {runes.filter((r: any) => !runeSearch || r.name.includes(runeSearch)).map((r: any) => (
           <div key={r.id} className={`flex items-center justify-between rounded-lg px-3 py-2 ${r.is_active === false ? "bg-rose-50/50" : "bg-white/40"}`}>
             <div className="flex items-center gap-2">
+              {r.icon_url ? (
+                <img src={r.icon_url} alt="" className="w-6 h-6 rounded object-cover flex-shrink-0" />
+              ) : (
+                <span className="w-6 h-6 rounded bg-sage-100 flex items-center justify-center text-[11px] flex-shrink-0">
+                  {r.effect_type === "damage" ? "⚔️" : r.effect_type === "defense" ? "🛡️" : r.effect_type === "mobility" ? "💨" : r.effect_type === "sustain" ? "💚" : "✨"}
+                </span>
+              )}
               <span className={`text-[10px] px-1.5 py-0.5 rounded-full font-medium ${
                 r.tier === "chromatic" ? "bg-gradient-to-r from-purple-400 via-pink-400 to-gold-300 text-white" :
                 r.tier === "gold" ? "bg-gold-300 text-gold-700" : "bg-slate-300 text-slate-700"
@@ -834,11 +841,11 @@ function OCRTab() {
 // ============================================================
 function Modal({ title, onClose, children }: { title: string; onClose: () => void; children: React.ReactNode }) {
   return (
-    <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/30 backdrop-blur-sm" onClick={onClose}>
-      <div className="bg-white rounded-t-2xl sm:rounded-2xl p-5 w-full max-w-md max-h-[85vh] overflow-y-auto shadow-xl" onClick={(e) => e.stopPropagation()}>
-        <div className="flex items-center justify-between mb-3">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 backdrop-blur-sm p-4" onClick={onClose}>
+      <div className="bg-white rounded-2xl p-5 w-full max-w-md max-h-[80vh] overflow-y-auto shadow-xl" onClick={(e) => e.stopPropagation()}>
+        <div className="flex items-center justify-between mb-3 sticky top-0 bg-white z-10">
           <h3 className="text-[15px] font-semibold text-sage-700">{title}</h3>
-          <button onClick={onClose} className="text-[20px] text-sage-400">&times;</button>
+          <button onClick={onClose} className="size-7 flex items-center justify-center rounded-full bg-sage-100 text-sage-500 hover:bg-sage-200 text-[16px] font-bold transition-colors">&times;</button>
         </div>
         {children}
       </div>
