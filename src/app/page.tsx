@@ -321,11 +321,18 @@ export default function HomePage() {
   return (
     <main className="max-w-md mx-auto px-4 py-4 safe-bottom">
       {/* Header */}
-      <div className="text-center mb-4">
-        <h1 className="text-[20px] font-bold text-sage-700">
+      <div className="text-center mb-4 relative">
+        <button
+          onClick={() => { (window as any).__toggleTheme?.(); }}
+          className="absolute right-0 top-0 text-[16px] px-2 py-1 rounded-lg bg-white/40 hover:bg-white/70 transition-all dark:bg-white/10 dark:hover:bg-white/20"
+          title="切换白天/夜晚模式"
+        >
+          🌓
+        </button>
+        <h1 className="text-[20px] font-bold text-sage-700 dark:text-sage-200">
           海克斯助手
         </h1>
-        <p className="text-[12px] text-sage-500">
+        <p className="text-[12px] text-sage-500 dark:text-sage-400">
           大乱斗符文搭配推荐
         </p>
       </div>
@@ -356,7 +363,7 @@ export default function HomePage() {
       {selectedHero && selectedPlaystyle?.description && (
         <div className="glass-card p-3.5 mb-4 border-l-[3px] border-l-sage-400 rounded-2xl relative">
           <div className="flex items-center justify-between mb-2">
-            <h3 className="text-[13px] font-semibold text-sage-600 flex items-center gap-1.5">
+            <h3 className="text-[13px] font-semibold text-sage-600 flex items-center gap-1.5 dark:text-sage-300">
               <span className="text-[14px]">📖</span>
               玩法说明
             </h3>
@@ -364,14 +371,14 @@ export default function HomePage() {
               <button
                 ref={triggerRef}
                 onClick={handleCardOpen}
-                className="text-[11px] px-2.5 py-1 rounded-full bg-sage-100 text-sage-600 font-medium hover:bg-sage-200 active:scale-95 transition-all flex items-center gap-1 flex-shrink-0"
+                className="text-[11px] px-2.5 py-1 rounded-full bg-sage-100 text-sage-600 font-medium hover:bg-sage-200 active:scale-95 transition-all flex items-center gap-1 flex-shrink-0 dark:bg-white/10 dark:text-sage-300 dark:hover:bg-white/20"
               >
                 <span className="text-[12px]">🎴</span>
                 查看攻略卡
               </button>
             )}
           </div>
-          <p className="text-[12px] text-sage-600/80 leading-relaxed whitespace-pre-wrap">
+          <p className="text-[12px] text-sage-600/80 leading-relaxed whitespace-pre-wrap dark:text-sage-300">
             {selectedPlaystyle.description}
           </p>
         </div>
@@ -402,11 +409,11 @@ export default function HomePage() {
             <h3 className="text-[12px] font-semibold text-sage-600 mb-2">🛡️ 推荐出装</h3>
             {hasItems && (
               <div className="mb-2">
-                <p className="text-[10px] text-sage-500 mb-1.5">核心出装</p>
+                <p className="text-[10px] text-sage-500 mb-1.5 dark:text-sage-300">核心出装</p>
                 <div className="grid grid-cols-6 gap-1.5">
                   {card.items.map((item, i) => (
                     <div key={i} className={`rounded-lg px-1 py-2 text-center text-[10px] font-medium ${
-                      item ? "bg-sage-100 text-sage-700 border border-sage-200" : "bg-sage-50/50 text-sage-300 border border-dashed border-sage-200"
+                      item ? "bg-sage-100 text-sage-700 border border-sage-200 dark:bg-sage-500/20 dark:text-sage-200 dark:border-sage-500/30" : "bg-sage-50/50 text-sage-300 border border-dashed border-sage-200 dark:bg-white/5 dark:text-sage-500 dark:border-white/10"
                     }`}>
                       {item || i + 1}
                     </div>
@@ -416,7 +423,7 @@ export default function HomePage() {
             )}
             {hasAlts && (
               <div>
-                <p className="text-[10px] text-sage-500 mb-1.5">替换选择</p>
+                <p className="text-[10px] text-sage-500 mb-1.5 dark:text-sage-300">替换选择</p>
                 <div className="grid grid-cols-6 gap-1.5">
                   {card.alts.map((item, i) => (
                     <div key={i} className={`rounded-lg px-1 py-2 text-center text-[10px] font-medium ${
@@ -459,7 +466,7 @@ export default function HomePage() {
             const runeMap = new Map(allRunes.map((r) => [r.id, r]));
             return (
               <div className="glass-card p-3 mb-4">
-                <h3 className="text-[12px] font-semibold text-sage-600 mb-2">已选符文</h3>
+                <h3 className="text-[12px] font-semibold text-sage-600 mb-2 dark:text-sage-300">已选符文</h3>
                 <div className="flex flex-col gap-2">
                   {entries.map((entry) => {
                     const rune = runeMap.get(entry.runeId);
@@ -472,15 +479,15 @@ export default function HomePage() {
                       : "bg-slate-300 text-slate-700";
                     const tierLabel = rune.tier === "chromatic" ? "彩色" : rune.tier === "gold" ? "金色" : "银色";
                     return (
-                      <div key={entry.runeId} className="flex items-start gap-2 p-2 rounded-lg bg-sage-50/70 border border-sage-200/50">
+                      <div key={entry.runeId} className="flex items-start gap-2 p-2 rounded-lg bg-sage-50/70 border border-sage-200/50 dark:bg-white/5 dark:border-white/10">
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center gap-1.5 mb-0.5">
-                            <p className="text-[13px] font-medium text-sage-700">{rune.name}</p>
+                            <p className="text-[13px] font-medium text-sage-700 dark:text-sage-200">{rune.name}</p>
                             <span className={`text-[9px] px-1.5 py-0.5 rounded-full font-medium ${tierBadgeCls}`}>
                               {tierLabel}
                             </span>
                           </div>
-                          <p className="text-[11px] text-sage-500 line-clamp-2">{rune.description}</p>
+                          <p className="text-[11px] text-sage-500 line-clamp-2 dark:text-sage-300">{rune.description}</p>
                           {fetterNames.length > 0 && (
                             <div className="flex flex-wrap gap-1 mt-1">
                               {fetterNames.map((fn) => (
@@ -510,7 +517,7 @@ export default function HomePage() {
             {excludedCount > 0 && (
               <button
                 onClick={handleReset}
-                className="text-[11px] px-2.5 py-1.5 rounded-full bg-rose-100 text-rose-500 font-medium active:scale-95 transition-all"
+                className="text-[11px] px-2.5 py-1.5 rounded-full bg-rose-100 text-rose-500 font-medium active:scale-95 transition-all dark:bg-rose-500/20 dark:text-rose-300"
               >
                 重置对局
               </button>
@@ -524,7 +531,7 @@ export default function HomePage() {
                   className={`text-[11px] px-2.5 py-1 rounded-full font-medium transition-all ${
                     tierFilter === f.key
                       ? `${f.color} shadow-sm`
-                      : "bg-white/40 text-sage-500"
+                      : "bg-white/40 text-sage-500 dark:bg-white/10 dark:text-sage-300"
                   }`}
                 >
                   {f.label}
@@ -545,7 +552,7 @@ export default function HomePage() {
             </div>
           ) : filteredRecs.length === 0 ? (
             <div className="glass-card p-8 text-center">
-              <p className="text-[14px] text-sage-500">
+              <p className="text-[14px] text-sage-500 dark:text-sage-300">
                 该阶段暂无推荐符文
               </p>
             </div>
@@ -565,7 +572,7 @@ export default function HomePage() {
               {displayLimit < filteredRecs.length && (
                 <button
                   onClick={() => setDisplayLimit((prev) => prev + 30)}
-                  className="w-full mt-3 py-2.5 rounded-xl bg-white/50 text-sage-600 text-[13px] font-medium hover:bg-white/80 active:scale-[0.98] transition-all"
+                  className="w-full mt-3 py-2.5 rounded-xl bg-white/50 text-sage-600 text-[13px] font-medium hover:bg-white/80 active:scale-[0.98] transition-all dark:bg-white/5 dark:text-sage-300 dark:hover:bg-white/10"
                 >
                   显示更多（剩余 {filteredRecs.length - displayLimit} 个）
                 </button>
@@ -588,10 +595,10 @@ export default function HomePage() {
       {!selectedHero && !heroesLoading && (
         <div className="glass-card p-8 text-center mt-4">
           <p className="text-[32px] mb-3">📱</p>
-          <p className="text-[15px] font-semibold text-sage-600 mb-1">
+          <p className="text-[15px] font-semibold text-sage-600 mb-1 dark:text-sage-300">
             选择英雄开始推荐
           </p>
-          <p className="text-[13px] text-sage-500">
+          <p className="text-[13px] text-sage-500 dark:text-sage-300">
             在上方搜索或选择你的英雄，获取海克斯符文推荐
           </p>
         </div>

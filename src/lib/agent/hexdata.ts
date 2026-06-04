@@ -7,10 +7,10 @@ const HEXDATA_BASE = "https://hexdata.com.cn/data";
 export function cleanHexDesc(desc: string): string {
   if (!desc) return "";
   return desc
-    .replace(/%i:[^%]*%/g, "")   // %i:scaleCrit% → ""
-    .replace(/%(?!\d)/g, "")      // 残留的 % 但保留 30% 这种数字的%
+    .replace(/%i:[^%]*%/g, "")
+    .replace(/%\w[^%]{0,20}%/g, "")
+    .replace(/\?\s*/g, "")
     .replace(/\s{2,}/g, " ")
-    .replace(/\?\s*([，。])/g, "$1")  // "?暴击几率" → "暴击几率"
     .trim();
 }
 

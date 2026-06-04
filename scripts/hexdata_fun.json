@@ -1,0 +1,1014 @@
+{
+  "patch": "16.11",
+  "generatedAt": "2026-06-02T22:30:33.749798+00:00",
+  "refreshedAt": "2026-06-02T22:32:25.275102Z",
+  "source": "release/data heroes + augments",
+  "augmentSets": [
+    {
+      "id": "1238",
+      "label": "质变：棱彩阶",
+      "winRate": 0.6414,
+      "pickRate": 0.0145,
+      "games": 951294,
+      "tier": 1,
+      "topChampions": [
+        {
+          "championId": "887",
+          "name": "灵罗娃娃",
+          "imageUrl": "/assets/champions/16.10.1/887.png",
+          "href": "#/hero/887",
+          "games": 3994,
+          "pickRate": 0.0766,
+          "winRate": 0.6345,
+          "tier": 1
+        },
+        {
+          "championId": "904",
+          "name": "不落魔锋",
+          "imageUrl": "/assets/champions/16.10.1/904.png",
+          "href": "#/hero/904",
+          "games": 6247,
+          "pickRate": 0.0709,
+          "winRate": 0.6337,
+          "tier": 1
+        },
+        {
+          "championId": "5",
+          "name": "德邦总管",
+          "imageUrl": "/assets/champions/16.10.1/5.png",
+          "href": "#/hero/5",
+          "games": 7840,
+          "pickRate": 0.0641,
+          "winRate": 0.6209,
+          "tier": 1
+        },
+        {
+          "championId": "876",
+          "name": "含羞蓓蕾",
+          "imageUrl": "/assets/champions/16.10.1/876.png",
+          "href": "#/hero/876",
+          "games": 11765,
+          "pickRate": 0.0764,
+          "winRate": 0.6179,
+          "tier": 1
+        },
+        {
+          "championId": "102",
+          "name": "龙血武姬",
+          "imageUrl": "/assets/champions/16.10.1/102.png",
+          "href": "#/hero/102",
+          "games": 5772,
+          "pickRate": 0.0711,
+          "winRate": 0.6048,
+          "tier": 1
+        }
+      ]
+    },
+    {
+      "id": "1133",
+      "label": "魔法飞弹",
+      "winRate": 0.6318,
+      "pickRate": 0.0183,
+      "games": 1205602,
+      "tier": 3,
+      "topChampions": [
+        {
+          "championId": "876",
+          "name": "含羞蓓蕾",
+          "imageUrl": "/assets/champions/16.10.1/876.png",
+          "href": "#/hero/876",
+          "games": 28165,
+          "pickRate": 0.183,
+          "winRate": 0.5727,
+          "tier": 1
+        },
+        {
+          "championId": "5",
+          "name": "德邦总管",
+          "imageUrl": "/assets/champions/16.10.1/5.png",
+          "href": "#/hero/5",
+          "games": 1400,
+          "pickRate": 0.0115,
+          "winRate": 0.5614,
+          "tier": 2
+        },
+        {
+          "championId": "147",
+          "name": "星籁歌姬",
+          "imageUrl": "/assets/champions/16.10.1/147.png",
+          "href": "#/hero/147",
+          "games": 29348,
+          "pickRate": 0.1691,
+          "winRate": 0.5547,
+          "tier": 1
+        },
+        {
+          "championId": "63",
+          "name": "复仇焰魂",
+          "imageUrl": "/assets/champions/16.10.1/63.png",
+          "href": "#/hero/63",
+          "games": 58554,
+          "pickRate": 0.2352,
+          "winRate": 0.5469,
+          "tier": 1
+        },
+        {
+          "championId": "222",
+          "name": "暴走萝莉",
+          "imageUrl": "/assets/champions/16.10.1/222.png",
+          "href": "#/hero/222",
+          "games": 27220,
+          "pickRate": 0.1121,
+          "winRate": 0.5415,
+          "tier": 2
+        }
+      ]
+    },
+    {
+      "id": "1356",
+      "label": "暴击飞弹",
+      "winRate": 0.6318,
+      "pickRate": 0.0149,
+      "games": 977624,
+      "tier": 2,
+      "topChampions": [
+        {
+          "championId": "222",
+          "name": "暴走萝莉",
+          "imageUrl": "/assets/champions/16.10.1/222.png",
+          "href": "#/hero/222",
+          "games": 73559,
+          "pickRate": 0.3029,
+          "winRate": 0.6047,
+          "tier": 1
+        },
+        {
+          "championId": "804",
+          "name": "不破之誓",
+          "imageUrl": "/assets/champions/16.10.1/804.png",
+          "href": "#/hero/804",
+          "games": 34348,
+          "pickRate": 0.2388,
+          "winRate": 0.5928,
+          "tier": 1
+        },
+        {
+          "championId": "523",
+          "name": "残月之肃",
+          "imageUrl": "/assets/champions/16.10.1/523.png",
+          "href": "#/hero/523",
+          "games": 31540,
+          "pickRate": 0.2899,
+          "winRate": 0.5848,
+          "tier": 1
+        },
+        {
+          "championId": "29",
+          "name": "瘟疫之源",
+          "imageUrl": "/assets/champions/16.10.1/29.png",
+          "href": "#/hero/29",
+          "games": 46408,
+          "pickRate": 0.2275,
+          "winRate": 0.5847,
+          "tier": 1
+        },
+        {
+          "championId": "166",
+          "name": "影哨",
+          "imageUrl": "/assets/champions/16.10.1/166.png",
+          "href": "#/hero/166",
+          "games": 33267,
+          "pickRate": 0.2971,
+          "winRate": 0.5831,
+          "tier": 1
+        }
+      ]
+    },
+    {
+      "id": "1390",
+      "label": "超凡邪恶",
+      "winRate": 0.6172,
+      "pickRate": 0.0143,
+      "games": 943515,
+      "tier": 2,
+      "topChampions": [
+        {
+          "championId": "5",
+          "name": "德邦总管",
+          "imageUrl": "/assets/champions/16.10.1/5.png",
+          "href": "#/hero/5",
+          "games": 3383,
+          "pickRate": 0.0277,
+          "winRate": 0.6527,
+          "tier": 1
+        },
+        {
+          "championId": "876",
+          "name": "含羞蓓蕾",
+          "imageUrl": "/assets/champions/16.10.1/876.png",
+          "href": "#/hero/876",
+          "games": 23788,
+          "pickRate": 0.1545,
+          "winRate": 0.6333,
+          "tier": 1
+        },
+        {
+          "championId": "147",
+          "name": "星籁歌姬",
+          "imageUrl": "/assets/champions/16.10.1/147.png",
+          "href": "#/hero/147",
+          "games": 20765,
+          "pickRate": 0.1196,
+          "winRate": 0.5844,
+          "tier": 1
+        },
+        {
+          "championId": "3",
+          "name": "正义巨像",
+          "imageUrl": "/assets/champions/16.10.1/3.png",
+          "href": "#/hero/3",
+          "games": 12543,
+          "pickRate": 0.0887,
+          "winRate": 0.5626,
+          "tier": 1
+        },
+        {
+          "championId": "887",
+          "name": "灵罗娃娃",
+          "imageUrl": "/assets/champions/16.10.1/887.png",
+          "href": "#/hero/887",
+          "games": 5105,
+          "pickRate": 0.0979,
+          "winRate": 0.5604,
+          "tier": 1
+        }
+      ]
+    },
+    {
+      "id": "1346",
+      "label": "吸血习性",
+      "winRate": 0.6152,
+      "pickRate": 0.0156,
+      "games": 1029087,
+      "tier": 2,
+      "topChampions": [
+        {
+          "championId": "876",
+          "name": "含羞蓓蕾",
+          "imageUrl": "/assets/champions/16.10.1/876.png",
+          "href": "#/hero/876",
+          "games": 19877,
+          "pickRate": 0.1291,
+          "winRate": 0.5965,
+          "tier": 1
+        },
+        {
+          "championId": "33",
+          "name": "披甲龙龟",
+          "imageUrl": "/assets/champions/16.10.1/33.png",
+          "href": "#/hero/33",
+          "games": 265,
+          "pickRate": 0.0042,
+          "winRate": 0.5887,
+          "tier": 3
+        },
+        {
+          "championId": "526",
+          "name": "镕铁少女",
+          "imageUrl": "/assets/champions/16.10.1/526.png",
+          "href": "#/hero/526",
+          "games": 114,
+          "pickRate": 0.0014,
+          "winRate": 0.5789,
+          "tier": 5
+        },
+        {
+          "championId": "222",
+          "name": "暴走萝莉",
+          "imageUrl": "/assets/champions/16.10.1/222.png",
+          "href": "#/hero/222",
+          "games": 24480,
+          "pickRate": 0.1008,
+          "winRate": 0.5709,
+          "tier": 1
+        },
+        {
+          "championId": "10",
+          "name": "正义天使",
+          "imageUrl": "/assets/champions/16.10.1/10.png",
+          "href": "#/hero/10",
+          "games": 11348,
+          "pickRate": 0.0838,
+          "winRate": 0.5677,
+          "tier": 1
+        }
+      ]
+    },
+    {
+      "id": "1136",
+      "label": "扇巴掌",
+      "winRate": 0.612,
+      "pickRate": 0.0119,
+      "games": 784250,
+      "tier": 1,
+      "topChampions": [
+        {
+          "championId": "904",
+          "name": "不落魔锋",
+          "imageUrl": "/assets/champions/16.10.1/904.png",
+          "href": "#/hero/904",
+          "games": 8195,
+          "pickRate": 0.093,
+          "winRate": 0.5884,
+          "tier": 1
+        },
+        {
+          "championId": "147",
+          "name": "星籁歌姬",
+          "imageUrl": "/assets/champions/16.10.1/147.png",
+          "href": "#/hero/147",
+          "games": 18125,
+          "pickRate": 0.1044,
+          "winRate": 0.588,
+          "tier": 1
+        },
+        {
+          "championId": "5",
+          "name": "德邦总管",
+          "imageUrl": "/assets/champions/16.10.1/5.png",
+          "href": "#/hero/5",
+          "games": 10588,
+          "pickRate": 0.0866,
+          "winRate": 0.5815,
+          "tier": 1
+        },
+        {
+          "championId": "875",
+          "name": "腕豪",
+          "imageUrl": "/assets/champions/16.10.1/875.png",
+          "href": "#/hero/875",
+          "games": 21717,
+          "pickRate": 0.1346,
+          "winRate": 0.5813,
+          "tier": 1
+        },
+        {
+          "championId": "526",
+          "name": "镕铁少女",
+          "imageUrl": "/assets/champions/16.10.1/526.png",
+          "href": "#/hero/526",
+          "games": 17823,
+          "pickRate": 0.2117,
+          "winRate": 0.5734,
+          "tier": 1
+        }
+      ]
+    },
+    {
+      "id": "1048",
+      "label": "珠光护手",
+      "winRate": 0.6036,
+      "pickRate": 0.0138,
+      "games": 906181,
+      "tier": 3,
+      "topChampions": [
+        {
+          "championId": "895",
+          "name": "不羁之悦",
+          "imageUrl": "/assets/champions/16.10.1/895.png",
+          "href": "#/hero/895",
+          "games": 1869,
+          "pickRate": 0.0394,
+          "winRate": 0.6062,
+          "tier": 1
+        },
+        {
+          "championId": "901",
+          "name": "炽炎雏龙",
+          "imageUrl": "/assets/champions/16.10.1/901.png",
+          "href": "#/hero/901",
+          "games": 22335,
+          "pickRate": 0.1001,
+          "winRate": 0.5553,
+          "tier": 1
+        },
+        {
+          "championId": "5",
+          "name": "德邦总管",
+          "imageUrl": "/assets/champions/16.10.1/5.png",
+          "href": "#/hero/5",
+          "games": 2620,
+          "pickRate": 0.0214,
+          "winRate": 0.5473,
+          "tier": 2
+        },
+        {
+          "championId": "240",
+          "name": "暴怒骑士",
+          "imageUrl": "/assets/champions/16.10.1/240.png",
+          "href": "#/hero/240",
+          "games": 150,
+          "pickRate": 0.0088,
+          "winRate": 0.5467,
+          "tier": 5
+        },
+        {
+          "championId": "236",
+          "name": "圣枪游侠",
+          "imageUrl": "/assets/champions/16.10.1/236.png",
+          "href": "#/hero/236",
+          "games": 14377,
+          "pickRate": 0.0714,
+          "winRate": 0.5416,
+          "tier": 1
+        }
+      ]
+    },
+    {
+      "id": "1373",
+      "label": "缩小引擎",
+      "winRate": 0.603,
+      "pickRate": 0.0122,
+      "games": 801038,
+      "tier": 1,
+      "topChampions": [
+        {
+          "championId": "147",
+          "name": "星籁歌姬",
+          "imageUrl": "/assets/champions/16.10.1/147.png",
+          "href": "#/hero/147",
+          "games": 10894,
+          "pickRate": 0.0628,
+          "winRate": 0.6308,
+          "tier": 1
+        },
+        {
+          "championId": "3",
+          "name": "正义巨像",
+          "imageUrl": "/assets/champions/16.10.1/3.png",
+          "href": "#/hero/3",
+          "games": 7694,
+          "pickRate": 0.0544,
+          "winRate": 0.6129,
+          "tier": 1
+        },
+        {
+          "championId": "526",
+          "name": "镕铁少女",
+          "imageUrl": "/assets/champions/16.10.1/526.png",
+          "href": "#/hero/526",
+          "games": 5007,
+          "pickRate": 0.0595,
+          "winRate": 0.6127,
+          "tier": 1
+        },
+        {
+          "championId": "876",
+          "name": "含羞蓓蕾",
+          "imageUrl": "/assets/champions/16.10.1/876.png",
+          "href": "#/hero/876",
+          "games": 14481,
+          "pickRate": 0.0941,
+          "winRate": 0.6098,
+          "tier": 1
+        },
+        {
+          "championId": "50",
+          "name": "诺克萨斯统领",
+          "imageUrl": "/assets/champions/16.10.1/50.png",
+          "href": "#/hero/50",
+          "games": 12373,
+          "pickRate": 0.0657,
+          "winRate": 0.5969,
+          "tier": 1
+        }
+      ]
+    },
+    {
+      "id": "1403",
+      "label": "属性叠属性！",
+      "winRate": 0.6027,
+      "pickRate": 0.0084,
+      "games": 552639,
+      "tier": 1,
+      "topChampions": [
+        {
+          "championId": "904",
+          "name": "不落魔锋",
+          "imageUrl": "/assets/champions/16.10.1/904.png",
+          "href": "#/hero/904",
+          "games": 3680,
+          "pickRate": 0.0418,
+          "winRate": 0.6321,
+          "tier": 1
+        },
+        {
+          "championId": "876",
+          "name": "含羞蓓蕾",
+          "imageUrl": "/assets/champions/16.10.1/876.png",
+          "href": "#/hero/876",
+          "games": 5699,
+          "pickRate": 0.037,
+          "winRate": 0.6243,
+          "tier": 1
+        },
+        {
+          "championId": "887",
+          "name": "灵罗娃娃",
+          "imageUrl": "/assets/champions/16.10.1/887.png",
+          "href": "#/hero/887",
+          "games": 2152,
+          "pickRate": 0.0413,
+          "winRate": 0.6227,
+          "tier": 1
+        },
+        {
+          "championId": "5",
+          "name": "德邦总管",
+          "imageUrl": "/assets/champions/16.10.1/5.png",
+          "href": "#/hero/5",
+          "games": 3870,
+          "pickRate": 0.0317,
+          "winRate": 0.6189,
+          "tier": 1
+        },
+        {
+          "championId": "895",
+          "name": "不羁之悦",
+          "imageUrl": "/assets/champions/16.10.1/895.png",
+          "href": "#/hero/895",
+          "games": 1550,
+          "pickRate": 0.0327,
+          "winRate": 0.611,
+          "tier": 1
+        }
+      ]
+    }
+  ],
+  "versionLosers": [
+    {
+      "championId": "39",
+      "name": "刀锋舞者",
+      "imageUrl": "/assets/champions/16.10.1/39.png",
+      "href": "#/hero/39",
+      "games": 43160,
+      "pickRate": 0.0021,
+      "winRate": 0.4467,
+      "tier": 5,
+      "prevWinRate": 0.5084,
+      "change": -6.2
+    },
+    {
+      "championId": "83",
+      "name": "牧魂人",
+      "imageUrl": "/assets/champions/16.10.1/83.png",
+      "href": "#/hero/83",
+      "games": 35471,
+      "pickRate": 0.0017,
+      "winRate": 0.4782,
+      "tier": 4,
+      "prevWinRate": 0.5346,
+      "change": -5.6
+    },
+    {
+      "championId": "58",
+      "name": "荒漠屠夫",
+      "imageUrl": "/assets/champions/16.10.1/58.png",
+      "href": "#/hero/58",
+      "games": 57586,
+      "pickRate": 0.0028,
+      "winRate": 0.4613,
+      "tier": 5,
+      "prevWinRate": 0.515,
+      "change": -5.4
+    },
+    {
+      "championId": "150",
+      "name": "迷失之牙",
+      "imageUrl": "/assets/champions/16.10.1/150.png",
+      "href": "#/hero/150",
+      "games": 63273,
+      "pickRate": 0.0031,
+      "winRate": 0.4551,
+      "tier": 5,
+      "prevWinRate": 0.5066,
+      "change": -5.1
+    },
+    {
+      "championId": "412",
+      "name": "魂锁典狱长",
+      "imageUrl": "/assets/champions/16.10.1/412.png",
+      "href": "#/hero/412",
+      "games": 164725,
+      "pickRate": 0.008,
+      "winRate": 0.454,
+      "tier": 5,
+      "prevWinRate": 0.5051,
+      "change": -5.1
+    },
+    {
+      "championId": "200",
+      "name": "虚空女皇",
+      "imageUrl": "/assets/champions/16.10.1/200.png",
+      "href": "#/hero/200",
+      "games": 50593,
+      "pickRate": 0.0025,
+      "winRate": 0.4634,
+      "tier": 5,
+      "prevWinRate": 0.5141,
+      "change": -5.1
+    },
+    {
+      "championId": "86",
+      "name": "德玛西亚之力",
+      "imageUrl": "/assets/champions/16.10.1/86.png",
+      "href": "#/hero/86",
+      "games": 127538,
+      "pickRate": 0.0062,
+      "winRate": 0.4693,
+      "tier": 4,
+      "prevWinRate": 0.5191,
+      "change": -5.0
+    },
+    {
+      "championId": "2",
+      "name": "狂战士",
+      "imageUrl": "/assets/champions/16.10.1/2.png",
+      "href": "#/hero/2",
+      "games": 51936,
+      "pickRate": 0.0025,
+      "winRate": 0.4838,
+      "tier": 4,
+      "prevWinRate": 0.5311,
+      "change": -4.7
+    },
+    {
+      "championId": "81",
+      "name": "探险家",
+      "imageUrl": "/assets/champions/16.10.1/81.png",
+      "href": "#/hero/81",
+      "games": 233910,
+      "pickRate": 0.0114,
+      "winRate": 0.4613,
+      "tier": 5,
+      "prevWinRate": 0.5084,
+      "change": -4.7
+    },
+    {
+      "championId": "432",
+      "name": "星界游神",
+      "imageUrl": "/assets/champions/16.10.1/432.png",
+      "href": "#/hero/432",
+      "games": 79463,
+      "pickRate": 0.0039,
+      "winRate": 0.4227,
+      "tier": 5,
+      "prevWinRate": 0.4692,
+      "change": -4.7
+    }
+  ],
+  "versionWinners": [
+    {
+      "championId": "876",
+      "name": "含羞蓓蕾",
+      "imageUrl": "/assets/champions/16.10.1/876.png",
+      "href": "#/hero/876",
+      "games": 153936,
+      "pickRate": 0.0075,
+      "winRate": 0.5785,
+      "tier": 1,
+      "prevWinRate": 0.4762,
+      "change": 10.2
+    },
+    {
+      "championId": "38",
+      "name": "虚空行者",
+      "imageUrl": "/assets/champions/16.10.1/38.png",
+      "href": "#/hero/38",
+      "games": 64680,
+      "pickRate": 0.0032,
+      "winRate": 0.5313,
+      "tier": 1,
+      "prevWinRate": 0.4382,
+      "change": 9.3
+    },
+    {
+      "championId": "804",
+      "name": "不破之誓",
+      "imageUrl": "/assets/champions/16.10.1/804.png",
+      "href": "#/hero/804",
+      "games": 143814,
+      "pickRate": 0.007,
+      "winRate": 0.5322,
+      "tier": 1,
+      "prevWinRate": 0.4606,
+      "change": 7.2
+    },
+    {
+      "championId": "121",
+      "name": "虚空掠夺者",
+      "imageUrl": "/assets/champions/16.10.1/121.png",
+      "href": "#/hero/121",
+      "games": 85992,
+      "pickRate": 0.0042,
+      "winRate": 0.4647,
+      "tier": 5,
+      "prevWinRate": 0.4112,
+      "change": 5.4
+    },
+    {
+      "championId": "102",
+      "name": "龙血武姬",
+      "imageUrl": "/assets/champions/16.10.1/102.png",
+      "href": "#/hero/102",
+      "games": 81142,
+      "pickRate": 0.004,
+      "winRate": 0.535,
+      "tier": 1,
+      "prevWinRate": 0.4849,
+      "change": 5.0
+    },
+    {
+      "championId": "238",
+      "name": "影流之主",
+      "imageUrl": "/assets/champions/16.10.1/238.png",
+      "href": "#/hero/238",
+      "games": 148880,
+      "pickRate": 0.0073,
+      "winRate": 0.5004,
+      "tier": 3,
+      "prevWinRate": 0.4516,
+      "change": 4.9
+    },
+    {
+      "championId": "887",
+      "name": "灵罗娃娃",
+      "imageUrl": "/assets/champions/16.10.1/887.png",
+      "href": "#/hero/887",
+      "games": 52127,
+      "pickRate": 0.0025,
+      "winRate": 0.5438,
+      "tier": 1,
+      "prevWinRate": 0.4959,
+      "change": 4.8
+    },
+    {
+      "championId": "69",
+      "name": "魔蛇之拥",
+      "imageUrl": "/assets/champions/16.10.1/69.png",
+      "href": "#/hero/69",
+      "games": 63577,
+      "pickRate": 0.0031,
+      "winRate": 0.4925,
+      "tier": 3,
+      "prevWinRate": 0.4451,
+      "change": 4.7
+    },
+    {
+      "championId": "107",
+      "name": "傲之追猎者",
+      "imageUrl": "/assets/champions/16.10.1/107.png",
+      "href": "#/hero/107",
+      "games": 64495,
+      "pickRate": 0.0031,
+      "winRate": 0.4969,
+      "tier": 3,
+      "prevWinRate": 0.4526,
+      "change": 4.4
+    },
+    {
+      "championId": "8",
+      "name": "猩红收割者",
+      "imageUrl": "/assets/champions/16.10.1/8.png",
+      "href": "#/hero/8",
+      "games": 87706,
+      "pickRate": 0.0043,
+      "winRate": 0.5003,
+      "tier": 3,
+      "prevWinRate": 0.4587,
+      "change": 4.2
+    }
+  ],
+  "hiddenGems": [
+    {
+      "augmentId": "1403",
+      "name": "属性叠属性！",
+      "iconUrl": "/assets/augments/icons/16.11/statsonstats_small.png",
+      "description": "获得3个【属性锻造器】，有更高几率出现黄金阶和棱彩阶锻造器！",
+      "href": "#/augment/1403",
+      "games": 552639,
+      "pickRate": 0.0084,
+      "winRate": 0.6027,
+      "tier": 1
+    },
+    {
+      "augmentId": "1134",
+      "name": "亮出你的剑",
+      "iconUrl": "/assets/augments/icons/16.11/drawyoursword_small.png",
+      "description": "变为近战状态，并且获得攻击力、生命值、攻击速度、生命偷取和移动速度 (每个属性都基于舍弃的攻击距离而进一步提升)。",
+      "href": "#/augment/1134",
+      "games": 106306,
+      "pickRate": 0.0016,
+      "winRate": 0.6007,
+      "tier": 1
+    },
+    {
+      "augmentId": "2002",
+      "name": "虚空裂隙",
+      "iconUrl": "/assets/augments/icons/16.11/voidrift_small.png",
+      "description": "用技能对敌人造成伤害时，会制造一道虚空裂痕。如果附近有另一道虚空裂痕，则它们都会被消耗，以在它们之间生成一道裂隙，对其中的敌人们造成魔法伤害和减速。",
+      "href": "#/augment/2002",
+      "games": 582828,
+      "pickRate": 0.0089,
+      "winRate": 0.5997,
+      "tier": 2
+    },
+    {
+      "augmentId": "1237",
+      "name": "质变：黄金阶",
+      "iconUrl": "/assets/augments/icons/16.11/transmutegold_small.png",
+      "description": "获得1个随机%i:Augment%黄金阶强化符文。",
+      "href": "#/augment/1237",
+      "games": 534011,
+      "pickRate": 0.0081,
+      "winRate": 0.5983,
+      "tier": 1
+    },
+    {
+      "augmentId": "1152",
+      "name": "任务：钢化你心",
+      "iconUrl": "/assets/augments/icons/16.11/quest_steelyourheart_small.png",
+      "description": "需求：持有【心之钢】且层数在300层或以上。奖励：将你的心之钢层数乘以3。",
+      "href": "#/augment/1152",
+      "games": 635957,
+      "pickRate": 0.0097,
+      "winRate": 0.5926,
+      "tier": 4
+    },
+    {
+      "augmentId": "1030",
+      "name": "尤里卡",
+      "iconUrl": "/assets/augments/icons/16.11/eureka_small.png",
+      "description": "获得相当于30%法术强度的技能急速。",
+      "href": "#/augment/1030",
+      "games": 650900,
+      "pickRate": 0.0099,
+      "winRate": 0.5875,
+      "tier": 3
+    },
+    {
+      "augmentId": "1361",
+      "name": "任务：艾卡西亚的陷落",
+      "iconUrl": "/assets/augments/icons/16.11/quest_voidimmolation_small.png",
+      "description": "即刻：获得1个【斑比的熔渣】。任务：持有日炎圣盾和 璀璨回响。奖励：将它们合成为虚空献祭。",
+      "href": "#/augment/1361",
+      "games": 214460,
+      "pickRate": 0.0033,
+      "winRate": 0.5835,
+      "tier": 1
+    },
+    {
+      "augmentId": "1225",
+      "name": "双刀流",
+      "iconUrl": "/assets/augments/icons/16.11/dualwield_small.png",
+      "description": "在攻击时，发射一个箭矢，它施加效能削减的%i:OnHit%攻击特效。获得10%总攻击速度。",
+      "href": "#/augment/1225",
+      "games": 419485,
+      "pickRate": 0.0064,
+      "winRate": 0.5828,
+      "tier": 3
+    },
+    {
+      "augmentId": "1391",
+      "name": "红包",
+      "iconUrl": "/assets/augments/icons/16.11/redenvelopes_small.png",
+      "description": "红包会随机出现在你周围。拾取它们会给你金币和少量的某个随机属性。",
+      "href": "#/augment/1391",
+      "games": 455010,
+      "pickRate": 0.0069,
+      "winRate": 0.5827,
+      "tier": 1
+    },
+    {
+      "augmentId": "1022",
+      "name": "灵巧",
+      "iconUrl": "/assets/augments/icons/16.11/deft_small.png",
+      "description": "获得%i:scaleAS% 60%攻击速度。",
+      "href": "#/augment/1022",
+      "games": 615026,
+      "pickRate": 0.0094,
+      "winRate": 0.5816,
+      "tier": 4
+    },
+    {
+      "augmentId": "1404",
+      "name": "属性！",
+      "iconUrl": "/assets/augments/icons/16.11/stats_small.png",
+      "description": "获得2个%i:StatAnvil%【属性锻造器】！",
+      "href": "#/augment/1404",
+      "games": 337012,
+      "pickRate": 0.0051,
+      "winRate": 0.5809,
+      "tier": 1
+    },
+    {
+      "augmentId": "1045",
+      "name": "炼狱导管",
+      "iconUrl": "/assets/augments/icons/16.11/infernalconduit_small.png",
+      "description": "你的技能会施加一层可叠加的灼烧，持续造成魔法伤害。你的灼烧效果会降低你各基础技能的冷却时间。",
+      "href": "#/augment/1045",
+      "games": 553918,
+      "pickRate": 0.0084,
+      "winRate": 0.5808,
+      "tier": 4
+    },
+    {
+      "augmentId": "1243",
+      "name": "质变：混沌",
+      "iconUrl": "/assets/augments/icons/16.11/transmutechaos_small.png",
+      "description": "获得2个随机%i:Augment%强化符文。",
+      "href": "#/augment/1243",
+      "games": 380708,
+      "pickRate": 0.0058,
+      "winRate": 0.5798,
+      "tier": 1
+    },
+    {
+      "augmentId": "1220",
+      "name": "连拨击锤",
+      "iconUrl": "/assets/augments/icons/16.11/fanthehammer_small.png",
+      "description": "对敌方英雄的攻击会发射5个额外爆竹，造成随距离提升的额外伤害。每个方向的冷却时间独立计算。",
+      "href": "#/augment/1220",
+      "games": 568169,
+      "pickRate": 0.0086,
+      "winRate": 0.577,
+      "tier": 3
+    },
+    {
+      "augmentId": "1411",
+      "name": "升级：荆棘之甲",
+      "iconUrl": "/assets/augments/icons/16.11/upgradecollector_small.png",
+      "description": "在脱离战斗?秒后，你的【荆棘之甲】或【棘刺背心】会生成一个甲壳来回敬更多伤害给攻击者。",
+      "href": "#/augment/1411",
+      "games": 174143,
+      "pickRate": 0.0026,
+      "winRate": 0.5743,
+      "tier": 1
+    },
+    {
+      "augmentId": "1181",
+      "name": "重量级打击手",
+      "iconUrl": "/assets/augments/icons/16.11/heavyhitter_small.png",
+      "description": "你的攻击造成相当于你3.5%最大生命值的额外物理伤害。",
+      "href": "#/augment/1181",
+      "games": 417015,
+      "pickRate": 0.0063,
+      "winRate": 0.5733,
+      "tier": 3
+    },
+    {
+      "augmentId": "1038",
+      "name": "有始有终",
+      "iconUrl": "/assets/augments/icons/16.11/frombeginningtoend_small.png",
+      "description": "获得先攻和黑暗收割基石符文。",
+      "href": "#/augment/1038",
+      "games": 633086,
+      "pickRate": 0.0096,
+      "winRate": 0.571,
+      "tier": 2
+    },
+    {
+      "augmentId": "1041",
+      "name": "歌利亚巨人",
+      "iconUrl": "/assets/augments/icons/16.11/goliath_small.png",
+      "description": "体型变大，获得35%生命值和15%适应之力。",
+      "href": "#/augment/1041",
+      "games": 517932,
+      "pickRate": 0.0079,
+      "winRate": 0.5665,
+      "tier": 2
+    },
+    {
+      "augmentId": "1310",
+      "name": "小丑学院",
+      "iconUrl": "/assets/augments/icons/16.11/clowncollege_small.png",
+      "description": "获得召唤师技能欺诈魔术。获得背刺被动。在你阵亡时，生成一个爆炸盒子来对附近的敌人们造成大量真实伤害和恐惧。",
+      "href": "#/augment/1310",
+      "games": 282077,
+      "pickRate": 0.0043,
+      "winRate": 0.566,
+      "tier": 1
+    },
+    {
+      "augmentId": "1388",
+      "name": "无限循环往复",
+      "iconUrl": "/assets/augments/icons/16.11/infiniterecursion_small.png",
+      "description": "获得60技能急速，外加每次参与击杀3技能急速。",
+      "href": "#/augment/1388",
+      "games": 264224,
+      "pickRate": 0.004,
+      "winRate": 0.565,
+      "tier": 2
+    }
+  ]
+}

@@ -35,14 +35,14 @@ export default function HeroSelector({
 
   return (
     <div className="glass-card p-3 mb-4">
-      <h2 className="text-sm font-semibold text-sage-600 mb-2">选择英雄</h2>
+      <h2 className="text-sm font-semibold text-sage-600 mb-2 dark:text-sage-300">选择英雄</h2>
 
       <input
         type="text"
         value={search}
         onChange={(e) => setSearch(e.target.value)}
         placeholder="搜索英雄名称或外号..."
-        className="w-full px-4 py-2.5 rounded-xl bg-white/50 border border-sage-200 text-[14px] text-sage-700 placeholder-sage-400 caret-sage-700 mb-2 focus:outline-none focus:border-gold-400 transition-colors"
+        className="w-full px-4 py-2.5 rounded-xl bg-white/50 border border-sage-200 text-[14px] text-sage-700 placeholder-sage-400 caret-sage-700 mb-2 focus:outline-none focus:border-gold-400 transition-colors dark:bg-white/5 dark:border-white/10 dark:text-sage-200 dark:placeholder-sage-500"
         autoComplete="off"
       />
 
@@ -53,7 +53,7 @@ export default function HeroSelector({
           ))}
         </div>
       ) : filtered.length === 0 ? (
-        <p className="text-[13px] text-sage-400 text-center py-4">
+        <p className="text-[13px] text-sage-400 text-center py-4 dark:text-sage-300">
           没有找到匹配的英雄
         </p>
       ) : (
@@ -65,19 +65,19 @@ export default function HeroSelector({
                 onClick={() => onSelect(hero)}
                 className={`hero-option flex flex-col items-center text-center p-2 rounded-xl transition-all active:scale-95 ${
                   selectedHero?.id === hero.id
-                    ? "bg-gold-100 border-2 border-gold-300 shadow-sm"
-                    : "bg-white/40 border-2 border-transparent hover:bg-white/70"
+                    ? "bg-gold-100 border-2 border-gold-300 shadow-sm dark:bg-gold-500/20 dark:border-gold-400/30"
+                    : "bg-white/40 border-2 border-transparent hover:bg-white/70 dark:bg-white/5 dark:hover:bg-white/10"
                 }`}
               >
-                <span className="text-[12px] font-semibold text-sage-700 leading-tight line-clamp-1">
+                <span className="text-[12px] font-semibold text-sage-700 leading-tight line-clamp-1 dark:text-sage-200">
                   {hero.name}
                 </span>
                 {hero.nicknames ? (
-                  <span className="text-[9px] text-sage-400 leading-tight line-clamp-1">
+                  <span className="text-[9px] text-sage-400 leading-tight line-clamp-1 dark:text-sage-300">
                     {hero.nicknames}
                   </span>
                 ) : (
-                  <span className="text-[9px] text-sage-300 leading-tight">
+                  <span className="text-[9px] text-sage-300 leading-tight dark:text-sage-400">
                     —
                   </span>
                 )}
@@ -98,7 +98,7 @@ export default function HeroSelector({
             ))}
           </div>
           {hasMore && (
-            <p className="text-[11px] text-sage-400 text-center mt-2">
+            <p className="text-[11px] text-sage-400 text-center mt-2 dark:text-sage-300">
               还有 {filtered.length - 12} 个英雄，请使用搜索筛选
             </p>
           )}

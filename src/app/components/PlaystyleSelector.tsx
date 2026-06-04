@@ -31,7 +31,7 @@ export default function PlaystyleSelector({
 
   return (
     <div className="mb-4">
-      <p className="text-[11px] text-sage-500 mb-2.5 flex items-center gap-1.5">
+      <p className="text-[11px] text-sage-500 mb-2.5 flex items-center gap-1.5 dark:text-sage-300">
         <span className="text-[12px]">🎯</span>
         选择玩法流派
       </p>
@@ -46,7 +46,7 @@ export default function PlaystyleSelector({
               className={`flex-shrink-0 text-[13px] px-5 py-2.5 rounded-full font-medium transition-all duration-200 active:scale-95 ${
                 isActive
                   ? "bg-sage-600 text-white shadow-lg shadow-sage-600/25"
-                  : "bg-white/60 text-sage-600 border border-sage-200/60 hover:bg-white/90 hover:border-sage-300/80 hover:shadow-sm disabled:opacity-50"
+                  : "bg-white/60 text-sage-600 border border-sage-200/60 hover:bg-white/90 hover:border-sage-300/80 hover:shadow-sm disabled:opacity-50 dark:bg-white/10 dark:text-sage-300 dark:border-white/10 dark:hover:bg-white/20 dark:hover:border-white/20"
               }`}
             >
               {p.name}

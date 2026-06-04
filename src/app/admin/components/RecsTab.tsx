@@ -251,7 +251,7 @@ export default function RecsTab({ adminKey }: { adminKey: string }) {
     const tempRec: Rec = {
       id: "temp-" + Math.random().toString(36).slice(2),
       hero_id: modalHero.id, rune_id: runeId, playstyle_id: psId,
-      phase: null, priority_score: 50, reason: "", build_synergy: "", adjustment_tags: [],
+      phase: null, priority_score: 95, reason: "", build_synergy: "", adjustment_tags: [],
       runes: rune,
     };
     setHeroData({ ...heroData, recs: [...heroData.recs, tempRec] });
@@ -261,7 +261,7 @@ export default function RecsTab({ adminKey }: { adminKey: string }) {
         method: "POST", headers: h,
         body: JSON.stringify({
           hero_id: modalHero.id, rune_id: runeId, playstyle_id: psId,
-          phase: null, priority_score: 50, reason: "", build_synergy: "", adjustment_tags: [],
+          phase: null, priority_score: 95, reason: "", build_synergy: "", adjustment_tags: [],
         }),
       });
       const newRec = await res.json();
@@ -287,6 +287,16 @@ export default function RecsTab({ adminKey }: { adminKey: string }) {
       });
     }
     fetch(`/api/admin/recommendations/${rec.id}`, {
+      method: "PUT", headers: h,
+      body: JSON.stringify({ priority_score: ns }),
+    }).catch(() => {
+      if (modalHero) loadHero(modalHero.id);
+    });
+  };
+
+  const saveScore = async (recId: string, score: number) => {
+    const ns = Math.max(0, Math.min(100, score));
+    fetch(`/api/admin/recommendations/${recId}`, {
       method: "PUT", headers: h,
       body: JSON.stringify({ priority_score: ns }),
     }).catch(() => {
@@ -436,14 +446,14 @@ export default function RecsTab({ adminKey }: { adminKey: string }) {
           placeholder="搜索英雄..."
           value={search}
           onChange={e => { setSearch(e.target.value); setHeroLimit(10); }}
-          className="flex-1 min-w-0 px-3 py-2 rounded-xl border border-sage-200 text-[13px] text-sage-700 placeholder-sage-400 bg-white/50 focus:outline-none focus:border-gold-400"
+          className="flex-1 min-w-0 px-3 py-2 rounded-xl border border-sage-200 text-[13px] text-sage-700 placeholder-sage-400 bg-white/50 focus:outline-none focus:border-gold-400 dark:bg-white/5 dark:border-white/10 dark:text-sage-200 dark:placeholder-sage-500"
         />
         <button
           onClick={() => handleCardFilterChange("withoutCards")}
           className={`whitespace-nowrap text-[12px] px-3 py-2 rounded-xl font-medium transition-all ${
             cardFilter === "withoutCards"
               ? "bg-rose-200 text-rose-700 shadow-sm"
-              : "bg-white/50 text-sage-500 hover:bg-rose-50"
+              : "bg-white/50 text-sage-500 hover:bg-rose-50 dark:bg-white/5 dark:text-sage-400 dark:hover:bg-rose-500/10"
           }`}
         >
           未推荐图文({heroesWithoutCardsCount})
@@ -453,7 +463,7 @@ export default function RecsTab({ adminKey }: { adminKey: string }) {
           className={`whitespace-nowrap text-[12px] px-3 py-2 rounded-xl font-medium transition-all ${
             cardFilter === "withCards"
               ? "bg-emerald-200 text-emerald-700 shadow-sm"
-              : "bg-white/50 text-sage-500 hover:bg-emerald-50"
+              : "bg-white/50 text-sage-500 hover:bg-emerald-50 dark:bg-white/5 dark:text-sage-400 dark:hover:bg-emerald-500/10"
           }`}
         >
           已推荐图文({heroesWithCardsCount})
@@ -465,10 +475,10 @@ export default function RecsTab({ adminKey }: { adminKey: string }) {
         {filteredHeroes.slice(0, heroLimit).map(hero => (
           <button key={hero.id}
             onClick={() => openModal(hero)}
-            className="text-left bg-white/40 hover:bg-white/70 rounded-xl p-3 transition-all active:scale-[0.98] border-2 border-transparent hover:border-gold-300/50"
+            className="text-left bg-white/70 rounded-xl p-3 transition-all active:scale-[0.98] border border-sage-200/80 shadow-sm hover:shadow-md hover:border-gold-300/60 hover:bg-white/90 dark:bg-white/5 dark:border-white/10 dark:hover:bg-white/10 dark:hover:border-gold-400/30"
           >
             <div className="flex items-center gap-1.5 mb-1">
-              <span className="text-[14px] font-semibold text-sage-700">{hero.name}</span>
+              <span className="text-[14px] font-semibold text-sage-700 dark:text-sage-200">{hero.name}</span>
               <span className={`text-[9px] px-1.5 py-0.5 rounded-full ${attackBadge(hero.attack_type)}`}>{hero.attack_type}</span>
             </div>
             <p className="text-[11px] text-sage-400 truncate">{hero.title?.split("—")[0]}</p>
@@ -479,7 +489,7 @@ export default function RecsTab({ adminKey }: { adminKey: string }) {
       {filteredHeroes.length > heroLimit && (
         <button
           onClick={() => setHeroLimit(prev => prev + 20)}
-          className="w-full mt-3 py-2.5 rounded-xl bg-white/50 text-sage-600 text-[13px] font-medium hover:bg-white/80 active:scale-[0.98] transition-all"
+          className="w-full mt-3 py-2.5 rounded-xl bg-white/50 text-sage-600 text-[13px] font-medium hover:bg-white/80 active:scale-[0.98] transition-all dark:bg-white/5 dark:text-sage-400 dark:hover:bg-white/10"
         >
           显示更多（剩余 {filteredHeroes.length - heroLimit} 个英雄）
         </button>
@@ -509,7 +519,7 @@ export default function RecsTab({ adminKey }: { adminKey: string }) {
               onClick={(e) => { if (e.target === e.currentTarget) closeModal(); }}
             >
               <motion.div
-                className="bg-cream-100 w-full max-w-3xl min-h-[60vh] max-h-[85vh] flex flex-col rounded-2xl shadow-2xl border border-sage-200 overflow-hidden"
+                className="bg-cream-100 w-full max-w-3xl min-h-[60vh] max-h-[85vh] flex flex-col rounded-2xl shadow-2xl border border-sage-200 overflow-hidden dark:bg-slate-900 dark:border-white/10"
                 initial={{ scale: 0.95, opacity: 0, y: 20 }}
                 animate={{ scale: 1, opacity: 1, y: 0 }}
                 exit={{ scale: 0.95, opacity: 0, y: 20 }}
@@ -517,10 +527,10 @@ export default function RecsTab({ adminKey }: { adminKey: string }) {
                 onClick={e => e.stopPropagation()}
               >
               {/* 弹窗头部 */}
-              <div className="flex-shrink-0 z-10 bg-cream-100/95 backdrop-blur-sm flex items-center justify-between px-5 py-3 border-b border-sage-100">
+              <div className="flex-shrink-0 z-10 bg-cream-100/95 backdrop-blur-sm flex items-center justify-between px-5 py-3 border-b border-sage-100 dark:bg-slate-900/95 dark:border-white/5">
                 <div className="flex items-center gap-3">
                   <div>
-                    <h2 className="text-[16px] font-bold text-sage-700">{modalHero.name}</h2>
+                    <h2 className="text-[16px] font-bold text-sage-700 dark:text-sage-100">{modalHero.name}</h2>
                     <span className={`text-[10px] px-1.5 py-0.5 rounded-full ${attackBadge(modalHero.attack_type)}`}>
                       {modalHero.attack_type}
                     </span>
@@ -564,15 +574,15 @@ export default function RecsTab({ adminKey }: { adminKey: string }) {
                       const bc = heroData.cards.find(c => c.playstyle_id === ps.id);
 
                       return (
-                        <div key={ps.id} className="rounded-xl border border-sage-100 bg-white/70">
+                        <div key={ps.id} className="rounded-xl border border-sage-100 bg-white/70 dark:bg-white/5 dark:border-white/10">
                           {/* 流派头部 — 吸顶，滚动时不消失 */}
                           <div
-                            className="flex items-center justify-between px-4 py-3 cursor-pointer hover:bg-sage-50/50 transition-colors sticky top-0 z-10 bg-white/95 backdrop-blur-sm"
+                            className="flex items-center justify-between px-4 py-3 cursor-pointer hover:bg-sage-50/50 transition-colors sticky top-0 z-10 bg-white/95 backdrop-blur-sm dark:bg-slate-900/95 dark:hover:bg-white/5"
                             onClick={() => togglePs(ps.id)}
                           >
                             <div className="flex-1 min-w-0">
                               <div className="flex items-center gap-2">
-                                <span className="text-[14px] font-semibold text-sage-700">{ps.name}</span>
+                                <span className="text-[14px] font-semibold text-sage-700 dark:text-sage-200">{ps.name}</span>
                                 <span className={`text-[14px] transition-transform text-sage-400 ${isExpanded ? "rotate-90" : ""}`}>›</span>
                                 {bc?.image_url && <span className="text-[12px]">🃏</span>}
                               </div>
@@ -601,7 +611,7 @@ export default function RecsTab({ adminKey }: { adminKey: string }) {
                                 <div className="px-4 pb-4 border-t border-sage-100 space-y-4 pt-3">
                                   {/* ====== 一、流派信息 ====== */}
                                   <section>
-                                    <h4 className="text-[11px] font-semibold text-sage-500 mb-2">流派信息</h4>
+                                    <h4 className="text-[11px] font-semibold text-sage-500 dark:text-sage-400 mb-2">流派信息</h4>
                                     <input
                                       placeholder="流派名称"
                                       value={ps.name}
@@ -610,7 +620,7 @@ export default function RecsTab({ adminKey }: { adminKey: string }) {
                                         setHeroData({ ...heroData, playstyles: updated });
                                       }}
                                       onBlur={() => updatePlaystyle(ps)}
-                                      className="w-full px-3 py-2 rounded-lg border border-sage-200 bg-white/80 text-[13px] text-sage-700 focus:outline-none focus:border-gold-400"
+                                      className="w-full px-3 py-2 rounded-lg border border-sage-200 bg-white/80 text-[13px] text-sage-700 focus:outline-none focus:border-gold-400 dark:bg-white/5 dark:border-white/10 dark:text-sage-200"
                                     />
                                     <textarea
                                       placeholder="玩法说明..."
@@ -621,15 +631,15 @@ export default function RecsTab({ adminKey }: { adminKey: string }) {
                                       }}
                                       onBlur={() => updatePlaystyle(ps)}
                                       rows={2}
-                                      className="w-full mt-2 px-3 py-2 rounded-lg border border-sage-200 bg-white/80 text-[12px] text-sage-700 focus:outline-none focus:border-gold-400 resize-none"
+                                      className="w-full mt-2 px-3 py-2 rounded-lg border border-sage-200 bg-white/80 text-[12px] text-sage-700 focus:outline-none focus:border-gold-400 resize-none dark:bg-white/5 dark:border-white/10 dark:text-sage-200"
                                     />
                                   </section>
 
                                   {/* ====== 二、图文推荐卡 ====== */}
                                   <section>
-                                    <h4 className="text-[11px] font-semibold text-sage-500 mb-2">🃏 图文推荐卡</h4>
+                                    <h4 className="text-[11px] font-semibold text-sage-500 dark:text-sage-400 mb-2">🃏 图文推荐卡</h4>
                                     <div className="flex gap-3">
-                                      <div className="flex-shrink-0 w-24 h-24 rounded-xl border-2 border-dashed border-sage-200 bg-sage-50/50 flex items-center justify-center overflow-hidden relative group">
+                                      <div className="flex-shrink-0 w-24 h-24 rounded-xl border-2 border-dashed border-sage-200 bg-sage-50/50 flex items-center justify-center overflow-hidden relative group dark:bg-white/5 dark:border-white/10">
                                         {bcUploading[ps.id] ? (
                                           <span className="text-[11px] text-sage-400">上传中...</span>
                                         ) : bcUrls[ps.id] || bc?.image_url ? (
@@ -658,7 +668,7 @@ export default function RecsTab({ adminKey }: { adminKey: string }) {
                                           placeholder="图文卡标题"
                                           value={bcTitles[ps.id] ?? bc?.title ?? ""}
                                           onChange={e => setBcTitles(prev => ({ ...prev, [ps.id]: e.target.value }))}
-                                          className="w-full px-3 py-1.5 rounded-lg border border-sage-200 bg-white/80 text-[12px] text-sage-700 focus:outline-none focus:border-gold-400"
+                                          className="w-full px-3 py-1.5 rounded-lg border border-sage-200 bg-white/80 text-[12px] text-sage-700 focus:outline-none focus:border-gold-400 dark:bg-white/5 dark:border-white/10 dark:text-sage-200"
                                         />
                                         {bcUploadError[ps.id] && (
                                           <p className="text-[10px] text-rose-500">{bcUploadError[ps.id]}</p>
@@ -669,31 +679,45 @@ export default function RecsTab({ adminKey }: { adminKey: string }) {
 
                                   {/* ====== 三、符文推荐 ====== */}
                                   <section>
-                                    <h4 className="text-[11px] font-semibold text-sage-500 mb-2">符文推荐</h4>
+                                    <h4 className="text-[11px] font-semibold text-sage-500 dark:text-sage-400 mb-2">符文推荐</h4>
                                     <div className="grid grid-cols-3 gap-2 mb-2">
                                       {(["chromatic", "gold", "silver"] as const).map(tier => {
                                         const tl = tierLabel(tier);
                                         const tierRecs = psRecs.filter(r => r.runes?.tier === tier);
                                         return (
-                                          <div key={tier} className="bg-sage-50/60 rounded-lg p-2">
+                                          <div key={tier} className="bg-sage-50/60 rounded-lg p-2 dark:bg-white/5">
                                             <p className={`text-[10px] font-bold text-center mb-1.5 px-2 py-0.5 rounded-full ${tl.cls}`}>
                                               {tl.text} · {tierRecs.length}
                                             </p>
                                             <div className="space-y-1">
                                               {tierRecs.map(rec => (
-                                                <div key={rec.id} className="bg-white rounded-lg px-2 py-1.5 text-[11px]">
+                                                <div key={rec.id} className="bg-white rounded-lg px-2 py-1.5 text-[11px] dark:bg-white/5">
                                                   <div className="flex items-center justify-between">
-                                                    <span className="font-medium text-sage-700 truncate">{rec.runes?.name}</span>
+                                                    <span className="font-medium text-sage-700 truncate dark:text-sage-200">{rec.runes?.name}</span>
                                                     <button onClick={() => deleteRec(rec.id)}
                                                       className="text-[10px] text-rose-400 hover:text-rose-600 flex-shrink-0 ml-1">×</button>
                                                   </div>
                                                   <div className="flex items-center gap-1.5 mt-1">
                                                     {/* 快速打分 */}
                                                     <button onClick={() => quickScore(rec, -5)}
-                                                      className="text-[10px] w-5 h-5 rounded-full bg-sage-100 text-sage-500 hover:bg-sage-200 flex items-center justify-center font-bold leading-none">−</button>
-                                                    <span className="text-[10px] text-gold-600 font-medium min-w-[2rem] text-center">{rec.priority_score}</span>
+                                                      className="text-[10px] w-5 h-5 rounded-full bg-sage-100 text-sage-500 hover:bg-sage-200 flex items-center justify-center font-bold leading-none dark:bg-white/10 dark:text-sage-400 dark:hover:bg-white/20">−</button>
+                                                    <input type="number" min={0} max={100} value={rec.priority_score}
+                                                      onChange={e => {
+                                                        const v = Math.max(0, Math.min(100, Number(e.target.value) || 0));
+                                                        if (heroData) {
+                                                          setHeroData({
+                                                            ...heroData,
+                                                            recs: heroData.recs.map(r => r.id === rec.id ? { ...r, priority_score: v } : r),
+                                                          });
+                                                        }
+                                                      }}
+                                                      onBlur={e => {
+                                                        const v = Math.max(0, Math.min(100, Number(e.target.value) || 0));
+                                                        saveScore(rec.id, v);
+                                                      }}
+                                                      className="text-[10px] text-gold-600 dark:text-gold-400 font-medium w-9 text-center bg-transparent border-b border-sage-200 dark:border-white/20 focus:outline-none focus:border-gold-400 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none" />
                                                     <button onClick={() => quickScore(rec, 5)}
-                                                      className="text-[10px] w-5 h-5 rounded-full bg-sage-100 text-sage-500 hover:bg-sage-200 flex items-center justify-center font-bold leading-none">+</button>
+                                                      className="text-[10px] w-5 h-5 rounded-full bg-sage-100 text-sage-500 hover:bg-sage-200 flex items-center justify-center font-bold leading-none dark:bg-white/10 dark:text-sage-400 dark:hover:bg-white/20">+</button>
                                                     {/* 详情编辑 */}
                                                     <button onClick={() => {
                                                       setEditingRec(rec);
@@ -701,7 +725,7 @@ export default function RecsTab({ adminKey }: { adminKey: string }) {
                                                       setRecReason(rec.reason);
                                                       setRecBuildSynergy(rec.build_synergy || "");
                                                     }}
-                                                      className={`text-[9px] ml-auto px-1.5 py-0.5 rounded ${editingRec?.id === rec.id ? "bg-gold-200 text-gold-700" : "bg-sage-100 text-sage-500"}`}>
+                                                      className={`text-[9px] ml-auto px-1.5 py-0.5 rounded ${editingRec?.id === rec.id ? "bg-gold-200 text-gold-700" : "bg-sage-100 text-sage-500 dark:bg-white/10 dark:text-sage-400"}`}>
                                                       详情
                                                     </button>
                                                   </div>
@@ -723,30 +747,30 @@ export default function RecsTab({ adminKey }: { adminKey: string }) {
                                           exit={{ height: 0, opacity: 0 }}
                                           className="overflow-hidden mb-2"
                                         >
-                                          <div className="bg-gold-50/80 rounded-lg p-3 border border-gold-200 space-y-2">
-                                            <p className="text-[11px] font-semibold text-gold-700">编辑「{editingRec.runes?.name}」</p>
+                                          <div className="bg-gold-50/80 rounded-lg p-3 border border-gold-200 space-y-2 dark:bg-gold-500/5 dark:border-gold-400/20">
+                                            <p className="text-[11px] font-semibold text-gold-700 dark:text-gold-400">编辑「{editingRec.runes?.name}」</p>
                                             <div className="flex gap-3">
                                               <div className="w-20">
-                                                <label className="text-[10px] text-sage-500">优先级</label>
+                                                <label className="text-[10px] text-sage-500 dark:text-sage-400">优先级</label>
                                                 <input type="number" min={0} max={100} value={recPriority}
                                                   onChange={e => setRecPriority(Number(e.target.value) || 50)}
-                                                  className="w-full px-2 py-1 rounded border border-sage-200 text-[12px]" />
+                                                  className="w-full px-2 py-1 rounded border border-sage-200 text-[12px] dark:bg-white/5 dark:border-white/10 dark:text-sage-200" />
                                               </div>
                                               <div className="flex-1">
-                                                <label className="text-[10px] text-sage-500">推荐理由</label>
+                                                <label className="text-[10px] text-sage-500 dark:text-sage-400">推荐理由</label>
                                                 <input value={recReason} onChange={e => setRecReason(e.target.value)}
-                                                  className="w-full px-2 py-1 rounded border border-sage-200 text-[12px]" />
+                                                  className="w-full px-2 py-1 rounded border border-sage-200 text-[12px] dark:bg-white/5 dark:border-white/10 dark:text-sage-200" />
                                               </div>
                                             </div>
                                             <div>
-                                              <label className="text-[10px] text-sage-500">推荐出装路线</label>
+                                              <label className="text-[10px] text-sage-500 dark:text-sage-400">推荐出装路线</label>
                                               <input value={recBuildSynergy} onChange={e => setRecBuildSynergy(e.target.value)}
                                                 placeholder="例如：先出狂妄，后补黑切..."
-                                                className="w-full px-2 py-1 rounded border border-sage-200 text-[12px]" />
+                                                className="w-full px-2 py-1 rounded border border-sage-200 text-[12px] dark:bg-white/5 dark:border-white/10 dark:text-sage-200" />
                                             </div>
                                             <div className="flex gap-2">
-                                              <button onClick={updateRecDetail} className="text-[11px] px-3 py-1.5 bg-gold-300 text-gold-700 rounded-lg font-medium">保存</button>
-                                              <button onClick={() => setEditingRec(null)} className="text-[11px] px-3 py-1.5 bg-sage-100 text-sage-500 rounded-lg">取消</button>
+                                              <button onClick={updateRecDetail} className="text-[11px] px-3 py-1.5 bg-gold-300 text-gold-700 rounded-lg font-medium dark:bg-gold-500/30 dark:text-gold-300">保存</button>
+                                              <button onClick={() => setEditingRec(null)} className="text-[11px] px-3 py-1.5 bg-sage-100 text-sage-500 rounded-lg dark:bg-white/10 dark:text-sage-400">取消</button>
                                             </div>
                                           </div>
                                         </motion.div>
@@ -754,13 +778,13 @@ export default function RecsTab({ adminKey }: { adminKey: string }) {
                                     </AnimatePresence>
 
                                     {/* 添加符文 */}
-                                    <div className="bg-sage-50/50 rounded-lg p-2.5">
-                                      <p className="text-[10px] font-medium text-sage-500 mb-1.5">添加符文</p>
+                                    <div className="bg-sage-50/50 rounded-lg p-2.5 dark:bg-white/5">
+                                      <p className="text-[10px] font-medium text-sage-500 dark:text-sage-400 mb-1.5">添加符文</p>
                                       <div className="flex gap-1 mb-2">
                                         {TIER_TABS.map(t => (
                                           <button key={t.key} onClick={() => setRuneTierFilter(t.key)}
                                             className={`text-[10px] px-2 py-0.5 rounded-full font-medium transition-all ${
-                                              runeTierFilter === t.key ? t.cls + " shadow-sm" : "bg-white/60 text-sage-500"
+                                              runeTierFilter === t.key ? t.cls + " shadow-sm" : "bg-white/60 text-sage-500 dark:bg-white/10 dark:text-sage-400"
                                             }`}>{t.label}</button>
                                         ))}
                                       </div>
@@ -768,7 +792,7 @@ export default function RecsTab({ adminKey }: { adminKey: string }) {
                                         placeholder="搜索符文..."
                                         value={runeSearch}
                                         onChange={e => setRuneSearch(e.target.value)}
-                                        className="w-full px-2.5 py-1.5 rounded-lg border border-sage-200 bg-white/80 text-[11px] mb-2 focus:outline-none focus:border-gold-400"
+                                        className="w-full px-2.5 py-1.5 rounded-lg border border-sage-200 bg-white/80 text-[11px] mb-2 focus:outline-none focus:border-gold-400 dark:bg-white/5 dark:border-white/10 dark:text-sage-200"
                                       />
                                       {(() => {
                                         const existingIds = new Set(psRecs.map(r => r.rune_id));
@@ -783,12 +807,19 @@ export default function RecsTab({ adminKey }: { adminKey: string }) {
                                             {pool.map(rune => {
                                               const added = existingIds.has(rune.id);
                                               return (
-                                                <button key={rune.id} onClick={() => { if (!added) addRec(rune.id, ps.id); }} disabled={added}
+                                                <button key={rune.id} onClick={() => {
+                                                  if (added) {
+                                                    const rec = psRecs.find(r => r.rune_id === rune.id);
+                                                    if (rec) deleteRec(rec.id);
+                                                  } else {
+                                                    addRec(rune.id, ps.id);
+                                                  }
+                                                }}
                                                   className={`text-[11px] px-2.5 py-1 rounded-lg font-medium transition-all ${
-                                                    added ? "bg-sage-100 text-sage-400 cursor-not-allowed opacity-50"
-                                                    : "bg-white border border-sage-200 text-sage-700 hover:border-gold-400 hover:bg-gold-50 active:scale-95"
-                                                  }`} title={rune.description}>
-                                                  {rune.name}
+                                                    added ? "bg-gold-100 border border-gold-300 text-gold-700 hover:bg-rose-100 hover:border-rose-300 hover:text-rose-600 active:scale-95 dark:bg-gold-500/20 dark:border-gold-400/30 dark:text-gold-300 dark:hover:bg-rose-500/20 dark:hover:border-rose-400/30 dark:hover:text-rose-400"
+                                                    : "bg-white border border-sage-200 text-sage-700 hover:border-gold-400 hover:bg-gold-50 active:scale-95 dark:bg-white/5 dark:border-white/10 dark:text-sage-300 dark:hover:border-gold-400/40 dark:hover:bg-gold-500/10"
+                                                  }`} title={added ? "点击取消推荐" : rune.description}>
+                                                  {added ? "✓ " : ""}{rune.name}
                                                 </button>
                                               );
                                             })}
@@ -800,9 +831,9 @@ export default function RecsTab({ adminKey }: { adminKey: string }) {
 
                                   {/* ====== 四、出装推荐（流派级别） ====== */}
                                   <section>
-                                    <h4 className="text-[11px] font-semibold text-sage-500 mb-2">出装推荐</h4>
+                                    <h4 className="text-[11px] font-semibold text-sage-500 dark:text-sage-400 mb-2">出装推荐</h4>
                                     <div>
-                                      <label className="text-[10px] text-sage-500">主出装 (6件)</label>
+                                      <label className="text-[10px] text-sage-500 dark:text-sage-400">主出装 (6件)</label>
                                       <div className="grid grid-cols-6 gap-1 mt-1">
                                         {[0,1,2,3,4,5].map(i => (
                                           <input key={`main-${i}`} placeholder={`${i+1}`}
@@ -812,13 +843,13 @@ export default function RecsTab({ adminKey }: { adminKey: string }) {
                                               a[i] = e.target.value;
                                               setBuildItems(prev => ({ ...prev, [ps.id]: a }));
                                             }}
-                                            className="px-1.5 py-1.5 rounded-lg border border-sage-200 bg-white/80 text-[11px] text-sage-700 focus:outline-none focus:border-gold-400 text-center"
+                                            className="px-1.5 py-1.5 rounded-lg border border-sage-200 bg-white/80 text-[11px] text-sage-700 focus:outline-none focus:border-gold-400 text-center dark:bg-white/5 dark:border-white/10 dark:text-sage-200"
                                           />
                                         ))}
                                       </div>
                                     </div>
                                     <div className="mt-2">
-                                      <label className="text-[10px] text-sage-500">替换出装 (6件)</label>
+                                      <label className="text-[10px] text-sage-500 dark:text-sage-400">替换出装 (6件)</label>
                                       <div className="grid grid-cols-6 gap-1 mt-1">
                                         {[0,1,2,3,4,5].map(i => (
                                           <input key={`alt-${i}`} placeholder={`替${i+1}`}
@@ -828,7 +859,7 @@ export default function RecsTab({ adminKey }: { adminKey: string }) {
                                               a[i] = e.target.value;
                                               setBuildAlts(prev => ({ ...prev, [ps.id]: a }));
                                             }}
-                                            className="px-1.5 py-1.5 rounded-lg border border-sage-200 bg-white/80 text-[11px] text-sage-700 focus:outline-none focus:border-gold-400 text-center"
+                                            className="px-1.5 py-1.5 rounded-lg border border-sage-200 bg-white/80 text-[11px] text-sage-700 focus:outline-none focus:border-gold-400 text-center dark:bg-white/5 dark:border-white/10 dark:text-sage-200"
                                           />
                                         ))}
                                       </div>
@@ -836,20 +867,20 @@ export default function RecsTab({ adminKey }: { adminKey: string }) {
                                   </section>
 
                                   {/* 统一保存 + 收起 */}
-                                  <div className="flex gap-2 pt-2 border-t border-sage-100">
+                                  <div className="flex gap-2 pt-2 border-t border-sage-100 dark:border-white/10">
                                     <button
                                       onClick={async () => {
                                         await saveBuildCard(ps.id);
                                         updatePlaystyle(ps);
                                         togglePs(ps.id);
                                       }}
-                                      className="flex-1 text-[12px] py-2 rounded-lg bg-gold-300 text-gold-700 font-medium hover:bg-gold-400 transition-colors active:scale-95"
+                                      className="flex-1 text-[12px] py-2 rounded-lg bg-gold-300 text-gold-700 font-medium hover:bg-gold-400 transition-colors active:scale-95 dark:bg-gold-500/30 dark:text-gold-300 dark:hover:bg-gold-500/40"
                                     >
                                       保存全部
                                     </button>
                                     <button
                                       onClick={() => togglePs(ps.id)}
-                                      className="flex-1 text-[12px] py-2 rounded-lg bg-sage-100 text-sage-500 hover:bg-sage-200 font-medium transition-colors"
+                                      className="flex-1 text-[12px] py-2 rounded-lg bg-sage-100 text-sage-500 hover:bg-sage-200 font-medium transition-colors dark:bg-white/10 dark:text-sage-400 dark:hover:bg-white/20"
                                     >
                                       收起 ▲
                                     </button>
@@ -869,18 +900,18 @@ export default function RecsTab({ adminKey }: { adminKey: string }) {
                     {/* 新建流派 */}
                     {!showNewPs ? (
                       <button onClick={() => { setShowNewPs(true); setPsName(""); setPsDesc(""); }}
-                        className="text-[12px] px-4 py-2 rounded-xl bg-gold-100 text-gold-600 font-medium hover:bg-gold-200 transition-colors w-full">
+                        className="text-[12px] px-4 py-2 rounded-xl bg-gold-100 text-gold-600 font-medium hover:bg-gold-200 transition-colors w-full dark:bg-gold-500/15 dark:text-gold-400 dark:hover:bg-gold-500/25">
                         + 新建流派
                       </button>
                     ) : (
-                      <div className="bg-sage-50/80 rounded-xl p-3 space-y-2">
+                      <div className="bg-sage-50/80 rounded-xl p-3 space-y-2 dark:bg-white/5">
                         <input placeholder="流派名称" value={psName} onChange={e => setPsName(e.target.value)}
-                          className="w-full px-3 py-2 rounded-lg border border-sage-200 bg-white/80 text-[13px] focus:outline-none focus:border-gold-400" />
+                          className="w-full px-3 py-2 rounded-lg border border-sage-200 bg-white/80 text-[13px] focus:outline-none focus:border-gold-400 dark:bg-white/5 dark:border-white/10 dark:text-sage-200" />
                         <textarea placeholder="流派描述" value={psDesc} onChange={e => setPsDesc(e.target.value)} rows={2}
-                          className="w-full px-3 py-2 rounded-lg border border-sage-200 bg-white/80 text-[12px] focus:outline-none focus:border-gold-400 resize-none" />
+                          className="w-full px-3 py-2 rounded-lg border border-sage-200 bg-white/80 text-[12px] focus:outline-none focus:border-gold-400 resize-none dark:bg-white/5 dark:border-white/10 dark:text-sage-200" />
                         <div className="flex gap-2">
-                          <button onClick={savePlaystyle} className="text-[12px] px-4 py-2 rounded-lg bg-gold-300 text-gold-700 font-medium">创建</button>
-                          <button onClick={() => setShowNewPs(false)} className="text-[12px] px-4 py-2 rounded-lg bg-sage-100 text-sage-500">取消</button>
+                          <button onClick={savePlaystyle} className="text-[12px] px-4 py-2 rounded-lg bg-gold-300 text-gold-700 font-medium dark:bg-gold-500/30 dark:text-gold-300">创建</button>
+                          <button onClick={() => setShowNewPs(false)} className="text-[12px] px-4 py-2 rounded-lg bg-sage-100 text-sage-500 dark:bg-white/10 dark:text-sage-400">取消</button>
                         </div>
                       </div>
                     )}

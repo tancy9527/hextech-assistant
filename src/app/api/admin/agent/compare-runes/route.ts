@@ -163,3 +163,84 @@ function jaccardSimilarity(ka: string[], kb: string[]): number {
   for (const w of ka) { if (kb.includes(w)) shared++; }
   return shared / Math.max(ka.length, kb.length);
 }
+
+// POST: 应用选中的符文变更
+export async function POST(req: NextRequest) {
+  if (!validateAdmin(req)) return adminError();
+  try {
+    const body = await req.json();
+    const { source, runeNames, forceUpdateDesc } = body;
+    if (!source || !runeNames || !Array.isArray(runeNames)) {
+      return Response.json({ success: false, error: "缺少参数" }, { status: 400 });
+    }
+
+    const supabase = createAdminClient();
+    const nameSet = new Set(runeNames);
+
+    // 获取远程数据
+    let remoteRunes: any[] = [];
+    if (source === "data_station") {
+      const hexAugs = await fetchHexAugments();
+      remoteRunes = hexAugs.map(a => ({
+        name: a.name, description: cleanHexDesc(a.description || ""),
+        tier: a.rarity === "棱彩" ? "chromatic" : a.rarity === "黄金" ? "gold" : "silver",
+        quality: a.rarity === "棱彩" ? "prismatic" : a.rarity === "黄金" ? "gold" : "silver",
+        icon_url: a.iconUrl ? `https://hexdata.com.cn${a.iconUrl}` : "",
+      }));
+    } else {
+      const amData = await fetchAramMayhemData();
+      remoteRunes = amData.augments.map(a => ({
+        name: a.name_cn, description: a.description_cn || "",
+        tier: a.rarity === "prismatic" ? "chromatic" : a.rarity === "gold" ? "gold" : "silver",
+        quality: a.rarity, icon_url: a.icon || "",
+      }));
+    }
+
+    // 获取现有DB符文
+    const { data: dbRunes } = await supabase.from("runes").select("id, name, description, tier, quality, is_active").eq("is_active", true);
+    const dbByName = new Map<string, any>();
+    for (const r of dbRunes || []) dbByName.set(r.name, r);
+
+    let updated = 0, created = 0, deactivated = 0;
+
+    for (const remote of remoteRunes) {
+      if (!nameSet.has(remote.name)) continue;
+      const existing = dbByName.get(remote.name);
+
+      if (existing) {
+        const updates: any = { is_active: true, source_id: remote.name, source };
+        if (forceUpdateDesc || !existing.description || existing.description.length < 5) {
+          updates.description = remote.description;
+        }
+        if (existing.tier !== remote.tier) {
+          updates.tier = remote.tier;
+          updates.quality = remote.quality;
+        }
+        await supabase.from("runes").update(updates).eq("id", existing.id);
+        updated++;
+      } else {
+        await supabase.from("runes").insert({
+          name: remote.name, description: remote.description,
+          tier: remote.tier, quality: remote.quality,
+          effect_type: "utility", source_id: remote.name,
+          source: source, is_active: true,
+        });
+        created++;
+      }
+    }
+
+    // 停用：DB有但远程没有的选中符文
+    const remoteNames = new Set(remoteRunes.map(r => r.name));
+    for (const r of dbRunes || []) {
+      if (!nameSet.has(r.name)) continue;
+      if (!remoteNames.has(r.name) && r.is_active !== false) {
+        await supabase.from("runes").update({ is_active: false }).eq("id", r.id);
+        deactivated++;
+      }
+    }
+
+    return Response.json({ success: true, updated, created, deactivated });
+  } catch (e: any) {
+    return Response.json({ success: false, error: e.message }, { status: 500 });
+  }
+}

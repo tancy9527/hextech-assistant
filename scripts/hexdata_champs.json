@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Hexdata 提供英雄联盟 ARAM 海克斯大乱斗英雄、海克斯、装备与趋势数据分析，展示 Patch、样本量、胜率区间和推荐口径。"
+    />
+    <meta name="robots" content="index,follow" />
+    <meta property="og:title" content="Hexdata ARAM 数据分析" />
+    <meta
+      property="og:description"
+      content="面向 ARAM 海克斯大乱斗的英雄、海克斯、装备与版本趋势报表。数据口径、样本阈值和生成时间公开展示。"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://hexdata.com.cn/" />
+    <meta property="og:image" content="https://hexdata.com.cn/assets/hexbox-logo.png" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Hexdata ARAM 数据分析" />
+    <meta
+      name="twitter:description"
+      content="英雄、海克斯、装备与版本趋势报表。数据口径、样本阈值和生成时间公开展示。"
+    />
+    <link rel="canonical" href="https://hexdata.com.cn/" />
+    <link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="/assets/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <title>Hexdata ARAM 数据分析</title>
+    <script type="module" crossorigin src="/assets/index-BvPMxxcJ.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-SnT7ZxzU.css">
+  </head>
+  <body>
+    <div id="root">
+      <main style="max-width:960px;margin:40px auto;padding:0 20px;font-family:system-ui,sans-serif;color:#221d17">
+        <h1>Hexdata ARAM 数据分析</h1>
+        <p>
+          Hexdata 提供英雄联盟 ARAM 海克斯大乱斗英雄、海克斯、装备与趋势数据分析。
+          页面加载后可查看英雄报表、海克斯报表、趣味数据和数据口径说明。
+        </p>
+        <nav aria-label="静态入口" style="display:flex;gap:12px;flex-wrap:wrap">
+          <a href="#/heroes">英雄报表</a>
+          <a href="#/augments">海克斯报表</a>
+          <a href="#/fun-data">趣味数据</a>
+          <a href="https://box.hexdata.com.cn/">HexBox 桌面助手</a>
+        </nav>
+        <p>
+          数据说明：按 Patch 汇总 Riot API 对局数据，推荐会结合样本量、低样本阈值和 95% 胜率区间。
+        </p>
+      </main>
+    </div>
+    <div style="text-align:center;padding:12px 0;color:#736756;font-family:system-ui,sans-serif;font-size:11px;font-weight:700">
+      <a href="https://beian.miit.gov.cn" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:none">陕ICP备2026010718号-1</a>
+    </div>
+  </body>
+</html>

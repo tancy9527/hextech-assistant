@@ -81,7 +81,7 @@ export default function RuneQuickSearch({
 
   return (
     <div ref={containerRef} className="relative mb-4">
-      <p className="text-[11px] text-sage-500 mb-1.5">
+      <p className="text-[11px] text-sage-500 mb-1.5 dark:text-sage-300">
         搜索符文并查看适配度，然后标记
       </p>
       <input
@@ -93,14 +93,14 @@ export default function RuneQuickSearch({
         }}
         onFocus={() => setShowResults(true)}
         placeholder="输入符文名称搜索..."
-        className="w-full px-3 py-2 rounded-xl bg-white/50 border border-sage-200 text-[13px] text-sage-700 placeholder-sage-400 caret-sage-700 focus:outline-none focus:border-gold-400 transition-colors"
+        className="w-full px-3 py-2 rounded-xl bg-white/50 border border-sage-200 text-[13px] text-sage-700 placeholder-sage-400 caret-sage-700 focus:outline-none focus:border-gold-400 transition-colors dark:bg-white/5 dark:border-white/10 dark:text-sage-200 dark:placeholder-sage-500"
         autoComplete="off"
       />
 
       {showResults && query.trim() && (
-        <div className="absolute z-20 left-0 right-0 mt-1 bg-white rounded-xl shadow-lg border border-sage-200 overflow-hidden max-h-80 overflow-y-auto">
+        <div className="absolute z-20 left-0 right-0 mt-1 bg-white rounded-xl shadow-lg border border-sage-200 overflow-hidden max-h-80 overflow-y-auto dark:bg-slate-900 dark:border-white/10">
           {results.length === 0 ? (
-            <p className="text-[12px] text-sage-400 text-center py-3">
+            <p className="text-[12px] text-sage-400 text-center py-3 dark:text-sage-300">
               没有匹配的符文
             </p>
           ) : (
@@ -109,12 +109,12 @@ export default function RuneQuickSearch({
               return (
                 <div
                   key={rune.id}
-                  className={`px-3 py-2.5 border-b border-sage-100 last:border-b-0 ${
-                    excluded ? "bg-sage-50/50" : ""
+                  className={`px-3 py-2.5 border-b border-sage-100 last:border-b-0 dark:border-white/5 ${
+                    excluded ? "bg-sage-50/50 dark:bg-sage-500/5" : ""
                   }`}
                 >
                   <div className="flex items-center gap-2 mb-1.5">
-                    <span className="text-[13px] font-medium text-sage-700">{rune.name}</span>
+                    <span className="text-[13px] font-medium text-sage-700 dark:text-sage-200">{rune.name}</span>
                     <span className={`text-[9px] px-1.5 py-0.5 rounded-full font-medium ${tierBadge(rune.tier)}`}>
                       {rune.tier === "chromatic" ? "彩色" : rune.tier === "gold" ? "金色" : "银色"}
                     </span>
@@ -124,7 +124,7 @@ export default function RuneQuickSearch({
                       </span>
                     )}
                     {excluded && (
-                      <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-sage-200 text-sage-500">
+                      <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-sage-200 text-sage-500 dark:bg-sage-500/20 dark:text-sage-300">
                         已屏蔽
                       </span>
                     )}
@@ -132,11 +132,11 @@ export default function RuneQuickSearch({
 
                   {/* Suitability info */}
                   {isRecommended ? (
-                    <p className="text-[11px] text-green-600 mb-1.5">
+                    <p className="text-[11px] text-green-600 mb-1.5 dark:text-green-400">
                       ✅ 适合当前英雄（评分: {score}分{isTop ? "，强烈推荐" : ""}）
                     </p>
                   ) : (
-                    <p className="text-[11px] text-sage-400 mb-1.5">
+                    <p className="text-[11px] text-sage-400 mb-1.5 dark:text-sage-300">
                       ⚪ 未在推荐列表中，可能不太适合当前英雄
                     </p>
                   )}
@@ -146,20 +146,20 @@ export default function RuneQuickSearch({
                     <div className="flex gap-2">
                       <button
                         onClick={() => handleMark(rune.id, "seen")}
-                        className="text-[11px] px-2.5 py-1 rounded-lg bg-sage-100 text-sage-500 font-medium active:scale-95"
+                        className="text-[11px] px-2.5 py-1 rounded-lg bg-sage-100 text-sage-500 font-medium active:scale-95 dark:bg-white/10 dark:text-sage-300"
                       >
                         🔘 已见过（屏蔽）
                       </button>
                       <button
                         onClick={() => handleMark(rune.id, "selected")}
-                        className="text-[11px] px-2.5 py-1 rounded-lg bg-sage-600 text-white font-medium active:scale-95"
+                        className="text-[11px] px-2.5 py-1 rounded-lg bg-sage-600 text-white font-medium active:scale-95 dark:bg-sage-500/60"
                       >
                         ✅ 本局已选
                       </button>
                     </div>
                   )}
                   {excluded && (
-                    <p className="text-[11px] text-sage-400">该符文已被本局屏蔽</p>
+                    <p className="text-[11px] text-sage-400 dark:text-sage-300">该符文已被本局屏蔽</p>
                   )}
                 </div>
               );

@@ -72,21 +72,19 @@ export default function AgentTab({ adminKey }: { adminKey: string }) {
   };
 
   const handleRuneExecute = async () => {
+    const source = activeRuneSource === "community" ? "community" : "data_station";
+    const srcLabel = source === "community" ? "社区" : "数据站";
     if (runeChecks.size === 0) { setRuneMsg("请先预览并勾选要更新的符文"); return; }
     const ids = Array.from(runeChecks);
-    const BATCH = 30;
-    setProgress({ current: 0, total: ids.length, label: `正在更新符文... 0/${ids.length}` });
-    let done = 0;
-    for (let i = 0; i < ids.length; i += BATCH) {
-      const batch = ids.slice(i, i + BATCH);
-      await fetch("/api/admin/agent/sync-runes", { method: "POST", headers: h, body: JSON.stringify({ dryRun: false, forceUpdateDesc, runeIds: batch }) });
-      done += batch.length;
-      setProgress({ current: done, total: ids.length, label: `正在更新符文... ${done}/${ids.length}` });
-    }
-    setProgress(null);
-    setRuneMsg(`更新完成！共处理 ${done} 个符文`);
-    setRuneChecks(new Set());
-    handleRunePreview();
+    setProgress({ current: 0, total: 1, label: `正在更新(${srcLabel})...` });
+    try {
+      const res = await fetch("/api/admin/agent/compare-runes", { method: "POST", headers: h, body: JSON.stringify({ source, forceUpdateDesc, runeNames: ids }) });
+      const data = await res.json();
+      setProgress(null);
+      setRuneMsg(`更新完成！[${srcLabel}] 更新${data.updated||0} 新增${data.created||0} 停用${data.deactivated||0}`);
+      setRuneChecks(new Set());
+      handleRunePreview();
+    } catch (e: any) { setRuneMsg(e.message); setProgress(null); }
   };
 
   const toggleRuneCheck = (name: string) => {
@@ -276,7 +274,7 @@ export default function AgentTab({ adminKey }: { adminKey: string }) {
                 const bg = d.action === "created" ? "bg-green-50/30" : d.action === "deactivated" ? "bg-rose-50/30" : "";
                 const changeDesc = d.action === "created" ? "新增" : d.action === "updated"
                   ? [d.name_diff && `名:${d.db_name}`, d.tier_diff && `等级:${d.db_tier}→${d.remote_tier}`, d.desc_diff && "描述不同", d.need_source_id && "补ID"].filter(Boolean).join(" ")
-                  : "停用";
+                  : "停用(前台不再显示)";
                 return (
                   <label key={i} className={`grid grid-cols-[24px_1fr_2fr_120px] gap-1.5 px-3 py-1.5 text-[11px] cursor-pointer hover:bg-white/50 items-start ${bg}`}>
                     <input type="checkbox" checked={checked} onChange={() => toggleRuneCheck(d.name)} className="size-3 rounded flex-shrink-0 mt-0.5" />

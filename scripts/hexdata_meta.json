@@ -1,0 +1,116 @@
+{
+  "source": {
+    "iesPublicRaw": "/tmp/hexdata-pipeline-6LKAZd/data/raw/ies_public_raw",
+    "aramMayhemRaw": "/tmp/hexdata-pipeline-6LKAZd/data/raw/aram_mayhem_raw"
+  },
+  "heroCount": 172,
+  "tierBands": [
+    {
+      "tier": 1,
+      "label": "前15%"
+    },
+    {
+      "tier": 2,
+      "label": "15%-35%"
+    },
+    {
+      "tier": 3,
+      "label": "35%-65%"
+    },
+    {
+      "tier": 4,
+      "label": "65%-85%"
+    },
+    {
+      "tier": 5,
+      "label": "后15%"
+    }
+  ],
+  "reportDate": "2026-06-02",
+  "tierMethod": "data_rank_v1",
+  "generatedAt": "2026-06-03T22:30:22.921027+00:00",
+  "reportPatch": "16.11",
+  "assetVersion": "16.10.1",
+  "augmentCount": 199,
+  "dataContract": {
+    "rawSourceHash": "091239ce06ac140e4062351766f401c52c2a4ce2f9100884c15ff2f769600777",
+    "schemaVersion": "1",
+    "corePayloadHash": "abf8384c2b0a424491e465761efdf060d7ef8cfa722117749d0e4e9902ede7af"
+  },
+  "samplePolicy": {
+    "low": {
+      "min": 1,
+      "maxExclusive": 250
+    },
+    "high": {
+      "min": 1000
+    },
+    "medium": {
+      "min": 250,
+      "maxExclusive": 1000
+    }
+  },
+  "itemNameSource": "https://ddragon.leagueoflegends.com/cdn/16.10.1/data/zh_CN/item.json",
+  "corePayloadHash": "abf8384c2b0a424491e465761efdf060d7ef8cfa722117749d0e4e9902ede7af",
+  "heroItemRawRows": 21440,
+  "itemNameVersion": "16.10.1",
+  "heroItemKeptRows": 13352,
+  "heroTrioCoverage": 168,
+  "iesPublicRawHash": "7cf8bb37ac1abe2f8433350bf5fe0cd4e4a1fcdba1f39ecb3607701c95fb81ea",
+  "itemFilterMethod": "completed_items_v1",
+  "itemIconCoverage": 121,
+  "itemNameCoverage": 121,
+  "itemNameLanguage": "zh_CN",
+  "rawChampionFiles": 172,
+  "aramMayhemRawHash": "091239ce06ac140e4062351766f401c52c2a4ce2f9100884c15ff2f769600777",
+  "augmentIconSource": "https://raw.communitydragon.org/16.11/game/assets/ux/cherry/augments/icons",
+  "heroTrendCoverage": 172,
+  "augmentIconStorage": "local",
+  "championNameSource": "https://ddragon.leagueoflegends.com/cdn/16.10.1/data/zh_CN/champion.json",
+  "dataHealthWarnings": [
+    "champion_icon_missing:172",
+    "item_icon_missing:121",
+    "hero_trio_zero_coverage:4"
+  ],
+  "reportDateCoverage": {
+    "2026-06-01": 1,
+    "2026-06-02": 171
+  },
+  "augmentIconCoverage": 199,
+  "championNameVersion": "16.10.1",
+  "reportPatchCoverage": {
+    "16.11": 172
+  },
+  "augmentIconLocalPath": "/assets/augments/icons/16.11",
+  "championIconCoverage": 172,
+  "championNameCoverage": 172,
+  "championNameLanguage": "zh_CN",
+  "heroAugmentHeroCount": 172,
+  "heroDetailShardCount": 172,
+  "heroItemFilteredRows": 8088,
+  "recommendationPolicy": {
+    "ranking": "sample_tier_then_wilson_lower_bound_v1",
+    "wilsonZ": 1.96,
+    "rankingSignals": [
+      "sample_tier",
+      "wilson_lower_bound",
+      "pick_rate",
+      "games"
+    ],
+    "confidenceInterval": "wilson_95",
+    "minRecommendationGames": 250,
+    "strongRecommendationMinGames": 1000
+  },
+  "augmentIconCachedFiles": 191,
+  "augmentDetailShardCount": 199,
+  "removedAggregatePayloads": [
+    "hero_augments.json",
+    "augment_heroes.json",
+    "hero_items.json",
+    "hero_trios.json",
+    "augment_stages.json"
+  ],
+  "augmentIconManifestSource": "https://raw.communitydragon.org/16.11/plugins/rcp-be-lol-game-data/global/default/v1/cherry-augments.json",
+  "dataContractSchemaVersion": "1",
+  "hextechInsightSchemaVersion": "1"
+}

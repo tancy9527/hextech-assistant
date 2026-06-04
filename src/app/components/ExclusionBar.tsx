@@ -21,12 +21,12 @@ export default function ExclusionBar({
         <div className="flex items-center justify-between text-[12px]">
           <button
             onClick={() => setShowConfirm(true)}
-            className="text-sage-500 font-medium hover:text-sage-700 transition-colors text-left"
+            className="text-sage-500 font-medium hover:text-sage-700 transition-colors text-left dark:text-sage-300 dark:hover:text-sage-200"
           >
-            已屏蔽本局符文: <span className="text-rose-500 font-bold">{excludedCount}</span> 个
+            已屏蔽本局符文: <span className="text-rose-500 font-bold dark:text-rose-300">{excludedCount}</span> 个
           </button>
-          <span className="text-sage-500 font-medium">
-            剩余可优选符文: <span className="text-gold-600 font-bold">{remainingCount}</span> 个
+          <span className="text-sage-500 font-medium dark:text-sage-300">
+            剩余可优选符文: <span className="text-gold-600 font-bold dark:text-gold-300">{remainingCount}</span> 个
           </span>
         </div>
       </div>
@@ -38,19 +38,19 @@ export default function ExclusionBar({
           onClick={() => setShowConfirm(false)}
         >
           <div
-            className="bg-white rounded-t-2xl sm:rounded-2xl p-5 w-full max-w-sm shadow-xl"
+            className="bg-white rounded-t-2xl sm:rounded-2xl p-5 w-full max-w-sm shadow-xl dark:bg-slate-900 dark:border dark:border-white/10"
             onClick={(e) => e.stopPropagation()}
           >
-            <p className="text-[14px] text-sage-700 font-semibold mb-2">
+            <p className="text-[14px] text-sage-700 font-semibold mb-2 dark:text-sage-200">
               重置本局屏蔽记录
             </p>
-            <p className="text-[13px] text-sage-500 mb-4">
+            <p className="text-[13px] text-sage-500 mb-4 dark:text-sage-300">
               已屏蔽的符文不会在推荐列表中出现。如需释放所有已屏蔽符文，请点击「重置本局」。
             </p>
             <div className="flex gap-2">
               <button
                 onClick={() => setShowConfirm(false)}
-                className="flex-1 text-[13px] px-4 py-2 rounded-xl bg-sage-100 text-sage-600 font-medium"
+                className="flex-1 text-[13px] px-4 py-2 rounded-xl bg-sage-100 text-sage-600 font-medium dark:bg-white/10 dark:text-sage-300"
               >
                 取消
               </button>

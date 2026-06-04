@@ -33,10 +33,10 @@ export default function NotificationPrompt() {
       <div className="flex items-center gap-3">
         <span className="text-2xl">🔔</span>
         <div className="flex-1">
-          <p className="text-[14px] font-semibold text-sage-700">
+          <p className="text-[14px] font-semibold text-sage-700 dark:text-sage-200">
             开启通知提醒
           </p>
-          <p className="text-[12px] text-sage-500">
+          <p className="text-[12px] text-sage-500 dark:text-sage-300">
             在关键等级（3/7/11/15级）时提醒你查看符文推荐
           </p>
         </div>
@@ -50,7 +50,7 @@ export default function NotificationPrompt() {
         </button>
         <button
           onClick={handleDismiss}
-          className="flex-1 text-[13px] py-2 rounded-xl bg-white/40 text-sage-500 font-medium"
+          className="flex-1 text-[13px] py-2 rounded-xl bg-white/40 text-sage-500 font-medium dark:bg-white/10 dark:text-sage-300"
         >
           以后再说
         </button>

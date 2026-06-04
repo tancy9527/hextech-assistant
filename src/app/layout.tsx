@@ -33,6 +33,34 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/icon-192.png" />
         <link rel="apple-touch-icon" href="/icon-192.png" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                var html = document.documentElement;
+                var saved = localStorage.getItem('hextech-theme');
+                if (saved === 'dark') {
+                  html.classList.add('dark');
+                } else if (saved === 'light') {
+                  html.classList.remove('dark');
+                } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                  html.classList.add('dark');
+                }
+                window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+                  if (!localStorage.getItem('hextech-theme')) {
+                    html.classList.toggle('dark', e.matches);
+                  }
+                });
+                window.__toggleTheme = function() {
+                  var isDark = html.classList.toggle('dark');
+                  localStorage.setItem('hextech-theme', isDark ? 'dark' : 'light');
+                  var mc = document.querySelector('meta[name="theme-color"]');
+                  if (mc) mc.setAttribute('content', isDark ? '#111714' : '#B5C4B1');
+                };
+              })();
+            `,
+          }}
+        />
       </head>
       <body className="min-h-dvh">
         {children}

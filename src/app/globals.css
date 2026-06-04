@@ -166,3 +166,47 @@ body {
 .hero-option-inactive {
   @apply bg-white/40 border border-transparent hover:bg-white/60;
 }
+
+/* ================================================================
+   暗色模式（仅在 .dark 类存在时生效，不影响亮色模式）
+   ================================================================ */
+
+.dark body {
+  background: linear-gradient(135deg, #0f1411 0%, #111714 40%, #141a15 100%);
+  color: #d4d8cf;
+}
+
+.dark .glass-card {
+  background: rgba(28, 36, 32, 0.75);
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+.dark .glass-card-highlight {
+  background: rgba(30, 40, 35, 0.85);
+}
+
+.dark .glass-card-selected {
+  background: rgba(20, 28, 22, 0.5);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark .btn-tag-inactive {
+  @apply bg-white/10 text-sage-400 border-sage-600/30;
+}
+
+.dark .phase-tab-active {
+  @apply bg-white/10 text-gold-400;
+}
+
+.dark .phase-tab-inactive {
+  @apply bg-white/5 text-sage-400;
+}
+
+.dark .hero-option-active {
+  @apply bg-sage-500/30 border-sage-400/50;
+}
+
+.dark .hero-option-inactive {
+  @apply bg-white/5 border-white/5 hover:bg-white/10;
+}
