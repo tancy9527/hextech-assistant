@@ -38,6 +38,10 @@ export default function AgentTab({ adminKey }: { adminKey: string }) {
   const [recChecks, setRecChecks] = useState<Set<string>>(new Set());
   const [recCollapsed, setRecCollapsed] = useState(false);
 
+  // AI比对结果
+  const [aiCompareResult, setAiCompareResult] = useState<any>(null);
+  const [aiCompareLoading, setAiCompareLoading] = useState(false);
+
   // 弹窗
   const [confirmModal, setConfirmModal] = useState<any>(null);
   const [progress, setProgress] = useState<{ current: number; total: number; label: string } | null>(null);

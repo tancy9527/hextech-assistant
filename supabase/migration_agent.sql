@@ -44,3 +44,24 @@ CREATE POLICY "Public read logs" ON update_logs FOR SELECT USING (true);
 CREATE POLICY "Public insert logs" ON update_logs FOR INSERT WITH CHECK (true);
 CREATE POLICY "Public update logs" ON update_logs FOR UPDATE USING (true);
 CREATE POLICY "Public delete logs" ON update_logs FOR DELETE USING (true);
+
+-- AI比对反馈表
+CREATE TABLE IF NOT EXISTS ai_comparison_feedback (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  community_name TEXT NOT NULL DEFAULT '',
+  data_station_name TEXT NOT NULL DEFAULT '',
+  feedback_type TEXT NOT NULL,
+  admin_note TEXT DEFAULT '',
+  rune_pair_key TEXT DEFAULT '',
+  override_count INTEGER DEFAULT 0,
+  is_active BOOLEAN DEFAULT true,
+  created_at TIMESTAMPTZ DEFAULT NOW(),
+  updated_at TIMESTAMPTZ DEFAULT NOW()
+);
+CREATE INDEX IF NOT EXISTS idx_feedback_pair ON ai_comparison_feedback(rune_pair_key);
+CREATE INDEX IF NOT EXISTS idx_feedback_type ON ai_comparison_feedback(feedback_type);
+
+ALTER TABLE update_logs ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "Public ai feedback" ON ai_comparison_feedback FOR SELECT USING (true);
+CREATE POLICY "Public insert ai feedback" ON ai_comparison_feedback FOR INSERT WITH CHECK (true);
+CREATE POLICY "Public update ai feedback" ON ai_comparison_feedback FOR UPDATE USING (true);
