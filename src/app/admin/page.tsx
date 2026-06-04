@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { useRouter } from "next/navigation";
 import RecsTab from "@/app/admin/components/RecsTab";
+import AgentTab from "@/app/admin/components/AgentTab";
 import { compressImage } from "@/lib/utils";
 
 const TABS = [
@@ -11,6 +12,8 @@ const TABS = [
   { key: "runes", label: "符文管理", icon: "⚡" },
   { key: "fetters", label: "羁绊管理", icon: "🧩" },
   { key: "heroes", label: "英雄管理", icon: "🦸" },
+  { key: "agent", label: "AI智能体", icon: "🤖" },
+  { key: "logs", label: "更新日志", icon: "📋" },
 ];
 
 function apiHeaders(adminKey: string) {
@@ -94,6 +97,8 @@ export default function AdminPage() {
         {tab === "runes" && <RunesTab adminKey={adminKey} />}
         {tab === "recommendations" && <RecsTab adminKey={adminKey} />}
         {tab === "fetters" && <FettersTab adminKey={adminKey} />}
+        {tab === "agent" && <AgentTab adminKey={adminKey} />}
+        {tab === "logs" && <LogsTab adminKey={adminKey} />}
       </div>
     </main>
   );
@@ -874,6 +879,89 @@ function Select({ label, value, options, onChange }: { label: string; value: str
       <select value={value} onChange={(e) => onChange(e.target.value)} className="w-full px-3 py-2 mt-0.5 rounded-lg border border-sage-200 text-[13px]">
         {options.map((o) => <option key={o.value} value={o.value}>{o.label}</option>)}
       </select>
+    </div>
+  );
+}
+
+// ============================================================
+// 更新日志
+// ============================================================
+function LogsTab({ adminKey }: { adminKey: string }) {
+  const [logs, setLogs] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [filter, setFilter] = useState("all");
+  const [edit, setEdit] = useState<any | null>(null);
+
+  const load = useCallback(async () => {
+    const h = apiHeaders(adminKey);
+    const params = new URLSearchParams();
+    if (filter !== "all") params.set("type", filter);
+    const res = await fetch(`/api/admin/agent/logs?${params}`, { headers: h });
+    const data = await res.json();
+    if (Array.isArray(data)) setLogs(data);
+    setLoading(false);
+  }, [adminKey, filter]);
+
+  useEffect(() => { load(); }, [load]);
+
+  const del = async (id: string) => {
+    if (!confirm("确定删除？")) return;
+    await fetch(`/api/admin/agent/logs/${id}`, { method: "DELETE", headers: apiHeaders(adminKey) });
+    load();
+  };
+
+  const save = async () => {
+    if (!edit) return;
+    const h = apiHeaders(adminKey);
+    const url = edit.id ? `/api/admin/agent/logs/${edit.id}` : "/api/admin/agent/logs";
+    await fetch(url, { method: edit.id ? "PUT" : "POST", headers: h, body: JSON.stringify(edit) });
+    setEdit(null); load();
+  };
+
+  if (loading) return <p className="text-[13px] text-sage-400">加载中...</p>;
+
+  return (
+    <div>
+      <div className="flex gap-1.5 mb-3 flex-wrap items-center">
+        {(["all","sync-runes","generate-recs","manual"] as const).map(f => (
+          <button key={f} onClick={() => setFilter(f)} className={`text-[11px] px-2.5 py-1 rounded-full font-medium ${filter === f ? "bg-gold-300 text-gold-700" : "bg-white/40 text-sage-500"}`}>
+            {f === "all" ? "全部" : f === "sync-runes" ? "符文同步" : f === "generate-recs" ? "推荐生成" : "手动记录"}
+          </button>
+        ))}
+        <button onClick={() => setEdit({ log_type: "manual", title: "", summary: "", details: {}, stats: {}, status: "completed", run_mode: "manual" })}
+          className="text-[11px] px-3 py-1 rounded-full bg-gold-300 text-gold-700 font-medium ml-auto">+ 新增日志</button>
+      </div>
+
+      <div className="space-y-1 max-h-96 overflow-y-auto">
+        {logs.map((l: any) => (
+          <div key={l.id} className="bg-white/40 rounded-lg px-3 py-2">
+            <div className="flex items-center justify-between">
+              <div>
+                <span className="text-[13px] font-medium text-sage-700">{l.title}</span>
+                <p className="text-[11px] text-sage-500">{l.summary}</p>
+                <span className="text-[10px] text-sage-400">{l.log_type === "sync-runes" ? "符文同步" : l.log_type === "generate-recs" ? "推荐生成" : l.log_type === "manual" ? "手动记录" : l.log_type} · {new Date(l.created_at).toLocaleString("zh-CN")}</span>
+              </div>
+              <div className="flex gap-1">
+                <button onClick={() => setEdit({ ...l })} className="text-[11px] text-gold-500">编辑</button>
+                <button onClick={() => del(l.id)} className="text-[11px] text-rose-400">删除</button>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {edit && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 backdrop-blur-sm p-4" onClick={() => setEdit(null)}>
+          <div className="bg-white rounded-2xl w-full max-w-md shadow-xl p-5" onClick={e => e.stopPropagation()}>
+            <h3 className="text-[15px] font-semibold text-sage-700 mb-3">{edit.id ? "编辑日志" : "新增日志"}</h3>
+            <div className="space-y-3">
+              <div><label className="text-[11px] text-sage-500">标题</label><input value={edit.title || ""} onChange={e => setEdit({ ...edit, title: e.target.value })} className="w-full px-3 py-2 mt-0.5 rounded-lg border border-sage-200 text-[13px]" /></div>
+              <div><label className="text-[11px] text-sage-500">摘要</label><input value={edit.summary || ""} onChange={e => setEdit({ ...edit, summary: e.target.value })} className="w-full px-3 py-2 mt-0.5 rounded-lg border border-sage-200 text-[13px]" /></div>
+              <button onClick={save} className="btn-primary w-full py-2 text-[13px]">{edit.id ? "保存" : "创建"}</button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

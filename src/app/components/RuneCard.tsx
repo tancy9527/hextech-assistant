@@ -10,7 +10,7 @@ interface RuneCardProps {
 }
 
 export default function RuneCard({ rec, onSelect, onSeen, onRemove }: RuneCardProps) {
-  const { rune, is_top, is_selected, is_excluded, adjusted_score, reason, build_synergy, boost_reasons } = rec;
+  const { rune, is_top, is_selected, is_excluded, has_db_rec, adjusted_score, reason, build_synergy, boost_reasons } = rec;
 
   const tierBadge = {
     chromatic: "bg-gradient-to-r from-purple-400 via-pink-400 to-gold-300 text-white",
@@ -40,7 +40,7 @@ export default function RuneCard({ rec, onSelect, onSeen, onRemove }: RuneCardPr
     >
       <div className="flex items-start gap-2.5">
         {/* Icon */}
-        <div className="w-10 h-10 rounded-xl bg-cream-200 flex items-center justify-center flex-shrink-0 overflow-hidden">
+        <div className="w-10 h-10 rounded-xl bg-cream-200 flex items-center justify-center flex-shrink-0 overflow-hidden dark:bg-sage-500/20">
           {rune.icon_url ? (
             <img
               src={rune.icon_url}
@@ -61,7 +61,7 @@ export default function RuneCard({ rec, onSelect, onSeen, onRemove }: RuneCardPr
         <div className="flex-1 min-w-0">
           {/* Name + badges */}
           <div className="flex items-center gap-1.5 flex-wrap mb-1">
-            <span className="font-semibold text-[14px] text-sage-700">
+            <span className="font-semibold text-[14px] text-sage-700 dark:text-sage-200">
               {rune.name}
             </span>
             <span className={`text-[9px] px-1.5 py-0.5 rounded-full font-medium ${tierBadge}`}>
@@ -70,6 +70,11 @@ export default function RuneCard({ rec, onSelect, onSeen, onRemove }: RuneCardPr
             {is_top && !isDisabled && (
               <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-gold-200 text-gold-700 font-medium">
                 推荐
+              </span>
+            )}
+            {!is_top && has_db_rec === false && !isDisabled && (
+              <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-sage-100 text-sage-500 font-medium dark:bg-sage-500/10 dark:text-sage-400">
+                推算
               </span>
             )}
             {rune.special_label && !isDisabled && (
@@ -83,19 +88,19 @@ export default function RuneCard({ rec, onSelect, onSeen, onRemove }: RuneCardPr
               </span>
             )}
             {is_excluded && !is_selected && (
-              <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-sage-200 text-sage-500 font-medium">
+              <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-sage-200 text-sage-500 font-medium dark:bg-sage-500/20 dark:text-sage-300">
                 本局已见过
               </span>
             )}
             {!isDisabled && adjusted_score > 0 && (
-              <span className="text-[10px] text-sage-500 ml-auto tabular-nums">
+              <span className="text-[10px] text-sage-500 ml-auto tabular-nums dark:text-sage-300">
                 {adjusted_score}分
               </span>
             )}
           </div>
 
           {/* Description */}
-          <p className="text-[12px] text-sage-600 leading-relaxed mb-1">
+          <p className="text-[12px] text-sage-600 leading-relaxed mb-1 dark:text-sage-300">
             {rune.description}
           </p>
 
@@ -120,7 +125,7 @@ export default function RuneCard({ rec, onSelect, onSeen, onRemove }: RuneCardPr
 
           {/* Reason */}
           {reason && (
-            <p className="text-[11px] text-gold-600 leading-relaxed">
+            <p className="text-[11px] text-gold-600 leading-relaxed dark:text-gold-300">
               {reason}
             </p>
           )}
@@ -131,7 +136,7 @@ export default function RuneCard({ rec, onSelect, onSeen, onRemove }: RuneCardPr
               {boost_reasons.map((r, i) => (
                 <span
                   key={i}
-                  className="text-[9px] px-1.5 py-0.5 rounded-full bg-rose-100 text-rose-600"
+                  className="text-[9px] px-1.5 py-0.5 rounded-full bg-rose-100 text-rose-600 dark:bg-rose-500/20 dark:text-rose-300"
                 >
                   {r}
                 </span>
@@ -141,9 +146,9 @@ export default function RuneCard({ rec, onSelect, onSeen, onRemove }: RuneCardPr
 
           {/* Build synergy */}
           {build_synergy && !isDisabled && (
-            <div className="mt-2 p-2 rounded-lg bg-sage-100/60 border border-sage-200/50">
-              <p className="text-[10px] text-sage-500 font-medium mb-0.5">推荐出装路线</p>
-              <p className="text-[11px] text-sage-600 leading-relaxed">
+            <div className="mt-2 p-2 rounded-lg bg-sage-100/60 border border-sage-200/50 dark:bg-white/5 dark:border-white/10">
+              <p className="text-[10px] text-sage-500 font-medium mb-0.5 dark:text-sage-300">推荐出装路线</p>
+              <p className="text-[11px] text-sage-600 leading-relaxed dark:text-sage-300">
                 {build_synergy}
               </p>
             </div>
@@ -156,13 +161,13 @@ export default function RuneCard({ rec, onSelect, onSeen, onRemove }: RuneCardPr
         <div className="mt-3 flex justify-end gap-2">
           <button
             onClick={() => onSeen(rune.id)}
-            className="text-[12px] px-3 py-1.5 rounded-lg bg-sage-100 text-sage-500 font-medium active:scale-95 transition-all hover:bg-sage-200"
+            className="text-[12px] px-3 py-1.5 rounded-lg bg-sage-100 text-sage-500 font-medium active:scale-95 transition-all hover:bg-sage-200 dark:bg-white/10 dark:text-sage-300 dark:hover:bg-white/20"
           >
             🔘 已见过
           </button>
           <button
             onClick={() => onSelect(rune.id)}
-            className="text-[12px] px-3 py-1.5 rounded-lg bg-sage-600 text-white font-medium active:scale-95 transition-all hover:bg-sage-700"
+            className="text-[12px] px-3 py-1.5 rounded-lg bg-sage-600 text-white font-medium active:scale-95 transition-all hover:bg-sage-700 dark:bg-sage-500/60 dark:hover:bg-sage-500/80"
           >
             ✅ 本局已选
           </button>
@@ -173,7 +178,7 @@ export default function RuneCard({ rec, onSelect, onSeen, onRemove }: RuneCardPr
         <div className="mt-3 flex justify-end">
           <button
             onClick={() => onRemove(rune.id)}
-            className="text-[12px] px-4 py-1.5 rounded-lg bg-rose-100 text-rose-500 font-medium active:scale-95 transition-all"
+            className="text-[12px] px-4 py-1.5 rounded-lg bg-rose-100 text-rose-500 font-medium active:scale-95 transition-all dark:bg-rose-500/20 dark:text-rose-300"
           >
             取消选择
           </button>
@@ -184,7 +189,7 @@ export default function RuneCard({ rec, onSelect, onSeen, onRemove }: RuneCardPr
         <div className="mt-3 flex justify-end">
           <button
             onClick={() => onRemove(rune.id)}
-            className="text-[12px] px-4 py-1.5 rounded-lg bg-sage-100 text-sage-500 font-medium active:scale-95 transition-all"
+            className="text-[12px] px-4 py-1.5 rounded-lg bg-sage-100 text-sage-500 font-medium active:scale-95 transition-all dark:bg-white/10 dark:text-sage-300"
           >
             取消标记
           </button>

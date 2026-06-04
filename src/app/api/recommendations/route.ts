@@ -77,13 +77,19 @@ export async function GET(req: NextRequest) {
       }
     }
 
+    // 5.5. 获取英雄 attack_type (用于基础分推算)
+    let heroAttackType = "AP";
+    const { data: heroData } = await supabase.from("heroes").select("attack_type").eq("id", heroId).single();
+    if (heroData?.attack_type) heroAttackType = heroData.attack_type;
+
     // 6. Compute final recommendations
     const results = computeRecommendations(
       allRecs,
       runes,
       selectedRuneIds,
       synergies || [],
-      { runeFetters, fetterNames }
+      { runeFetters, fetterNames },
+      heroAttackType
     );
 
     return NextResponse.json(results);

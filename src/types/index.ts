@@ -13,6 +13,8 @@ export interface Hero {
   description: string;
   image_url?: string;
   nicknames?: string;
+  win_rate?: string;
+  meta_tier?: string;
   created_at?: string;
 }
 
@@ -102,6 +104,7 @@ export interface RecommendationResult {
   boost_reasons: string[];
   is_top: boolean;
   is_selected: boolean;
+  has_db_rec?: boolean; // 是否有DB推荐记录（false表示仅基于基础分推算）
   is_excluded?: boolean;
   exclude_reason?: "selected" | "seen";
 }

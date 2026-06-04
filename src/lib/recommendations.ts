@@ -11,6 +11,14 @@ const QUALITY_MULTIPLIER: Record<Rune["quality"], number> = {
   silver: 0.9,
 };
 
+// 基础适配分矩阵: attack_type × effect_type → 基础分（无DB推荐时使用）
+const BASELINE_SCORE: Record<string, Record<string, number>> = {
+  AP:    { damage: 55, defense: 35, mobility: 45, utility: 50, sustain: 40 },
+  AD:    { damage: 55, defense: 35, mobility: 45, utility: 40, sustain: 50 },
+  Tank:  { damage: 30, defense: 60, mobility: 35, utility: 45, sustain: 55 },
+  Support: { damage: 25, defense: 45, mobility: 35, utility: 60, sustain: 50 },
+};
+
 interface FetterSynergyInput {
   /** rune_id → array of fetter_ids that this rune belongs to */
   runeFetters: Map<string, string[]>;
@@ -76,12 +84,14 @@ export function computeRecommendations(
   runes: Rune[],
   selectedRuneIds: string[] = [],
   synergies: RuneSynergy[] = [],
-  fetterData?: FetterSynergyInput
+  fetterData?: FetterSynergyInput,
+  heroAttackType?: string
 ): RecommendationResult[] {
   const runeMap = new Map(runes.map((r) => [r.id, r]));
+  const recRuneIds = new Set(recs.map((r) => r.rune_id));
 
   const scored = recs
-    .filter((rec) => !selectedRuneIds.includes(rec.rune_id))
+    .filter((rec) => !selectedRuneIds.includes(rec.rune_id) && runeMap.has(rec.rune_id))
     .map((rec) => {
       let boost = 0;
       const boostReasons: string[] = [];
@@ -111,17 +121,50 @@ export function computeRecommendations(
         reason: rec.reason,
         build_synergy: rec.build_synergy,
         boost_reasons: boostReasons,
-        is_top: false,
+        is_top: true,
         is_selected: false,
+        has_db_rec: true,
       };
     });
 
-  scored.sort((a, b) => b.adjusted_score - a.adjusted_score);
+  // 为没有DB推荐记录的符文生成基础分
+  const attackType = heroAttackType || "AP";
+  const scoreMatrix = BASELINE_SCORE[attackType] || BASELINE_SCORE["AP"];
 
-  // Mark all DB-recommended runes as recommended
-  for (const s of scored) {
-    s.is_top = true;
+  const unscoredRunes = runes.filter(
+    (r) => !recRuneIds.has(r.id) && !selectedRuneIds.includes(r.id)
+  );
+
+  for (const rune of unscoredRunes) {
+    const baseScore = scoreMatrix[rune.effect_type] || 30;
+    const qualityMultiplier = QUALITY_MULTIPLIER[rune.quality] || 1.0;
+
+    let boost = 0;
+    const boostReasons: string[] = [];
+
+    if (fetterData) {
+      const { boost: fetterBoost, reasons: fetterReasons } =
+        getFetterBoost(rune.id, selectedRuneIds, fetterData);
+      boost += fetterBoost;
+      boostReasons.push(...fetterReasons);
+    }
+
+    const adjusted_score = Math.round((baseScore + boost) * qualityMultiplier);
+
+    scored.push({
+      rune,
+      priority_score: baseScore,
+      adjusted_score,
+      reason: "",
+      build_synergy: "",
+      boost_reasons: boostReasons,
+      is_top: false,
+      is_selected: false,
+      has_db_rec: false,
+    });
   }
+
+  scored.sort((a, b) => b.adjusted_score - a.adjusted_score);
 
   const selectedResults: RecommendationResult[] = selectedRuneIds
     .map((id) => {
