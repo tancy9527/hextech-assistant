@@ -7,7 +7,7 @@ const HEXDATA_BASE = "https://hexdata.com.cn/data";
 export function cleanHexDesc(desc: string): string {
   if (!desc) return "";
   return desc
-    .replace(/%i:[^%]*%/g, "")
+    .replace(/%i:[^%]*%/g, "[数值]")
     .replace(/%\w[^%]{0,20}%/g, "")
     .replace(/\?\s*/g, "")
     .replace(/\s{2,}/g, " ")

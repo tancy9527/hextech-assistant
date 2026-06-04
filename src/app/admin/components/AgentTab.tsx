@@ -272,9 +272,11 @@ export default function AgentTab({ adminKey }: { adminKey: string }) {
               {currentRuneSrc.diffs.slice(0, 100).map((d: any, i: number) => {
                 const checked = runeChecks.has(d.name);
                 const bg = d.action === "created" ? "bg-green-50/30" : d.action === "deactivated" ? "bg-rose-50/30" : "";
-                const changeDesc = d.action === "created" ? "新增" : d.action === "updated"
-                  ? [d.name_diff && `名:${d.db_name}`, d.tier_diff && `等级:${d.db_tier}→${d.remote_tier}`, d.desc_diff && "描述不同", d.need_source_id && "补ID"].filter(Boolean).join(" ")
-                  : "停用(前台不再显示)";
+                const cParts: string[] = [];
+                if (d.action === "created") cParts.push("新增");
+                else if (d.action === "deactivated") cParts.push("停用(不在前台显示)");
+                else { if (d.name_diff) cParts.push("名:" + d.db_name); if (d.tier_diff) cParts.push(d.db_tier + "→" + d.remote_tier); if (d.desc_diff) cParts.push("描述不同"); if (d.need_source_id) cParts.push("补ID"); if (cParts.length===0) cParts.push("元数据"); }
+                const changeDesc = cParts.join(" ");
                 return (
                   <label key={i} className={`grid grid-cols-[24px_1fr_2fr_120px] gap-1.5 px-3 py-1.5 text-[11px] cursor-pointer hover:bg-white/50 items-start ${bg}`}>
                     <input type="checkbox" checked={checked} onChange={() => toggleRuneCheck(d.name)} className="size-3 rounded flex-shrink-0 mt-0.5" />
