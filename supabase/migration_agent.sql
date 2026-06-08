@@ -65,3 +65,39 @@ ALTER TABLE update_logs ENABLE ROW LEVEL SECURITY;
 CREATE POLICY "Public ai feedback" ON ai_comparison_feedback FOR SELECT USING (true);
 CREATE POLICY "Public insert ai feedback" ON ai_comparison_feedback FOR INSERT WITH CHECK (true);
 CREATE POLICY "Public update ai feedback" ON ai_comparison_feedback FOR UPDATE USING (true);
+
+-- 装备基础表
+CREATE TABLE IF NOT EXISTS equipment (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  game_id TEXT NOT NULL UNIQUE,
+  name TEXT NOT NULL,
+  description TEXT DEFAULT '',
+  icon_url TEXT DEFAULT '',
+  price INTEGER DEFAULT 0,
+  is_active BOOLEAN DEFAULT true,
+  created_at TIMESTAMPTZ DEFAULT NOW(),
+  updated_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- 英雄装备推荐表
+CREATE TABLE IF NOT EXISTS hero_equipment_recs (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  hero_id UUID REFERENCES heroes(id) ON DELETE CASCADE NOT NULL,
+  playstyle_id UUID REFERENCES hero_playstyles(id) ON DELETE CASCADE,
+  starter_items JSONB DEFAULT '[]',
+  core_items JSONB DEFAULT '[]',
+  source TEXT DEFAULT 'hexdata',
+  created_at TIMESTAMPTZ DEFAULT NOW(),
+  updated_at TIMESTAMPTZ DEFAULT NOW(),
+  UNIQUE(hero_id, playstyle_id)
+);
+
+ALTER TABLE equipment ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "Public equipment" ON equipment FOR SELECT USING (true);
+CREATE POLICY "Public insert equipment" ON equipment FOR INSERT WITH CHECK (true);
+CREATE POLICY "Public update equipment" ON equipment FOR UPDATE USING (true);
+
+ALTER TABLE hero_equipment_recs ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "Public equipment recs" ON hero_equipment_recs FOR SELECT USING (true);
+CREATE POLICY "Public insert equipment recs" ON hero_equipment_recs FOR INSERT WITH CHECK (true);
+CREATE POLICY "Public update equipment recs" ON hero_equipment_recs FOR UPDATE USING (true);
