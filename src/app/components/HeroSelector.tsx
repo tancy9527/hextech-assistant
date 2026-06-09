@@ -8,6 +8,7 @@ interface HeroSelectorProps {
   selectedHero: Hero | null;
   onSelect: (hero: Hero) => void;
   loading: boolean;
+  onRankingClick?: () => void;
 }
 
 export default function HeroSelector({
@@ -15,6 +16,7 @@ export default function HeroSelector({
   selectedHero,
   onSelect,
   loading,
+  onRankingClick,
 }: HeroSelectorProps) {
   const [search, setSearch] = useState("");
 
@@ -35,7 +37,18 @@ export default function HeroSelector({
 
   return (
     <div className="glass-card p-3 mb-4">
-      <h2 className="text-sm font-semibold text-sage-600 mb-2 dark:text-sage-300">选择英雄</h2>
+      <div className="flex items-center justify-between mb-2">
+        <h2 className="text-sm font-semibold text-sage-600 dark:text-sage-300">选择英雄</h2>
+        {onRankingClick && (
+          <button
+            onClick={onRankingClick}
+            className="text-[14px] px-2 py-1 rounded-lg bg-white/40 border border-sage-200/30 shadow-sm hover:bg-white/70 hover:shadow-md hover:border-gold-300/40 active:scale-95 transition-all dark:bg-white/5 dark:border-white/10 dark:hover:bg-white/15"
+            title="英雄胜率排行"
+          >
+            🏆
+          </button>
+        )}
+      </div>
 
       <input
         type="text"

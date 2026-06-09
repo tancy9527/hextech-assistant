@@ -11,6 +11,8 @@ import RuneCard from "@/app/components/RuneCard";
 import RuneQuickSearch from "@/app/components/RuneQuickSearch";
 import ExclusionBar from "@/app/components/ExclusionBar";
 import BuildCard from "@/app/components/BuildCard";
+import EquipmentTab from "@/app/components/EquipmentTab";
+import HeroRankingPanel from "@/app/components/HeroRankingPanel";
 import {
   loadExcludedRunes,
   clearExcludedRunes,
@@ -21,6 +23,15 @@ import {
   getExcludedCount,
   getSelectedEntries,
 } from "@/lib/exclusions";
+
+function extractKeywords(text: string): string[] {
+  if (!text) return [];
+  return text
+    .replace(/[^一-鿿\w]/g, " ")
+    .split(/\s+/)
+    .filter((w) => w.length >= 2 && !["的","和","与","或","之","及","在","为","被","把","对","从","到"].includes(w))
+    .map((w) => w.toLowerCase());
+}
 
 export default function HomePage() {
   // Hero state
@@ -60,6 +71,14 @@ export default function HomePage() {
   const [triggerPos, setTriggerPos] = useState<{ x: number; y: number } | null>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
 
+  // Ranking panel
+  const [rankingOpen, setRankingOpen] = useState(false);
+
+  // Equipment linkage
+  const [equipData, setEquipData] = useState<{ starter_items: any[]; core_items: any[]; alt_items: any[] } | null>(null);
+  const [highlightedEquipIds, setHighlightedEquipIds] = useState<Set<string>>(new Set());
+  const [highlightedRuneIds, setHighlightedRuneIds] = useState<Set<string>>(new Set());
+
   // Excluded runes
   const [excluded, setExcluded] = useState(loadExcludedRunes());
 
@@ -90,9 +109,11 @@ export default function HomePage() {
               let alts: string[] = Array(6).fill("");
               try {
                 const parsed = JSON.parse(c.description);
-                desc = parsed.text || "";
-                items = parsed.items || Array(6).fill("");
-                alts = parsed.alts || Array(6).fill("");
+                if (typeof parsed === "object") {
+                  desc = parsed.text || "";
+                  items = parsed.items || Array(6).fill("");
+                  alts = parsed.alts || Array(6).fill("");
+                }
               } catch {}
               heroMap.set(c.playstyle_id, {
                 image_url: c.image_url,
@@ -187,14 +208,14 @@ export default function HomePage() {
       .finally(() => setRecsLoading(false));
   }, [selectedHero, selectedPlaystyle, playstylesLoading]);
 
-  // 流派变化时自动打开卡牌弹窗
+  // 流派变化时自动打开卡牌弹窗（仅当有图片时）
   useEffect(() => {
     if (!selectedHero || !selectedPlaystyle) {
       setCardModalOpen(false);
       return;
     }
     const card = buildCardsMap.get(selectedHero.id)?.get(selectedPlaystyle.id);
-    if (card) {
+    if (card && card.image_url) {
       setCardModalOpen(true);
     } else {
       setCardModalOpen(false);
@@ -343,6 +364,7 @@ export default function HomePage() {
         selectedHero={selectedHero}
         onSelect={handleHeroSelect}
         loading={heroesLoading}
+        onRankingClick={() => setRankingOpen(true)}
       />
 
       {/* Hero info */}
@@ -367,16 +389,20 @@ export default function HomePage() {
               <span className="text-[14px]">📖</span>
               玩法说明
             </h3>
-            {buildCardsMap.get(selectedHero.id)?.get(selectedPlaystyle.id) && (
-              <button
-                ref={triggerRef}
-                onClick={handleCardOpen}
-                className="text-[11px] px-2.5 py-1 rounded-full bg-sage-100 text-sage-600 font-medium hover:bg-sage-200 active:scale-95 transition-all flex items-center gap-1 flex-shrink-0 dark:bg-white/10 dark:text-sage-300 dark:hover:bg-white/20"
-              >
-                <span className="text-[12px]">🎴</span>
-                查看攻略卡
-              </button>
-            )}
+            {(() => {
+              const card = buildCardsMap.get(selectedHero.id)?.get(selectedPlaystyle.id);
+              if (!card?.image_url) return null;
+              return (
+                <button
+                  ref={triggerRef}
+                  onClick={handleCardOpen}
+                  className="text-[11px] px-2.5 py-1 rounded-full bg-sage-100 text-sage-600 font-medium hover:bg-sage-200 active:scale-95 transition-all flex items-center gap-1 flex-shrink-0 dark:bg-white/10 dark:text-sage-300 dark:hover:bg-white/20"
+                >
+                  <span className="text-[12px]">🎴</span>
+                  查看攻略卡
+                </button>
+              );
+            })()}
           </div>
           <p className="text-[12px] text-sage-600/80 leading-relaxed whitespace-pre-wrap dark:text-sage-300">
             {selectedPlaystyle.description}
@@ -397,53 +423,32 @@ export default function HomePage() {
         />
       )}
 
-      {/* 出装推荐（流派级别） */}
-      {selectedHero && selectedPlaystyle && (() => {
-        const card = buildCardsMap.get(selectedHero.id)?.get(selectedPlaystyle.id);
-        if (!card) return null;
-        const hasItems = card.items.some(Boolean);
-        const hasAlts = card.alts.some(Boolean);
-        if (!hasItems && !hasAlts) return null;
-        return (
-          <div className="glass-card p-3 mb-4">
-            <h3 className="text-[12px] font-semibold text-sage-600 mb-2">🛡️ 推荐出装</h3>
-            {hasItems && (
-              <div className="mb-2">
-                <p className="text-[10px] text-sage-500 mb-1.5 dark:text-sage-300">核心出装</p>
-                <div className="grid grid-cols-6 gap-1.5">
-                  {card.items.map((item, i) => (
-                    <div key={i} className={`rounded-lg px-1 py-2 text-center text-[10px] font-medium ${
-                      item ? "bg-sage-100 text-sage-700 border border-sage-200 dark:bg-sage-500/20 dark:text-sage-200 dark:border-sage-500/30" : "bg-sage-50/50 text-sage-300 border border-dashed border-sage-200 dark:bg-white/5 dark:text-sage-500 dark:border-white/10"
-                    }`}>
-                      {item || i + 1}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-            {hasAlts && (
-              <div>
-                <p className="text-[10px] text-sage-500 mb-1.5 dark:text-sage-300">替换选择</p>
-                <div className="grid grid-cols-6 gap-1.5">
-                  {card.alts.map((item, i) => (
-                    <div key={i} className={`rounded-lg px-1 py-2 text-center text-[10px] font-medium ${
-                      item ? "bg-rose-50 text-rose-600 border border-rose-200" : "bg-sage-50/50 text-sage-300 border border-dashed border-sage-200"
-                    }`}>
-                      {item || i + 1}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-          </div>
-        );
-      })()}
+      {/* 出装推荐 */}
+      {selectedHero && (
+        <EquipmentTab
+          heroId={selectedHero.id}
+          playstyleId={selectedPlaystyle?.id}
+          highlightedIds={highlightedEquipIds}
+          onDataLoaded={(data) => setEquipData(data)}
+          onItemHover={(item) => {
+            if (!item) return;
+            const kw = extractKeywords(item.name);
+            const ids = new Set<string>();
+            for (const r of allRunes) {
+              const rk = extractKeywords(r.description + (r.pros || ""));
+              if (kw.some((w) => rk.includes(w))) ids.add(r.id);
+            }
+            setHighlightedRuneIds(ids);
+          }}
+          onItemLeave={() => setHighlightedRuneIds(new Set())}
+        />
+      )}
 
       {/* Rune quick search */}
       {selectedHero && allRunes.length > 0 && (() => {
-        const recScores = new Map<string, { score: number; isTop: boolean }>();
+        const recScores = new Map<string, { score: number; isTop: boolean; hasDbRec: boolean }>();
         for (const r of recs) {
-          recScores.set(r.rune.id, { score: r.adjusted_score, isTop: r.is_top });
+          recScores.set(r.rune.id, { score: r.adjusted_score, isTop: r.is_top, hasDbRec: r.has_db_rec ?? false });
         }
         return (
           <RuneQuickSearch
@@ -566,6 +571,21 @@ export default function HomePage() {
                     onSelect={handleRuneSelect}
                     onSeen={handleRuneSeen}
                     onRemove={handleRuneRemove}
+                    highlighted={highlightedRuneIds.has(rec.rune.id)}
+                    onHover={(runeId) => {
+                      const found = recs.find((r) => r.rune.id === runeId);
+                      if (!found || !equipData) return;
+                      const rk = extractKeywords(found.rune.description + (found.rune.pros || "") + (found.build_synergy || ""));
+                      const ids = new Set<string>();
+                      const allItems = [...(equipData.starter_items || []), ...(equipData.core_items || []), ...(equipData.alt_items || [])];
+                      for (const item of allItems) {
+                        if (!item) continue;
+                        const ik = extractKeywords(item.name + (item.description || ""));
+                        if (rk.some((w) => ik.includes(w))) ids.add(item.game_id);
+                      }
+                      setHighlightedEquipIds(ids);
+                    }}
+                    onLeave={() => setHighlightedEquipIds(new Set())}
                   />
                 ))}
               </div>
@@ -590,6 +610,14 @@ export default function HomePage() {
           )}
         </>
       )}
+
+      {/* 英雄胜率排行面板（客户端排序，无额外请求） */}
+      <HeroRankingPanel
+        open={rankingOpen}
+        onClose={() => setRankingOpen(false)}
+        onSelect={handleHeroSelect}
+        heroes={heroes}
+      />
 
       {/* Empty state: no hero selected */}
       {!selectedHero && !heroesLoading && (

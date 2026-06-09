@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import { useRouter } from "next/navigation";
 import RecsTab from "@/app/admin/components/RecsTab";
 import AgentTab from "@/app/admin/components/AgentTab";
+import EquipmentAdminTab from "@/app/admin/components/EquipmentAdminTab";
 import { compressImage } from "@/lib/utils";
 
 const TABS = [
@@ -12,6 +13,7 @@ const TABS = [
   { key: "runes", label: "符文管理", icon: "⚡" },
   { key: "fetters", label: "羁绊管理", icon: "🧩" },
   { key: "heroes", label: "英雄管理", icon: "🦸" },
+  { key: "equipment", label: "装备管理", icon: "🗡️" },
   { key: "agent", label: "AI智能体", icon: "🤖" },
   { key: "logs", label: "更新日志", icon: "📋" },
 ];
@@ -98,6 +100,7 @@ export default function AdminPage() {
         {tab === "recommendations" && <RecsTab adminKey={adminKey} />}
         {tab === "fetters" && <FettersTab adminKey={adminKey} />}
         {tab === "agent" && <AgentTab adminKey={adminKey} />}
+        {tab === "equipment" && <EquipmentAdminTab adminKey={adminKey} />}
         {tab === "logs" && <LogsTab adminKey={adminKey} />}
       </div>
     </main>
@@ -114,13 +117,14 @@ function DashboardTab({ adminKey }: { adminKey: string }) {
   useEffect(() => {
     async function load() {
       const h = apiHeaders(adminKey);
-      const [heroes, runes, playstyles, recs, fetters, cards] = await Promise.all([
+      const [heroes, runes, playstyles, recs, fetters, cards, equip] = await Promise.all([
         fetch("/api/admin/heroes", { headers: h }).then((r) => r.json()),
         fetch("/api/admin/runes", { headers: h }).then((r) => r.json()),
         fetch("/api/admin/playstyles", { headers: h }).then((r) => r.json()),
         fetch("/api/admin/recommendations", { headers: h }).then((r) => r.json()),
         fetch("/api/admin/fetters", { headers: h }).then((r) => r.json()),
         fetch("/api/admin/build-cards", { headers: h }).then((r) => r.json()),
+        fetch("/api/admin/equipment", { headers: h }).then((r) => r.json()),
       ]);
       setCounts({
         heroes: Array.isArray(heroes) ? heroes.length : 0,
@@ -130,6 +134,7 @@ function DashboardTab({ adminKey }: { adminKey: string }) {
         recommendations: Array.isArray(recs) ? recs.length : 0,
         fetters: Array.isArray(fetters) ? fetters.length : 0,
         buildCards: Array.isArray(cards) ? cards.length : 0,
+        equipment: Array.isArray(equip) ? equip.length : 0,
       });
       setLoading(false);
     }
@@ -145,6 +150,7 @@ function DashboardTab({ adminKey }: { adminKey: string }) {
     { label: "推荐配置", count: counts.recommendations },
     { label: "羁绊", count: counts.fetters },
     { label: "图文推荐卡", count: counts.buildCards },
+    { label: "装备", count: counts.equipment },
   ];
 
   return (
@@ -170,6 +176,8 @@ function HeroesTab({ adminKey }: { adminKey: string }) {
   const [search, setSearch] = useState("");
   const [edit, setEdit] = useState<any | null>(null);
   const [loading, setLoading] = useState(true);
+  const [saving, setSaving] = useState(false);
+  const [msg, setMsg] = useState("");
 
   const load = useCallback(async () => {
     const h = apiHeaders(adminKey);
@@ -182,11 +190,16 @@ function HeroesTab({ adminKey }: { adminKey: string }) {
   useEffect(() => { load(); }, [load]);
 
   const save = async () => {
-    if (!edit) return;
+    if (!edit || saving) return;
+    setSaving(true); setMsg("");
     const h = apiHeaders(adminKey);
-    await fetch(`/api/admin/heroes/${edit.id}`, { method: "PUT", headers: h, body: JSON.stringify(edit) });
-    setEdit(null);
-    load();
+    try {
+      const res = await fetch(`/api/admin/heroes/${edit.id}`, { method: "PUT", headers: h, body: JSON.stringify(edit) });
+      if (res.ok) { setMsg("已保存"); setEdit(null); load(); }
+      else { const d = await res.json().catch(() => ({})); setMsg(`保存失败: ${(d as any).error || res.status}`); }
+    } catch (e: any) { setMsg(`网络错误: ${e.message}`); }
+    setSaving(false);
+    setTimeout(() => setMsg(""), 2000);
   };
 
   return (
@@ -227,7 +240,10 @@ function HeroesTab({ adminKey }: { adminKey: string }) {
             <Select label="攻击类型" value={edit.attack_type} options={[{label:"AP",value:"AP"},{label:"AD",value:"AD"},{label:"坦克",value:"Tank"},{label:"辅助",value:"Support"}]} onChange={(v) => setEdit({ ...edit, attack_type: v })} />
             <Field label="描述" value={edit.description} onChange={(v) => setEdit({ ...edit, description: v })} />
             <Field label="昵称" value={edit.nicknames || ""} onChange={(v) => setEdit({ ...edit, nicknames: v })} />
-            <button onClick={save} className="btn-primary w-full py-2 text-[13px]">保存</button>
+            {msg && <p className={`text-[11px] ${msg.includes("失败") || msg.includes("错误") ? "text-rose-500" : "text-green-500"}`}>{msg}</p>}
+            <button onClick={save} disabled={saving} className="btn-primary w-full py-2 text-[13px] disabled:opacity-40">
+              {saving ? "保存中..." : "保存"}
+            </button>
           </div>
         </Modal>
       )}
@@ -246,6 +262,8 @@ function RunesTab({ adminKey }: { adminKey: string }) {
   const [edit, setEdit] = useState<any | null>(null);
   const [addNew, setAddNew] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [saving, setSaving] = useState(false);
+  const [msg, setMsg] = useState("");
 
   const load = useCallback(async () => {
     const h = apiHeaders(adminKey);
@@ -266,14 +284,18 @@ function RunesTab({ adminKey }: { adminKey: string }) {
   useEffect(() => { load(); }, [load]);
 
   const save = async () => {
-    if (!edit) return;
+    if (!edit || saving) return;
+    setSaving(true); setMsg("");
     const h = apiHeaders(adminKey);
     const url = edit.id ? `/api/admin/runes/${edit.id}` : "/api/admin/runes";
     const method = edit.id ? "PUT" : "POST";
-    await fetch(url, { method, headers: h, body: JSON.stringify(edit) });
-    setEdit(null);
-    setAddNew(false);
-    load();
+    try {
+      const res = await fetch(url, { method, headers: h, body: JSON.stringify(edit) });
+      if (res.ok) { setMsg("已保存"); setEdit(null); setAddNew(false); load(); }
+      else { const d = await res.json().catch(() => ({})); setMsg(`保存失败: ${(d as any).error || res.status}`); }
+    } catch (e: any) { setMsg(`网络错误: ${e.message}`); }
+    setSaving(false);
+    setTimeout(() => setMsg(""), 2000);
   };
 
   const disable = async (id: string) => {
@@ -385,7 +407,10 @@ function RunesTab({ adminKey }: { adminKey: string }) {
                 {edit?.is_active !== false ? "已启用" : "已禁用"}
               </button>
             </div>
-            <button onClick={save} className="btn-primary w-full py-2 text-[13px]">{addNew ? "创建" : "保存"}</button>
+            {msg && <p className={`text-[11px] ${msg.includes("失败") || msg.includes("错误") ? "text-rose-500" : "text-green-500"}`}>{msg}</p>}
+            <button onClick={save} disabled={saving} className="btn-primary w-full py-2 text-[13px] disabled:opacity-40">
+              {saving ? "保存中..." : addNew ? "创建" : "保存"}
+            </button>
           </div>
         </Modal>
       )}
@@ -404,6 +429,8 @@ function FettersTab({ adminKey }: { adminKey: string }) {
   const [edit, setEdit] = useState<any | null>(null);
   const [addNew, setAddNew] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [saving, setSaving] = useState(false);
+  const [msg, setMsg] = useState("");
 
   const load = useCallback(async () => {
     const h = apiHeaders(adminKey);
@@ -442,12 +469,18 @@ function FettersTab({ adminKey }: { adminKey: string }) {
   };
 
   const save = async () => {
-    if (!edit) return;
+    if (!edit || saving) return;
+    setSaving(true); setMsg("");
     const h = apiHeaders(adminKey);
     const url = edit.id ? `/api/admin/fetters/${edit.id}` : "/api/admin/fetters";
     const method = edit.id ? "PUT" : "POST";
-    await fetch(url, { method, headers: h, body: JSON.stringify(edit) });
-    setEdit(null); setAddNew(false); load();
+    try {
+      const res = await fetch(url, { method, headers: h, body: JSON.stringify(edit) });
+      if (res.ok) { setMsg("已保存"); setEdit(null); setAddNew(false); load(); }
+      else { const d = await res.json().catch(() => ({})); setMsg(`保存失败: ${(d as any).error || res.status}`); }
+    } catch (e: any) { setMsg(`网络错误: ${e.message}`); }
+    setSaving(false);
+    setTimeout(() => setMsg(""), 2000);
   };
 
   const del = async (id: string) => {
@@ -516,7 +549,10 @@ function FettersTab({ adminKey }: { adminKey: string }) {
             <Field label="2件套效果" value={edit?.effect_2 || ""} onChange={(v) => setEdit({ ...edit, effect_2: v })} />
             <Field label="3件套效果" value={edit?.effect_3 || ""} onChange={(v) => setEdit({ ...edit, effect_3: v })} />
             <Field label="4件套效果" value={edit?.effect_4 || ""} onChange={(v) => setEdit({ ...edit, effect_4: v })} />
-            <button onClick={save} className="btn-primary w-full py-2 text-[13px]">{addNew ? "创建" : "保存"}</button>
+            {msg && <p className={`text-[11px] ${msg.includes("失败") || msg.includes("错误") ? "text-rose-500" : "text-green-500"}`}>{msg}</p>}
+            <button onClick={save} disabled={saving} className="btn-primary w-full py-2 text-[13px] disabled:opacity-40">
+              {saving ? "保存中..." : addNew ? "创建" : "保存"}
+            </button>
           </div>
         </Modal>
       )}
@@ -567,14 +603,15 @@ function BuildCardsTab({ adminKey }: { adminKey: string }) {
   }, [adminKey, selectedHero]);
 
   const save = async () => {
-    if (!selectedHero || !imageUrl.trim()) return;
+    if (!selectedHero || !imageUrl.trim() || saving) return;
     setSaving(true);
     const body: any = { hero_id: selectedHero, image_url: imageUrl.trim(), title, description: desc };
     if (selectedPlaystyle) body.playstyle_id = selectedPlaystyle;
-    await fetch("/api/admin/build-cards", { method: "POST", headers: apiHeaders(adminKey), body: JSON.stringify(body) });
+    try {
+      const res = await fetch("/api/admin/build-cards", { method: "POST", headers: apiHeaders(adminKey), body: JSON.stringify(body) });
+      if (res.ok) { setSelectedHero(""); setSelectedPlaystyle(""); setTitle(""); setDesc(""); setImageUrl(""); load(); }
+    } catch {}
     setSaving(false);
-    setSelectedHero(""); setSelectedPlaystyle(""); setTitle(""); setDesc(""); setImageUrl("");
-    load();
   };
 
   const del = async (id: string) => {
@@ -910,12 +947,19 @@ function LogsTab({ adminKey }: { adminKey: string }) {
     load();
   };
 
+  const [logSaving, setLogSaving] = useState(false);
+
   const save = async () => {
-    if (!edit) return;
+    if (!edit || logSaving) return;
+    setLogSaving(true);
     const h = apiHeaders(adminKey);
     const url = edit.id ? `/api/admin/agent/logs/${edit.id}` : "/api/admin/agent/logs";
-    await fetch(url, { method: edit.id ? "PUT" : "POST", headers: h, body: JSON.stringify(edit) });
-    setEdit(null); load();
+    try {
+      const res = await fetch(url, { method: edit.id ? "PUT" : "POST", headers: h, body: JSON.stringify(edit) });
+      if (res.ok) { setEdit(null); load(); }
+      else { alert("保存失败"); }
+    } catch { alert("网络错误"); }
+    setLogSaving(false);
   };
 
   if (loading) return <p className="text-[13px] text-sage-400">加载中...</p>;
@@ -957,7 +1001,7 @@ function LogsTab({ adminKey }: { adminKey: string }) {
             <div className="space-y-3">
               <div><label className="text-[11px] text-sage-500">标题</label><input value={edit.title || ""} onChange={e => setEdit({ ...edit, title: e.target.value })} className="w-full px-3 py-2 mt-0.5 rounded-lg border border-sage-200 text-[13px]" /></div>
               <div><label className="text-[11px] text-sage-500">摘要</label><input value={edit.summary || ""} onChange={e => setEdit({ ...edit, summary: e.target.value })} className="w-full px-3 py-2 mt-0.5 rounded-lg border border-sage-200 text-[13px]" /></div>
-              <button onClick={save} className="btn-primary w-full py-2 text-[13px]">{edit.id ? "保存" : "创建"}</button>
+              <button onClick={save} disabled={logSaving} className="btn-primary w-full py-2 text-[13px] disabled:opacity-40">{logSaving ? "保存中..." : edit.id ? "保存" : "创建"}</button>
             </div>
           </div>
         </div>

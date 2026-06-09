@@ -116,38 +116,6 @@ export default function BuildCard({ heroId, playstyleId, heroName, cardsMap, mod
                 {card.description && (
                   <p className="text-[13px] text-purple-300/70 text-center mt-3 px-6 leading-relaxed">{card.description}</p>
                 )}
-                {(card.items?.some(Boolean) || card.alts?.some(Boolean)) && (
-                  <div className="mt-4 w-full px-4">
-                    {card.items?.some(Boolean) && (
-                      <div className="mb-2">
-                        <p className="text-[10px] text-gold-300/70 text-center mb-1">推荐出装</p>
-                        <div className="grid grid-cols-6 gap-1">
-                          {card.items!.map((item, i) => (
-                            <div key={i} className={`rounded-md px-1 py-1.5 text-center text-[9px] font-medium ${
-                              item ? "bg-gold-300/15 text-gold-300/90 border border-gold-300/30" : "bg-white/5 text-purple-300/40 border border-dashed border-white/10"
-                            }`}>
-                              {item || i + 1}
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-                    {card.alts?.some(Boolean) && (
-                      <div>
-                        <p className="text-[10px] text-purple-300/70 text-center mb-1">替换选择</p>
-                        <div className="grid grid-cols-6 gap-1">
-                          {card.alts!.map((item, i) => (
-                            <div key={i} className={`rounded-md px-1 py-1.5 text-center text-[9px] font-medium ${
-                              item ? "bg-purple-300/10 text-purple-300/80 border border-purple-300/25" : "bg-white/5 text-purple-300/40 border border-dashed border-white/10"
-                            }`}>
-                              {item || i + 1}
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                )}
                 <p className="text-[14px] text-purple-300/50 mt-4">点击翻转查看</p>
 
                 <div className="absolute bottom-10 flex gap-2">

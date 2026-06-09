@@ -63,7 +63,17 @@ export interface AramData {
  * 从 arammayhem.com 获取完整数据集
  */
 export async function fetchAramMayhemData(): Promise<AramData> {
-  const res = await fetch(ARAMMAYHEM_SEARCH_URL);
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 15000);
+  let res: Response;
+  try {
+    res = await fetch(ARAMMAYHEM_SEARCH_URL, { signal: controller.signal });
+  } catch (e: any) {
+    clearTimeout(timeout);
+    if (e.name === "AbortError") throw new Error("arammayhem.com 请求超时（15秒），请检查网络后重试");
+    throw new Error(`arammayhem.com 请求失败: ${e.message}`);
+  }
+  clearTimeout(timeout);
   if (!res.ok) throw new Error(`arammayhem.com 请求失败: HTTP ${res.status}`);
 
   const raw = await res.json();

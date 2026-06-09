@@ -28,7 +28,12 @@ export async function POST(req: NextRequest) {
   if (!validateAdmin(req)) return adminError();
   const supabase = createAdminClient();
   const body = await req.json();
-  const { data, error } = await supabase.from("hero_rune_recommendations").insert(body).select().single();
+  // 使用 upsert 避免重复插入错误：同一英雄+符文+流派+阶段 则更新
+  const { data, error } = await supabase
+    .from("hero_rune_recommendations")
+    .upsert(body, { onConflict: "hero_id, rune_id, playstyle_id, phase" })
+    .select()
+    .single();
   if (error) return Response.json({ error: error.message }, { status: 500 });
   return Response.json(data);
 }

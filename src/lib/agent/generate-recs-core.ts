@@ -96,6 +96,9 @@ export async function generateRecsFromCombos(options: {
 
   // 4. 过滤combos
   const filteredCombos = filterCombos(amData.combos, heroIds, heroMap);
+  let totalAugmentEntries = 0;
+  let unmatchedRuneCount = 0;
+  const unmatchedRunes = new Set<string>();
 
   let entriesGenerated = 0;
   const errors: string[] = [];
@@ -113,8 +116,9 @@ export async function generateRecsFromCombos(options: {
     const score = TIER_SCORE[combo.tier] || 50;
 
     for (const augmentId of combo.augmentIds) {
+      totalAugmentEntries++;
       const runeId = runeMap.get(augmentId);
-      if (!runeId) continue;
+      if (!runeId) { unmatchedRuneCount++; unmatchedRunes.add(augmentId); continue; }
       const ri = runeInfoMap.get(runeId);
       const runeName = ri?.name || augmentId;
       const runeDesc = ri?.desc || "";
@@ -230,6 +234,12 @@ export async function generateRecsFromCombos(options: {
 
   preview.summary.affectedHeroes = affectedHeroesSet.size;
   preview.affectedHeroes = Array.from(affectedHeroesSet);
+  // 附加诊断信息
+  (preview as any).totalCombos = amData.combos.length;
+  (preview as any).matchedCombos = filteredCombos.length;
+  (preview as any).totalAugmentEntries = totalAugmentEntries;
+  (preview as any).unmatchedRuneCount = unmatchedRuneCount;
+  (preview as any).unmatchedRunes = Array.from(unmatchedRunes).slice(0, 20);
   return { preview, results, log };
 }
 

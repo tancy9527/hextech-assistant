@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { compressImage } from "@/lib/utils";
@@ -23,6 +23,9 @@ interface Rec {
 interface BuildCard {
   id: string; hero_id: string; playstyle_id: string;
   image_url: string; title: string; description: string;
+}
+interface Equipment {
+  id: string; game_id: string; name: string; price: number; icon_url: string;
 }
 
 interface HeroData {
@@ -60,19 +63,145 @@ const attackBadge = (type: string) => {
   }
 };
 
-// 解析/构建出装JSON（存储在build_card.description中）
+// 解析图文卡描述（新格式为纯文本，旧格式为JSON含items/alts）
 function parseItemBuild(bc: BuildCard | undefined): { text: string; items: string[]; alts: string[] } {
   if (!bc?.description) return { text: "", items: Array(6).fill(""), alts: Array(6).fill("") };
   try {
     const p = JSON.parse(bc.description);
-    return {
-      text: p.text || "",
-      items: p.items || Array(6).fill(""),
-      alts: p.alts || Array(6).fill(""),
-    };
+    if (typeof p === "object") {
+      return {
+        text: p.text || "",
+        items: p.items || Array(6).fill(""),
+        alts: p.alts || Array(6).fill(""),
+      };
+    }
+    return { text: bc.description, items: Array(6).fill(""), alts: Array(6).fill("") };
   } catch {
     return { text: bc.description, items: Array(6).fill(""), alts: Array(6).fill("") };
   }
+}
+
+function EquipRow({
+  label, equipList, items, onChange, maxSlots = 6,
+}: {
+  label: string; equipList: Equipment[];
+  items: string[]; onChange: (items: string[]) => void;
+  maxSlots?: number;
+}) {
+  const n = maxSlots;
+  const [focusIdx, setFocusIdx] = useState<number | null>(null);
+  const [suggestions, setSuggestions] = useState<Equipment[]>([]);
+  const blurTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const handleInput = (i: number, val: string) => {
+    const padded = items.length === n ? items : [...items, ...Array(n - items.length).fill("")];
+    padded[i] = val;
+    onChange(padded);
+    if (val) {
+      const q = val.toLowerCase();
+      setSuggestions(equipList.filter(e => e.name.toLowerCase().includes(q)).slice(0, 8));
+    } else {
+      setSuggestions([]);
+    }
+  };
+
+  const selectEquip = (i: number, name: string) => {
+    handleInput(i, name);
+    setSuggestions([]);
+  };
+
+  const moveItem = (from: number, to: number) => {
+    const padded = items.length === n ? items : [...items, ...Array(n - items.length).fill("")];
+    const next = [...padded];
+    [next[from], next[to]] = [next[to], next[from]];
+    onChange(next);
+  };
+
+  const padded = items.length === n ? items : [...items, ...Array(n - Math.max(0, items.length)).fill("")];
+  const display = padded.slice(0, n);
+
+  return (
+    <div className="relative">
+      <label className="text-[10px] text-sage-500 dark:text-sage-400">{label} ({n}件)</label>
+      <div className={`grid gap-1 mt-1`} style={{ gridTemplateColumns: `repeat(${n}, 1fr)` }}>
+        {display.map((val, i) => (
+          <div key={i} className="relative">
+            <div className="flex gap-0.5">
+              <input
+                value={val}
+                placeholder={`${i + 1}`}
+                onFocus={() => {
+                  if (blurTimer.current) { clearTimeout(blurTimer.current); blurTimer.current = null; }
+                  setFocusIdx(i);
+                  if (val) {
+                    const q = val.toLowerCase();
+                    setSuggestions(equipList.filter(e => e.name.toLowerCase().includes(q)).slice(0, 8));
+                  }
+                }}
+                onBlur={() => {
+                  blurTimer.current = setTimeout(() => { setSuggestions([]); setFocusIdx(null); }, 150);
+                }}
+                onChange={e => handleInput(i, e.target.value)}
+                className="w-full px-1.5 py-1.5 rounded-lg border border-sage-200 bg-white/80 text-[11px] text-sage-700 focus:outline-none focus:border-gold-400 dark:bg-white/5 dark:border-white/10 dark:text-sage-200"
+              />
+              {val && (
+                <button
+                  onMouseDown={e => e.preventDefault()}
+                  onClick={() => handleInput(i, "")}
+                  className="absolute right-1 top-1/2 -translate-y-1/2 text-[10px] text-sage-400 hover:text-rose-500"
+                >
+                  ×
+                </button>
+              )}
+            </div>
+            {/* 排序按钮 */}
+            {val && focusIdx === i && (
+              <div className="absolute -top-6 left-1/2 -translate-x-1/2 flex gap-0.5 bg-white rounded shadow px-1 py-0.5 border z-10 dark:bg-slate-800 dark:border-white/10">
+                <button
+                  onMouseDown={e => e.preventDefault()}
+                  onClick={() => i > 0 && moveItem(i, i - 1)}
+                  disabled={i === 0}
+                  className={`text-[10px] px-1 rounded hover:bg-sage-100 ${i === 0 ? "text-sage-300" : "text-sage-600"} dark:hover:bg-white/10`}
+                >
+                  ◀
+                </button>
+                <span className="text-[9px] text-sage-400 px-1">{i + 1}</span>
+                <button
+                  onMouseDown={e => e.preventDefault()}
+                  onClick={() => i < n - 1 && moveItem(i, i + 1)}
+                  disabled={i === n - 1}
+                  className={`text-[10px] px-1 rounded hover:bg-sage-100 ${i === n - 1 ? "text-sage-300" : "text-sage-600"} dark:hover:bg-white/10`}
+                >
+                  ▶
+                </button>
+              </div>
+            )}
+            {/* 下拉联想 */}
+            {focusIdx === i && suggestions.length > 0 && (
+              <div className="absolute top-full left-0 right-0 mt-0.5 bg-white rounded-lg shadow-lg border border-sage-200 z-20 max-h-36 overflow-y-auto dark:bg-slate-800 dark:border-white/10">
+                {suggestions.map(eq => (
+                  <button
+                    key={eq.id}
+                    onMouseDown={e => e.preventDefault()}
+                    onClick={() => selectEquip(i, eq.name)}
+                    className="w-full text-left px-2 py-1.5 text-[10px] text-sage-700 hover:bg-gold-50 flex items-center gap-1.5 dark:text-sage-200 dark:hover:bg-gold-500/10"
+                  >
+                    {eq.icon_url ? (
+                      <img src={eq.icon_url} alt="" className="size-4 rounded object-contain bg-sage-100/50" />
+                    ) : (
+                      <span className="size-4 rounded bg-sage-100 flex items-center justify-center text-[8px]">?</span>
+                    )}
+                    <span className="truncate flex-1">{eq.name}</span>
+                    <span className="text-[8px] text-sage-400 flex-shrink-0">💰{eq.price}</span>
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 }
 
 export default function RecsTab({ adminKey }: { adminKey: string }) {
@@ -87,6 +216,7 @@ export default function RecsTab({ adminKey }: { adminKey: string }) {
   const [detailError, setDetailError] = useState("");
 
   const [allBuildCards, setAllBuildCards] = useState<BuildCard[]>([]);
+  const [equipList, setEquipList] = useState<Equipment[]>([]);
   const [cardFilter, setCardFilter] = useState<"all" | "withCards" | "withoutCards">("all");
   const [expandedPsIds, setExpandedPsIds] = useState<Set<string>>(new Set());
   const [psName, setPsName] = useState("");
@@ -110,6 +240,7 @@ export default function RecsTab({ adminKey }: { adminKey: string }) {
   const [bcUploadError, setBcUploadError] = useState<Record<string, string>>({});
 
   // 出装编辑 (per playstyle)
+  const [buildStarters, setBuildStarters] = useState<Record<string, string[]>>({});
   const [buildItems, setBuildItems] = useState<Record<string, string[]>>({});
   const [buildAlts, setBuildAlts] = useState<Record<string, string[]>>({});
 
@@ -125,10 +256,12 @@ export default function RecsTab({ adminKey }: { adminKey: string }) {
       fetch("/api/admin/heroes", { headers: h }).then(r => r.json()),
       fetch("/api/admin/runes?active=true", { headers: h }).then(r => r.json()),
       fetch("/api/admin/build-cards", { headers: h }).then(r => r.json()),
-    ]).then(([hData, rData, bcData]) => {
+      fetch("/api/admin/equipment", { headers: h }).then(r => r.json()),
+    ]).then(([hData, rData, bcData, eData]) => {
       if (Array.isArray(hData)) setHeroes(hData);
       if (Array.isArray(rData)) setAllRunes(rData);
       if (Array.isArray(bcData)) setAllBuildCards(bcData);
+      if (Array.isArray(eData)) setEquipList(eData);
       setLoading(false);
     });
   }, [adminKey]);
@@ -137,10 +270,11 @@ export default function RecsTab({ adminKey }: { adminKey: string }) {
     setDetailLoading(true);
     setDetailError("");
     try {
-      const [psRes, recRes, bcRes] = await Promise.all([
+      const [psRes, recRes, bcRes, eqRes] = await Promise.all([
         fetch(`/api/admin/playstyles?heroId=${heroId}`, { headers: h }).then(r => r.json()),
         fetch(`/api/admin/recommendations?heroId=${heroId}&phase=all`, { headers: h }).then(r => r.json()),
         fetch(`/api/admin/build-cards?heroId=${heroId}`, { headers: h }).then(r => r.json()),
+        fetch(`/api/admin/equipment-recs?heroId=${heroId}`, { headers: h }).then(r => r.json()),
       ]);
       const hero = heroes.find(h => h.id === heroId) || null;
       const cards = Array.isArray(bcRes) ? bcRes : [];
@@ -160,6 +294,43 @@ export default function RecsTab({ adminKey }: { adminKey: string }) {
       setBcTitles(titles);
       setBcDescs(descs);
       setBcUrls(urls);
+
+      // 加载装备推荐（从 hero_equipment_recs 表，保留空槽位）
+      const eqStarters: Record<string, string[]> = {};
+      const eqItems: Record<string, string[]> = {};
+      const eqAlts: Record<string, string[]> = {};
+      if (Array.isArray(eqRes)) {
+        for (const eq of eqRes) {
+          const pid = eq.playstyle_id || "__null__";
+          const starters = Array.from({ length: 3 }, (_, i) => {
+            const s = (eq.starter_items || [])[i];
+            return s?.name || "";
+          });
+          const cores = Array.from({ length: 6 }, (_, i) => {
+            const c = (eq.core_items || [])[i];
+            return c?.name || "";
+          });
+          const alts = Array.from({ length: 6 }, (_, i) => {
+            const a = (eq.alt_items || [])[i];
+            return a?.name || "";
+          });
+          eqStarters[pid] = starters;
+          eqItems[pid] = cores;
+          eqAlts[pid] = alts;
+        }
+      }
+      // 将 null playstyle 的装备也映射到"通用流派"UUID
+      const generalPs = (Array.isArray(psRes) ? psRes : []).find((p: any) => p.name === "通用流派");
+      if (generalPs && eqStarters["__null__"]) {
+        eqStarters[generalPs.id] = eqStarters["__null__"];
+        eqItems[generalPs.id] = eqItems["__null__"];
+        eqAlts[generalPs.id] = eqAlts["__null__"];
+      }
+      for (const pid of Object.keys(eqStarters)) {
+        items[pid] = eqItems[pid];
+        alts[pid] = eqAlts[pid];
+      }
+      setBuildStarters(eqStarters);
       setBuildItems(items);
       setBuildAlts(alts);
       setHeroData({
@@ -199,31 +370,38 @@ export default function RecsTab({ adminKey }: { adminKey: string }) {
 
   // === 流派 ===
   const [psSaveMsg, setPsSaveMsg] = useState("");
+  const [psSaving, setPsSaving] = useState(false);
 
   const savePlaystyle = async () => {
-    if (!psName.trim() || !modalHero) return;
-    const res = await fetch("/api/admin/playstyles", {
-      method: "POST", headers: h,
-      body: JSON.stringify({ hero_id: modalHero.id, name: psName, description: psDesc }),
-    });
-    if (res.ok) {
-      setShowNewPs(false); setPsName(""); setPsDesc("");
-      setPsSaveMsg("流派已创建");
-      setTimeout(() => setPsSaveMsg(""), 2000);
-      loadHero(modalHero.id);
-    }
+    if (!psName.trim() || !modalHero || psSaving) return;
+    setPsSaving(true);
+    try {
+      const res = await fetch("/api/admin/playstyles", {
+        method: "POST", headers: h,
+        body: JSON.stringify({ hero_id: modalHero.id, name: psName, description: psDesc }),
+      });
+      if (res.ok) {
+        setShowNewPs(false); setPsName(""); setPsDesc("");
+        setPsSaveMsg("流派已创建");
+        setTimeout(() => setPsSaveMsg(""), 2000);
+        loadHero(modalHero.id);
+      }
+    } catch {}
+    setPsSaving(false);
   };
 
   const updatePlaystyle = async (ps: Playstyle) => {
     if (!ps.name.trim()) return;
-    const res = await fetch(`/api/admin/playstyles/${ps.id}`, {
-      method: "PUT", headers: h,
-      body: JSON.stringify({ name: ps.name, description: ps.description }),
-    });
-    if (res.ok) {
-      setPsSaveMsg("已保存");
-      setTimeout(() => setPsSaveMsg(""), 1500);
-    }
+    try {
+      const res = await fetch(`/api/admin/playstyles/${ps.id}`, {
+        method: "PUT", headers: h,
+        body: JSON.stringify({ name: ps.name, description: ps.description }),
+      });
+      if (res.ok) {
+        setPsSaveMsg("已保存");
+        setTimeout(() => setPsSaveMsg(""), 1500);
+      }
+    } catch {}
   };
 
   const deletePlaystyle = async (id: string) => {
@@ -255,7 +433,6 @@ export default function RecsTab({ adminKey }: { adminKey: string }) {
       runes: rune,
     };
     setHeroData({ ...heroData, recs: [...heroData.recs, tempRec] });
-    // 发送请求，拿到真实ID后替换
     try {
       const res = await fetch("/api/admin/recommendations", {
         method: "POST", headers: h,
@@ -264,17 +441,19 @@ export default function RecsTab({ adminKey }: { adminKey: string }) {
           phase: null, priority_score: 95, reason: "", build_synergy: "", adjustment_tags: [],
         }),
       });
-      const newRec = await res.json();
-      if (newRec?.id) {
-        setHeroData(prev => prev ? {
-          ...prev,
-          recs: prev.recs.map(r => r.id === tempRec.id ? { ...r, id: newRec.id, runes: rune } : r),
-        } : prev);
+      if (res.ok) {
+        const newRec = await res.json();
+        if (newRec?.id) {
+          setHeroData(prev => prev ? {
+            ...prev,
+            recs: prev.recs.map(r => r.id === tempRec.id ? { ...r, id: newRec.id, runes: rune } : r),
+          } : prev);
+          return;
+        }
       }
-    } catch {
-      // 失败则移除临时记录
-      setHeroData(prev => prev ? { ...prev, recs: prev.recs.filter(r => r.id !== tempRec.id) } : prev);
-    }
+    } catch {}
+    // 失败则移除临时记录
+    setHeroData(prev => prev ? { ...prev, recs: prev.recs.filter(r => r.id !== tempRec.id) } : prev);
   };
 
   const quickScore = async (rec: Rec, delta: number) => {
@@ -349,6 +528,37 @@ export default function RecsTab({ adminKey }: { adminKey: string }) {
   };
 
   const [bcSaveMsg, setBcSaveMsg] = useState("");
+  const [bcSaving, setBcSaving] = useState(false);
+
+  // 保存装备推荐（独立于图文卡，保留空槽位以保证位置对应）
+  const saveEquipRec = async (psId: string) => {
+    if (!modalHero) return;
+    const starterSrc = buildStarters[psId] || [];
+    const src = buildItems[psId] || [];
+    const altSrc = buildAlts[psId] || [];
+    const toItems = (names: string[], len: number) => Array.from({ length: len }, (_, i) => {
+      const name = names[i];
+      if (!name) return null;
+      const eq = equipList.find(e => e.name === name);
+      return { name, id: eq?.game_id || "", equip_id: eq?.id || "" };
+    });
+    const starterItems = toItems(starterSrc, 3);
+    const coreItems = toItems(src, 6);
+    const altItems = toItems(altSrc, 6);
+    if (!starterItems.some(Boolean) && !coreItems.some(Boolean) && !altItems.some(Boolean)) return;
+    try {
+      await fetch("/api/admin/equipment-recs", {
+        method: "POST", headers: h,
+        body: JSON.stringify({
+          hero_id: modalHero.id,
+          playstyle_id: (psId === "__null__" || !psId) ? null : psId,
+          starter_items: starterItems,
+          core_items: coreItems,
+          alt_items: altItems,
+        }),
+      });
+    } catch {}
+  };
 
   const deleteBuildCard = async (cardId: string, psId: string) => {
     if (!heroData) return;
@@ -364,16 +574,13 @@ export default function RecsTab({ adminKey }: { adminKey: string }) {
   };
 
   const saveBuildCard = async (psId: string) => {
-    if (!modalHero || !heroData) return;
-    const hasContent = bcUrls[psId] || bcTitles[psId] || bcDescs[psId] ||
-      (buildItems[psId] || []).some(Boolean) || (buildAlts[psId] || []).some(Boolean);
+    if (!modalHero || !heroData || bcSaving) return;
+    // 图文卡只判断图片+标题+文字描述，装备另存
+    const hasContent = bcUrls[psId] || bcTitles[psId] || bcDescs[psId];
     if (!hasContent) return;
 
-    const descObj = JSON.stringify({
-      text: bcDescs[psId] || "",
-      items: buildItems[psId] || Array(6).fill(""),
-      alts: buildAlts[psId] || Array(6).fill(""),
-    });
+    setBcSaving(true);
+    const descObj = bcDescs[psId] || "";
     const existingIdx = heroData.cards.findIndex(c => c.playstyle_id === psId);
     const existingId = existingIdx >= 0 ? heroData.cards[existingIdx].id : undefined;
     const body: Record<string, unknown> = {
@@ -394,15 +601,20 @@ export default function RecsTab({ adminKey }: { adminKey: string }) {
       ? heroData.cards.map((c, i) => i === existingIdx ? updatedCard : c)
       : [...heroData.cards, updatedCard];
     setHeroData({ ...heroData, cards: newCards });
-    const res = await fetch("/api/admin/build-cards", { method: "POST", headers: h, body: JSON.stringify(body) });
-    if (res.ok) {
-      setBcSaveMsg("图文卡已保存");
-      setTimeout(() => setBcSaveMsg(""), 2000);
-    } else {
-      const d = await res.json().catch(() => ({ error: "保存失败" }));
-      setBcUploadError(prev => ({ ...prev, [psId]: `保存失败：${d.error || res.statusText}` }));
-      if (modalHero) loadHero(modalHero.id);
+    try {
+      const res = await fetch("/api/admin/build-cards", { method: "POST", headers: h, body: JSON.stringify(body) });
+      if (res.ok) {
+        setBcSaveMsg("图文卡已保存");
+        setTimeout(() => setBcSaveMsg(""), 2000);
+      } else {
+        const d = await res.json().catch(() => ({ error: "保存失败" }));
+        setBcUploadError(prev => ({ ...prev, [psId]: `保存失败：${(d as any).error || res.statusText}` }));
+        if (modalHero) loadHero(modalHero.id);
+      }
+    } catch {
+      setBcUploadError(prev => ({ ...prev, [psId]: "网络错误" }));
     }
+    setBcSaving(false);
   };
 
   // === 筛选 ===
@@ -832,37 +1044,28 @@ export default function RecsTab({ adminKey }: { adminKey: string }) {
                                   {/* ====== 四、出装推荐（流派级别） ====== */}
                                   <section>
                                     <h4 className="text-[11px] font-semibold text-sage-500 dark:text-sage-400 mb-2">出装推荐</h4>
-                                    <div>
-                                      <label className="text-[10px] text-sage-500 dark:text-sage-400">主出装 (6件)</label>
-                                      <div className="grid grid-cols-6 gap-1 mt-1">
-                                        {[0,1,2,3,4,5].map(i => (
-                                          <input key={`main-${i}`} placeholder={`${i+1}`}
-                                            value={buildItems[ps.id]?.[i] || ""}
-                                            onChange={e => {
-                                              const a = [...(buildItems[ps.id] || Array(6).fill(""))];
-                                              a[i] = e.target.value;
-                                              setBuildItems(prev => ({ ...prev, [ps.id]: a }));
-                                            }}
-                                            className="px-1.5 py-1.5 rounded-lg border border-sage-200 bg-white/80 text-[11px] text-sage-700 focus:outline-none focus:border-gold-400 text-center dark:bg-white/5 dark:border-white/10 dark:text-sage-200"
-                                          />
-                                        ))}
-                                      </div>
+                                    <EquipRow
+                                      label="出门装"
+                                      equipList={equipList}
+                                      items={buildStarters[ps.id] || []}
+                                      onChange={(items) => setBuildStarters(prev => ({ ...prev, [ps.id]: items }))}
+                                      maxSlots={3}
+                                    />
+                                    <div className="mt-2">
+                                      <EquipRow
+                                        label="主出装"
+                                        equipList={equipList}
+                                        items={buildItems[ps.id] || []}
+                                        onChange={(items) => setBuildItems(prev => ({ ...prev, [ps.id]: items }))}
+                                      />
                                     </div>
                                     <div className="mt-2">
-                                      <label className="text-[10px] text-sage-500 dark:text-sage-400">替换出装 (6件)</label>
-                                      <div className="grid grid-cols-6 gap-1 mt-1">
-                                        {[0,1,2,3,4,5].map(i => (
-                                          <input key={`alt-${i}`} placeholder={`替${i+1}`}
-                                            value={buildAlts[ps.id]?.[i] || ""}
-                                            onChange={e => {
-                                              const a = [...(buildAlts[ps.id] || Array(6).fill(""))];
-                                              a[i] = e.target.value;
-                                              setBuildAlts(prev => ({ ...prev, [ps.id]: a }));
-                                            }}
-                                            className="px-1.5 py-1.5 rounded-lg border border-sage-200 bg-white/80 text-[11px] text-sage-700 focus:outline-none focus:border-gold-400 text-center dark:bg-white/5 dark:border-white/10 dark:text-sage-200"
-                                          />
-                                        ))}
-                                      </div>
+                                      <EquipRow
+                                        label="替换出装"
+                                        equipList={equipList}
+                                        items={buildAlts[ps.id] || []}
+                                        onChange={(items) => setBuildAlts(prev => ({ ...prev, [ps.id]: items }))}
+                                      />
                                     </div>
                                   </section>
 
@@ -870,13 +1073,14 @@ export default function RecsTab({ adminKey }: { adminKey: string }) {
                                   <div className="flex gap-2 pt-2 border-t border-sage-100 dark:border-white/10">
                                     <button
                                       onClick={async () => {
-                                        await saveBuildCard(ps.id);
+                                        await Promise.all([saveBuildCard(ps.id), saveEquipRec(ps.id)]);
                                         updatePlaystyle(ps);
                                         togglePs(ps.id);
                                       }}
-                                      className="flex-1 text-[12px] py-2 rounded-lg bg-gold-300 text-gold-700 font-medium hover:bg-gold-400 transition-colors active:scale-95 dark:bg-gold-500/30 dark:text-gold-300 dark:hover:bg-gold-500/40"
+                                      disabled={bcSaving}
+                                      className="flex-1 text-[12px] py-2 rounded-lg bg-gold-300 text-gold-700 font-medium hover:bg-gold-400 transition-colors active:scale-95 disabled:opacity-40 dark:bg-gold-500/30 dark:text-gold-300 dark:hover:bg-gold-500/40"
                                     >
-                                      保存全部
+                                      {bcSaving ? "保存中..." : "保存全部"}
                                     </button>
                                     <button
                                       onClick={() => togglePs(ps.id)}
@@ -910,8 +1114,8 @@ export default function RecsTab({ adminKey }: { adminKey: string }) {
                         <textarea placeholder="流派描述" value={psDesc} onChange={e => setPsDesc(e.target.value)} rows={2}
                           className="w-full px-3 py-2 rounded-lg border border-sage-200 bg-white/80 text-[12px] focus:outline-none focus:border-gold-400 resize-none dark:bg-white/5 dark:border-white/10 dark:text-sage-200" />
                         <div className="flex gap-2">
-                          <button onClick={savePlaystyle} className="text-[12px] px-4 py-2 rounded-lg bg-gold-300 text-gold-700 font-medium dark:bg-gold-500/30 dark:text-gold-300">创建</button>
-                          <button onClick={() => setShowNewPs(false)} className="text-[12px] px-4 py-2 rounded-lg bg-sage-100 text-sage-500 dark:bg-white/10 dark:text-sage-400">取消</button>
+                          <button onClick={savePlaystyle} disabled={psSaving} className="text-[12px] px-4 py-2 rounded-lg bg-gold-300 text-gold-700 font-medium disabled:opacity-40 dark:bg-gold-500/30 dark:text-gold-300">{psSaving ? "创建中..." : "创建"}</button>
+                          <button onClick={() => setShowNewPs(false)} disabled={psSaving} className="text-[12px] px-4 py-2 rounded-lg bg-sage-100 text-sage-500 dark:bg-white/10 dark:text-sage-400">取消</button>
                         </div>
                       </div>
                     )}

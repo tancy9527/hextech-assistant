@@ -13,7 +13,7 @@ interface RuneMatch {
 interface RuneQuickSearchProps {
   allRunes: Rune[];
   excludedIds: string[];
-  recScores: Map<string, { score: number; isTop: boolean }>;
+  recScores: Map<string, { score: number; isTop: boolean; hasDbRec: boolean }>;
   onMarkSeen: (runeId: string) => void;
   onMarkSelected: (runeId: string) => void;
 }
@@ -42,7 +42,7 @@ export default function RuneQuickSearch({
         return {
           rune,
           score: rec?.score ?? 0,
-          isRecommended: !!rec,
+          isRecommended: rec?.hasDbRec ?? false,
           isTop: rec?.isTop ?? false,
         };
       })

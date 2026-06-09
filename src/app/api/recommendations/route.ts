@@ -35,9 +35,9 @@ export async function GET(req: NextRequest) {
 
     const dbRecsList = dbRecs || [];
 
-    // 3. Filter by playstyle (if selected, only show that playstyle's recs)
+    // 3. Filter by playstyle (if selected, show that playstyle's recs + null playstyle fallback)
     const filteredDbRecs = playstyleId
-      ? dbRecsList.filter((r: any) => r.playstyle_id === playstyleId)
+      ? dbRecsList.filter((r: any) => r.playstyle_id === playstyleId || r.playstyle_id === null)
       : dbRecsList;
 
     // 4. Build recommendation list: only include DB recs (no archetype fallback)

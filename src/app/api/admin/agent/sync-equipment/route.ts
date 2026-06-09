@@ -8,7 +8,8 @@ export async function POST(req: NextRequest) {
   try {
     const body = await req.json().catch(() => ({}));
     const dryRun = body.dryRun === true;
-    const result = await syncEquipment({ dryRun });
+    const equipIds = body.equipIds || undefined;
+    const result = await syncEquipment({ dryRun, equipIds });
     return Response.json({ success: true, dryRun, ...result });
   } catch (e: any) {
     return Response.json({ success: false, error: e.message }, { status: 500 });

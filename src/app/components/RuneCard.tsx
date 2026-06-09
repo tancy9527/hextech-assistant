@@ -7,9 +7,12 @@ interface RuneCardProps {
   onSelect: (runeId: string) => void;
   onSeen: (runeId: string) => void;
   onRemove: (runeId: string) => void;
+  highlighted?: boolean;
+  onHover?: (runeId: string) => void;
+  onLeave?: () => void;
 }
 
-export default function RuneCard({ rec, onSelect, onSeen, onRemove }: RuneCardProps) {
+export default function RuneCard({ rec, onSelect, onSeen, onRemove, highlighted, onHover, onLeave }: RuneCardProps) {
   const { rune, is_top, is_selected, is_excluded, has_db_rec, adjusted_score, reason, build_synergy, boost_reasons } = rec;
 
   const tierBadge = {
@@ -28,8 +31,10 @@ export default function RuneCard({ rec, onSelect, onSeen, onRemove }: RuneCardPr
 
   return (
     <div
-      className={`animate-slide-up ${
-        is_selected
+      className={`animate-slide-up transition-all ${
+        highlighted
+          ? "glass-card !border-gold-400 !shadow-[0_0_12px_rgba(212,187,123,0.35)]"
+          : is_selected
           ? "glass-card-selected"
           : is_excluded
           ? "glass-card opacity-50"
@@ -37,6 +42,9 @@ export default function RuneCard({ rec, onSelect, onSeen, onRemove }: RuneCardPr
           ? "glass-card-highlight animate-pulse-gold"
           : "glass-card"
       } p-3 mb-2`}
+      onMouseEnter={() => onHover?.(rune.id)}
+      onMouseLeave={() => onLeave?.()}
+      onTouchStart={() => onHover?.(rune.id)}
     >
       <div className="flex items-start gap-2.5">
         {/* Icon */}

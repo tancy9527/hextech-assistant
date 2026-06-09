@@ -17,6 +17,17 @@ node_modules/
 .claude/
 CLAUDE/   # 如果是文件夹
 
+# documentation (all .md files)
+*.md
+
+# local test data / temp files
+LOCAL文件
+EXAMPLE文件
+txtfile
+all_data_complete
+combo_data
+AI开发协作规则   # 如果这是一个无扩展名的文件（可能是文档），也忽略
+
 # 日志
 *.log
 npm-debug.log*
